@@ -1,0 +1,603 @@
+id: template_chat_flow
+name: Template Chat Flow
+inputs:
+  chat_history:
+    type: list
+    default:
+    - inputs:
+        customer: '{"FirstName":"Donald","MiddleName":"L.","LastName":"Blanton"}'
+        question: I'm looking for new bike jerseys for my customers
+      outputs:
+        answer: >-
+          Hello Mr. Blanton, I see that you're looking for new bike jerseys for
+          your customers. Based on our product database, I have found some
+          options that might interest you:
+
+
+          1. **Long-Sleeve Logo Jersey**:
+             - Available Sizes: S, L, XL
+             - Color: Multi
+             - Price: $49.99
+             - Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+
+          2. **Short-Sleeve Classic Jersey**:
+             - Available Sizes: M, XL
+             - Color: Yellow
+             - Price: $53.99
+             - Description: Short sleeve classic breathable jersey with superior moisture control, front zipper, and 3 back pockets.
+
+          Considering your past purchases, you have bought a **Long-Sleeve Logo Jersey, M** and a **Short-Sleeve Classic Jersey, S**. Based on this, your customers might be interested in trying different sizes and colors of these jerseys.
+
+
+          Please let me know if you need more information or if you have any specific requirements.
+        line_number: 0
+        retrieved_customer:
+        - CompanyName: Coalition Bike Company
+          CustomerID: 25
+          EmailAddress: donald0@adventure-works.com
+          FirstName: Donald
+          LastName: Blanton
+          MiddleName: L.
+          ModifiedDate: 1157068800000
+          NameStyle: false
+          PasswordHash: pKYDelLBOZMO98GBzhMxBSzzE0gUYKx9dXzYTYNuBgw=
+          PasswordSalt: jKtOaOw=
+          Phone: 357-555-0161
+          SalesPerson: adventure-works\shu0
+          Suffix: null
+          Title: Mr.
+          rowguid: 31D03546-FB2A-4488-890E-4709A659E3F0
+        - CompanyName: Coalition Bike Company
+          CustomerID: 29568
+          EmailAddress: donald0@adventure-works.com
+          FirstName: Donald
+          LastName: Blanton
+          MiddleName: L.
+          ModifiedDate: 1157068800000
+          NameStyle: false
+          PasswordHash: pKYDelLBOZMO98GBzhMxBSzzE0gUYKx9dXzYTYNuBgw=
+          PasswordSalt: jKtOaOw=
+          Phone: 357-555-0161
+          SalesPerson: adventure-works\shu0
+          Suffix: null
+          Title: Mr.
+          rowguid: D8B39163-B4B4-428D-ACD7-1DF795D801DC
+        retrieved_past_orders:
+        - Color: Yellow
+          CustomerID: 29568
+          Description: Short sleeve classic breathable jersey with superior moisture
+            control, front zipper, and 3 back pockets.
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, S
+          ProductCategoryID: 25
+          ProductDescriptionID: 1205
+          ProductID: 881
+          ProductModelID: 32
+          ProductNumber: SJ-0194-S
+          Size: S
+        - Color: Silver
+          CustomerID: 29568
+          Description: Suitable for any type of riding, on or off-road. Fits any budget.
+            Smooth-shifting with a comfortable ride.
+          ListPrice: 564.99
+          Name: Mountain-500 Silver, 52
+          ProductCategoryID: 5
+          ProductDescriptionID: 8
+          ProductID: 988
+          ProductModelID: 23
+          ProductNumber: BK-M18S-52
+          Size: "52"
+        - Color: Silver
+          CustomerID: 29568
+          Description: This bike delivers a high-level of performance on a budget. It is
+            responsive and maneuverable, and offers peace-of-mind when you
+            decide to go off-road.
+          ListPrice: 769.49
+          Name: Mountain-400-W Silver, 40
+          ProductCategoryID: 5
+          ProductDescriptionID: 64
+          ProductID: 981
+          ProductModelID: 22
+          ProductNumber: BK-M38S-40
+          Size: "40"
+        - Color: Black
+          CustomerID: 29568
+          Description: Each frame is hand-crafted in our Bothell facility to the optimum
+            diameter and wall-thickness required of a premium mountain frame.
+            The heat-treated welded aluminum frame has a larger diameter tube
+            that absorbs the bumps.
+          ListPrice: 1349.6
+          Name: HL Mountain Frame - Black, 42
+          ProductCategoryID: 16
+          ProductDescriptionID: 647
+          ProductID: 743
+          ProductModelID: 5
+          ProductNumber: FR-M94B-42
+          Size: "42"
+        - Color: null
+          CustomerID: 29568
+          Description: All-purpose bar for on or off-road.
+          ListPrice: 44.54
+          Name: LL Mountain Handlebars
+          ProductCategoryID: 8
+          ProductDescriptionID: 697
+          ProductID: 808
+          ProductModelID: 52
+          ProductNumber: HB-M243
+          Size: null
+        - Color: Multi
+          CustomerID: 29568
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, M
+          ProductCategoryID: 25
+          ProductDescriptionID: 1211
+          ProductID: 714
+          ProductModelID: 11
+          ProductNumber: LJ-0192-M
+          Size: M
+        - Color: Silver
+          CustomerID: 29568
+          Description: Our best value utilizing the same, ground-breaking frame technology
+            as the ML aluminum frame.
+          ListPrice: 264.05
+          Name: LL Mountain Frame - Silver, 40
+          ProductCategoryID: 16
+          ProductDescriptionID: 637
+          ProductID: 944
+          ProductModelID: 8
+          ProductNumber: FR-M21S-40
+          Size: "40"
+        - Color: Silver/Black
+          CustomerID: 29568
+          Description: Stainless steel; designed to shed mud easily.
+          ListPrice: 80.99
+          Name: HL Mountain Pedal
+          ProductCategoryID: 17
+          ProductDescriptionID: 849
+          ProductID: 937
+          ProductModelID: 64
+          ProductNumber: PD-M562
+          Size: null
+        retrieved_product_stats:
+        - Color: Multi
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, L
+          ProductCategoryName: Jerseys
+          sales_count: 10
+        - Color: Yellow
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, XL
+          ProductCategoryName: Jerseys
+          sales_count: 9
+        - Color: Yellow
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, L
+          ProductCategoryName: Jerseys
+          sales_count: 8
+        - Color: Multi
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, M
+          ProductCategoryName: Jerseys
+          sales_count: 7
+        - Color: Yellow
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, S
+          ProductCategoryName: Jerseys
+          sales_count: 7
+        - Color: Multi
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, XL
+          ProductCategoryName: Jerseys
+          sales_count: 3
+        retrieved_products:
+        - "@search.score": 0.03333333507180214
+          Color: Multi
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, XL
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1211
+          ProductId: 716
+          ProductModelID: 11
+          ProductNumber: LJ-0192-X
+          Size: XL
+        - "@search.score": 0.03226646035909653
+          Color: Multi
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, L
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1211
+          ProductId: 715
+          ProductModelID: 11
+          ProductNumber: LJ-0192-L
+          Size: L
+        - "@search.score": 0.0317540317773819
+          Color: Multi
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, S
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1211
+          ProductId: 713
+          ProductModelID: 11
+          ProductNumber: LJ-0192-S
+          Size: S
+        - "@search.score": 0.016393441706895828
+          Color: Yellow
+          Description: Short sleeve classic breathable jersey with superior moisture
+            control, front zipper, and 3 back pockets.
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, XL
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1205
+          ProductId: 884
+          ProductModelID: 32
+          ProductNumber: SJ-0194-X
+          Size: XL
+        - "@search.score": 0.016129031777381897
+          Color: Yellow
+          Description: Short sleeve classic breathable jersey with superior moisture
+            control, front zipper, and 3 back pockets.
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, M
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1205
+          ProductId: 882
+          ProductModelID: 32
+          ProductNumber: SJ-0194-M
+          Size: M
+    - inputs:
+        customer: '{"FirstName":"Donald","MiddleName":"L.","LastName":"Blanton"}'
+        question: I'm looking for new bike jerseys for my customers
+      outputs:
+        answer: >-
+          Hello Mr. Blanton, I understand that you're looking for new bike
+          jerseys for your customers. Based on our product database, I have
+          found some options that might interest you:
+
+
+          1. **Long-Sleeve Logo Jersey**:
+             - Available Sizes: S, L, XL
+             - Color: Multi
+             - Price: $49.99
+             - Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+
+          2. **Short-Sleeve Classic Jersey**:
+             - Available Sizes: M, XL
+             - Color: Yellow
+             - Price: $53.99
+             - Description: Short sleeve classic breathable jersey with superior moisture control, front zipper, and 3 back pockets.
+
+          Considering your past purchases, you have bought a **Long-Sleeve Logo Jersey, M** and a **Short-Sleeve Classic Jersey, S**. Based on this, your customers might be interested in trying different sizes and colors of these jerseys.
+
+
+          Please let me know if you need more information or if you have any specific requirements.
+        line_number: 0
+        retrieved_customer:
+        - CompanyName: Coalition Bike Company
+          CustomerID: 25
+          EmailAddress: donald0@adventure-works.com
+          FirstName: Donald
+          LastName: Blanton
+          MiddleName: L.
+          ModifiedDate: 1157068800000
+          NameStyle: false
+          PasswordHash: pKYDelLBOZMO98GBzhMxBSzzE0gUYKx9dXzYTYNuBgw=
+          PasswordSalt: jKtOaOw=
+          Phone: 357-555-0161
+          SalesPerson: adventure-works\shu0
+          Suffix: null
+          Title: Mr.
+          rowguid: 31D03546-FB2A-4488-890E-4709A659E3F0
+        - CompanyName: Coalition Bike Company
+          CustomerID: 29568
+          EmailAddress: donald0@adventure-works.com
+          FirstName: Donald
+          LastName: Blanton
+          MiddleName: L.
+          ModifiedDate: 1157068800000
+          NameStyle: false
+          PasswordHash: pKYDelLBOZMO98GBzhMxBSzzE0gUYKx9dXzYTYNuBgw=
+          PasswordSalt: jKtOaOw=
+          Phone: 357-555-0161
+          SalesPerson: adventure-works\shu0
+          Suffix: null
+          Title: Mr.
+          rowguid: D8B39163-B4B4-428D-ACD7-1DF795D801DC
+        retrieved_past_orders:
+        - Color: Yellow
+          CustomerID: 29568
+          Description: Short sleeve classic breathable jersey with superior moisture
+            control, front zipper, and 3 back pockets.
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, S
+          ProductCategoryID: 25
+          ProductDescriptionID: 1205
+          ProductID: 881
+          ProductModelID: 32
+          ProductNumber: SJ-0194-S
+          Size: S
+        - Color: Silver
+          CustomerID: 29568
+          Description: Suitable for any type of riding, on or off-road. Fits any budget.
+            Smooth-shifting with a comfortable ride.
+          ListPrice: 564.99
+          Name: Mountain-500 Silver, 52
+          ProductCategoryID: 5
+          ProductDescriptionID: 8
+          ProductID: 988
+          ProductModelID: 23
+          ProductNumber: BK-M18S-52
+          Size: "52"
+        - Color: Silver
+          CustomerID: 29568
+          Description: This bike delivers a high-level of performance on a budget. It is
+            responsive and maneuverable, and offers peace-of-mind when you
+            decide to go off-road.
+          ListPrice: 769.49
+          Name: Mountain-400-W Silver, 40
+          ProductCategoryID: 5
+          ProductDescriptionID: 64
+          ProductID: 981
+          ProductModelID: 22
+          ProductNumber: BK-M38S-40
+          Size: "40"
+        - Color: Black
+          CustomerID: 29568
+          Description: Each frame is hand-crafted in our Bothell facility to the optimum
+            diameter and wall-thickness required of a premium mountain frame.
+            The heat-treated welded aluminum frame has a larger diameter tube
+            that absorbs the bumps.
+          ListPrice: 1349.6
+          Name: HL Mountain Frame - Black, 42
+          ProductCategoryID: 16
+          ProductDescriptionID: 647
+          ProductID: 743
+          ProductModelID: 5
+          ProductNumber: FR-M94B-42
+          Size: "42"
+        - Color: null
+          CustomerID: 29568
+          Description: All-purpose bar for on or off-road.
+          ListPrice: 44.54
+          Name: LL Mountain Handlebars
+          ProductCategoryID: 8
+          ProductDescriptionID: 697
+          ProductID: 808
+          ProductModelID: 52
+          ProductNumber: HB-M243
+          Size: null
+        - Color: Multi
+          CustomerID: 29568
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, M
+          ProductCategoryID: 25
+          ProductDescriptionID: 1211
+          ProductID: 714
+          ProductModelID: 11
+          ProductNumber: LJ-0192-M
+          Size: M
+        - Color: Silver
+          CustomerID: 29568
+          Description: Our best value utilizing the same, ground-breaking frame technology
+            as the ML aluminum frame.
+          ListPrice: 264.05
+          Name: LL Mountain Frame - Silver, 40
+          ProductCategoryID: 16
+          ProductDescriptionID: 637
+          ProductID: 944
+          ProductModelID: 8
+          ProductNumber: FR-M21S-40
+          Size: "40"
+        - Color: Silver/Black
+          CustomerID: 29568
+          Description: Stainless steel; designed to shed mud easily.
+          ListPrice: 80.99
+          Name: HL Mountain Pedal
+          ProductCategoryID: 17
+          ProductDescriptionID: 849
+          ProductID: 937
+          ProductModelID: 64
+          ProductNumber: PD-M562
+          Size: null
+        retrieved_product_stats:
+        - Color: Multi
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, L
+          ProductCategoryName: Jerseys
+          sales_count: 10
+        - Color: Yellow
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, XL
+          ProductCategoryName: Jerseys
+          sales_count: 9
+        - Color: Yellow
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, L
+          ProductCategoryName: Jerseys
+          sales_count: 8
+        - Color: Multi
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, M
+          ProductCategoryName: Jerseys
+          sales_count: 7
+        - Color: Yellow
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, S
+          ProductCategoryName: Jerseys
+          sales_count: 7
+        - Color: Multi
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, XL
+          ProductCategoryName: Jerseys
+          sales_count: 3
+        retrieved_products:
+        - "@search.score": 0.03333333507180214
+          Color: Multi
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, XL
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1211
+          ProductId: 716
+          ProductModelID: 11
+          ProductNumber: LJ-0192-X
+          Size: XL
+        - "@search.score": 0.03226646035909653
+          Color: Multi
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, L
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1211
+          ProductId: 715
+          ProductModelID: 11
+          ProductNumber: LJ-0192-L
+          Size: L
+        - "@search.score": 0.0317540317773819
+          Color: Multi
+          Description: Unisex long-sleeve AWC logo microfiber cycling jersey
+          ListPrice: 49.99
+          Name: Long-Sleeve Logo Jersey, S
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1211
+          ProductId: 713
+          ProductModelID: 11
+          ProductNumber: LJ-0192-S
+          Size: S
+        - "@search.score": 0.016393441706895828
+          Color: Yellow
+          Description: Short sleeve classic breathable jersey with superior moisture
+            control, front zipper, and 3 back pockets.
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, XL
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1205
+          ProductId: 884
+          ProductModelID: 32
+          ProductNumber: SJ-0194-X
+          Size: XL
+        - "@search.score": 0.016129031777381897
+          Color: Yellow
+          Description: Short sleeve classic breathable jersey with superior moisture
+            control, front zipper, and 3 back pockets.
+          ListPrice: 53.99
+          Name: Short-Sleeve Classic Jersey, M
+          ProductCategoryID: 25
+          ProductCategoryName: Jerseys
+          ProductDescriptionID: 1205
+          ProductId: 882
+          ProductModelID: 32
+          ProductNumber: SJ-0194-M
+          Size: M
+    is_chat_input: false
+    is_chat_history: true
+  question:
+    type: string
+    default: I'm looking for new bike jerseys for my customers
+    is_chat_input: true
+  customer:
+    type: object
+    default:
+      FirstName: Donald
+      MiddleName: L.
+      LastName: Blanton
+    is_chat_input: false
+outputs:
+  answer:
+    type: string
+    reference: ${chat.output}
+    is_chat_output: true
+  retrieved_documents:
+    type: string
+    reference: ${get_retrieved_documents.output}
+    is_chat_output: false
+nodes:
+- name: retrieve_customer
+  type: python
+  source:
+    type: code
+    path: retrieve_customer.py
+  inputs:
+    inputs: ${inputs.customer}
+    conn: SQLDB-Connection-Demo
+  use_variants: false
+- name: retrieve_past_orders
+  type: python
+  source:
+    type: code
+    path: retrieve_orders.py
+  inputs:
+    inputs: ${retrieve_customer.output}
+    conn: SQLDB-Connection-Demo
+  use_variants: false
+- name: retrieve_products
+  type: python
+  source:
+    type: code
+    path: retrieve_products.py
+  inputs:
+    conn: dricopilot_env_v2
+    search_text: ${inputs.question}
+    top_k: 5
+  use_variants: false
+- name: retrieve_products_stats
+  type: python
+  source:
+    type: code
+    path: retrieve_products_stats.py
+  inputs:
+    inputs: ${retrieve_products.output}
+    conn: SQLDB-Connection-Demo
+  use_variants: false
+- name: chat
+  type: llm
+  source:
+    type: code
+    path: chat.jinja2
+  inputs:
+    deployment_name: mp-aoi-gpt-4-32k
+    temperature: 0
+    top_p: 1
+    stop: ""
+    max_tokens: 1000
+    presence_penalty: 0
+    frequency_penalty: 0
+    logit_bias: ""
+    chat_history: ${inputs.chat_history}
+    question: ${inputs.question}
+    retrieved_customers: ${retrieve_customer.output}
+    retrieved_orders: ${retrieve_past_orders.output}
+    retrieved_products: ${retrieve_products.output}
+    retrieved_products_stats: ${retrieve_products_stats.output}
+  provider: AzureOpenAI
+  connection: DRI-Copilot-SQL-OAI
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+- name: get_retrieved_documents
+  type: python
+  source:
+    type: code
+    path: get_retrieved_documents.py
+  inputs:
+    input1: ${retrieve_customer.output}
+    input2: ${retrieve_past_orders.output}
+    input3: ${retrieve_products.output}
+    input4: ${retrieve_products_stats.output}
+  use_variants: false
+node_variants: {}
+environment:
+  python_requirements_txt: requirements.txt
