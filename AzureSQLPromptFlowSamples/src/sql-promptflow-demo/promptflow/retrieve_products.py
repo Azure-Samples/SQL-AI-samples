@@ -44,6 +44,7 @@ def get_products(search_text: str, conn: CustomConnection, top_k: int) -> str:
             "fields": "DescriptionVector, ProductCategoryNameVector",
             "k": top_k
         },
+        "search": search_text,
         "select": "ProductId, ProductCategoryName, Name, ProductNumber, Color, ListPrice, Size, ProductCategoryID, ProductModelID, ProductDescriptionID, Description",
         "top": top_k,
     }
