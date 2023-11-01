@@ -19,5 +19,5 @@
     "endpoint_deployment_name": "",
     "model_name": "",
     "keyvault_uri": "",
-    "promptflow_image_base": "mcr.microsoft.com/azureml/promptflow/promptflow-runtime:20230927.v2"
+    "promptflow_image_base": "mcr.microsoft.com/azureml/promptflow/promptflow-runtime:latest"
 }
