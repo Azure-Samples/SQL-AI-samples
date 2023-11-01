@@ -4,11 +4,17 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 .env
+.vscode
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/configs/flow_config.json
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/configs/key_config_local.json
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/promptflow/flow.dag.yaml
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/evaluation/flow.dag.yaml
+AzureSQLPromptFlowSamples/src/sql-promptflow-demo/evaluation/.promptflow/
+AzureSQLPromptFlowSamples/src/sql-promptflow-demo/evaluation/__pycache__/
 
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/deployment/deployment.yaml
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/deployment/endpoint.yaml
 AzureSQLPromptFlowSamples/src/sql-promptflow-demo/deployment/model.yaml
+AzureSQLPromptFlowSamples/src/sql-promptflow-demo/promptflow_v2/flow.dag.yaml
+AzureSQLPromptFlowSamples/src/sql-promptflow-demo/promptflow_v2/.promptflow/
+AzureSQLPromptFlowSamples/src/sql-promptflow-demo/promptflow_v2/__pycache__/

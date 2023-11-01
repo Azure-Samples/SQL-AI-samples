@@ -49,6 +49,11 @@ base_run = pf.run(
     data=data_path,
     runtime=runtime,
     stream=True,
+    column_mapping={  # map the url field from the data to the url input of the flow
+        "chat_history": "${data.chat_history}",
+        "question": "${data.question}",
+        "customer": "${data.customer}"
+    }
 )
 
 details = pf.get_details(base_run)
@@ -56,7 +61,7 @@ pf.visualize(base_run)
 
 # %%
 # set eval flow path
-eval_flow = "evaluation/"
+eval_flow = "./evaluation"
 data = "./data/batch_run_data.jsonl"
 
 # set up eval flow
@@ -76,8 +81,10 @@ for node in config_flow["nodes"]:
         if 'connection' in node:
             node['connection'] = config['azure_open_ai_connection_name']
     else:
+        if 'conn_db' in node['inputs']:
+            node['inputs']['conn_db'] = config['SQLDB_connection_name']
         if 'conn' in node['inputs']:
-            node['inputs']['conn'] = config['SQLDB_connection_name']
+            node['inputs']['conn'] = config['ACS_connection_name']
 
 # write the yaml file back
 with open('./evaluation/flow.dag.yaml', 'w') as f:
@@ -90,8 +97,8 @@ eval_run = pf.run(
     run=base_run,
     runtime=runtime,
     column_mapping={  # map the url field from the data to the url input of the flow
-        "question": "${run.outputs.answer}",
-        "answer": "${data.question}",
+        "question": "${data.question}",
+        "answer": "${run.outputs.answer}",
         "context": "${run.outputs.retrieved_documents}"
     }
 )

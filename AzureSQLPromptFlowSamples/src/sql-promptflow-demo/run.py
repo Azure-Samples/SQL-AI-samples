@@ -44,7 +44,7 @@ print("currently Azure Promptflow SDK don't support create connection and upload
 # %%
 # load flow
 flow_path = "./promptflow"
-data_path = "./promptflow/single_run_data.jsonl"
+data_path = "./data/batch_run_data.jsonl"
 # assume you have existing runtime with this name provisioned
 runtime = config["promptflow_runtime"]
 
@@ -54,6 +54,11 @@ base_run = pf.run(
     flow=flow_path,
     data=data_path,
     runtime=runtime,
+    column_mapping={  # map the url field from the data to the url input of the flow
+        "chat_history": "${data.chat_history}",
+        "question": "${data.question}",
+        "customer": "${data.customer}"
+    },
     display_name="sql-promptflow-demo-1"
 )
 pf.stream(base_run)

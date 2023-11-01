@@ -21,7 +21,7 @@ instance_type: Standard_DS3_v2
 liveness_probe:
   timeout: 200
 model: dummy
-name: promptflow-demo-v1-1
+name: dummy
 readiness_probe:
   timeout: 200
 request_settings:

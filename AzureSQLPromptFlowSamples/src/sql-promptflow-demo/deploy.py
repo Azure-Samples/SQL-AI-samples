@@ -131,7 +131,7 @@ with open('./deployment/model.yaml', 'w') as f:
 # Before we upload model, we create tmp directory to store current solution
 # We delete sensitive files (for now, config_local.json)
 # -----------------------------------------------------------------------------
-src_for_tmp = './promptflow'
+src_for_tmp = './promptflow_v2'
 temp_dir = '../.copilot_tmp'
 
 # if temp_dir exists already, delete it
