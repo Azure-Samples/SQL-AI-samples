@@ -98,6 +98,7 @@ eval_run = pf.run(
     runtime=runtime,
     column_mapping={  # map the url field from the data to the url input of the flow
         "question": "${data.question}",
+        "customer": "${data.customer}",
         "answer": "${run.outputs.answer}",
         "context": "${run.outputs.retrieved_documents}"
     }

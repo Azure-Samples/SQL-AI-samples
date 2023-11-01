@@ -51,18 +51,18 @@ Default build_image: `mcr.microsoft.com/azureml/promptflow/promptflow-runtime:la
 
 The AML workspace used to deploy this flow comes with a default key vault for storing secret keys. Navigate to the AML workspace in Azure Portal and in the Overview pane find the associated key vault. Grab its URI and add it as the `keyvault_uri` key within your team config.
 
-For the file `src/sql-promptflow-demo/configs/key_config_local.json` in the copilot dir (file not tracked by git) and add the following JSON structure and save:
+For the file `configs/key_config_local.json` in the copilot dir (file not tracked by git) and add the following JSON structure and save:
 
 ```json
 {
-    "aoai-api-key": "YOUR_OPENAI_KEY",
-    "aoai-api-key-embed": "YOUR_OPENAI_KEY",
-    "acs-key": "YOUR_ACS_KEY",
-    "connectionString": "SQL_CONNECTION_STRING",
+    "aoai-api-key": "<YOUR_OPENAI_KEY>",
+    "aoai-api-key-embed": "<YOUR_EMBED_OPENAI_KEY>",
+    "acs-key": "<YOUR_ACS_KEY>",
+    "connection-string": "<SQL_CONNECTION_STRING>",
 }
 ```
 
-You can copy `config_local_sample.json` as well.
+You can also copy `configs/key_config_local_sample.json` and fill in your infomation.
 
 These secrets are used to access ACS, AOAI, and Azure SQL database. They will be uploaded with setup.py is run.
 
@@ -138,24 +138,10 @@ $response.Content
 
 ### Run the flow on cloud
 
-The same flow can be executed on cloud, and the code will be uploaded to AML workspace. After that, you can deploy using the portal's UI. The job can be found from the output of the run.py as well as from the portal.
+The same flow can be executed on cloud, and the code will be uploaded to AML workspace. After that, you can deploy using the portal's UI. The job can be found from the output of the `run.py` as well as from the portal.
 
-1. To run, one need to create runtime first. And in the config.json, put the runtime name there.
-2. You need to create two connections from portal, one is for AzureOpenAI connection  with `azure_open_ai_connection_name` name that you specified in `configs/flow_config_sample.json`. And the other is customized connection that contains key for ACS and SQL database with name `SQLDB_connection_name` that you specified in `configs/flow_config_sample.json`. Here is the detailed steps. [reference](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/tools-reference/python-tool?view=azureml-api-2#how-to-consume-custom-connection-in-python-tool).
-
-For `azure_open_ai_connection_name`, you will need to create a connection to store the AOAI model parameters for the chat.
-
-For `SQLDB_connection_name`, you will need to create a connection to store the SQL database connection string.
-
-```json
-{
-    "OPENAI_API_BASE_EMBED": "https://{LLM}.openai.azure.com/",
-    "connectionString": "SQL_CONNECTION_STRING",
-    "OPENAI_API_KEY_EMBED":  "YOUR_OPENAI_KEY",
-    "OPENAI_API_VERSION": "2023-03-15-preview",
-    "search-key": "YOUR_ACS_KEY",
-}
-```
+1. To run, one need to create runtime first. And in the `configs/flow_config.json`, put the runtime name there.
+2. You need to create one AzureOpenAI connection and two custom connections from portal, one customer connection is used to connect SQL database, the other is used to connect Azure Cognitive Search and OpenAI embedding API. The connection names are specified by you as `azure_open_ai_connection_name`, `SQLDB_connection_name`, and `ACS_connection_name` in `configs/flow_config_local.json`. By running `setup.py` those connections will be automatically created. For detailed steps, see [reference](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/tools-reference/python-tool?view=azureml-api-2#how-to-consume-custom-connection-in-python-tool).
 
 ```bash
 # go to parent directory
@@ -194,7 +180,7 @@ The `deploy.py` script will produce various deployment files under the `Deployme
    7. Finalize the access policy
    8. The bot should now be able to access Key Vault
 
-**Note:** `config_local.json` is not copied to AzureML (security risk). A tmp directory is first created without this file and uploaded with the model.
+**Note:** `key_config_local.json` is not copied to AzureML (security risk). A tmp directory is first created without this file and uploaded with the model.
 
 ### Generate a docker
 
