@@ -1,0 +1,14 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+description: Register SQLDB promptflow model
+name: dummy
+path: ../../.copilot_tmp
+properties:
+  azureml.promptflow.chat_history : chat_history
+  azureml.promptflow.chat_input: question
+  azureml.promptflow.chat_output: answer
+  azureml.promptflow.mode: chat
+  azureml.promptflow.source_flow_id: sql-promptflow-demo
+  azureml.promptflow.dag_file : flow.dag.yaml
+  is-promptflow : True
+  request_settings:
+    request_timeout_ms: 200000

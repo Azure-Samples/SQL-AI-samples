@@ -1,0 +1,23 @@
+{
+    "azure_open_ai_connection_name": "<azure_open_ai_connection_name>",
+    "SQLDB_connection_name": "<SQLDB_connection_name>",
+    "aoai_type": "azure_open_ai",
+    "aoai_api_base": "",
+    "aoai_api_type": "azure",
+    "aoai_api_version": "2023-03-15-preview",
+    "aoai_deployment_name": "",
+    "OPENAI_API_BASE_EMBED": "",
+    "OPENAI_API_VERSION": "2023-03-15-preview",
+    "embed_deployment_name": "text-embedding-ada-002",
+    "max_retrieved_documents": 5,
+    "subscription_id": "",
+    "resource_group_name": "",
+    "workspace_name": "",
+    "promptflow_runtime": "",
+    "endpoint_name": "",
+    "endpoint_deployment_name": "promptflow-demo-v1-1",
+    "model_name": "",
+    "keyvault_uri": "",
+    "tenant-id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "promptflow_image_base": "mcr.microsoft.com/azureml/promptflow/promptflow-runtime:20230927.v2"
+}

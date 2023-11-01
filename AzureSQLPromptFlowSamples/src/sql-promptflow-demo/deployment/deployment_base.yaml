@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+endpoint_name: dummy
+environment:
+  image: dummy
+  inference_config:
+    liveness_route:
+      path: /health
+      port: 8080
+    readiness_route:
+      path: /health
+      port: 8080
+    scoring_route:
+      path: /score
+      port: 8080
+environment_variables:
+  PROMPTFLOW_RESPONSE_INCLUDED_FIELDS: '["answer", "retrieved_documents"]'
+  PROMPTFLOW_RUN_MODE: serving
+  PRT_CONFIG_OVERRIDE: deployment.subscription_id=<sub_id>,deployment.resource_group=<rg>,deployment.workspace_name=<ws>,deployment.endpoint_name=<ep_name>,deployment.deployment_name=<deployment_name>
+instance_count: 1
+instance_type: Standard_DS3_v2
+liveness_probe:
+  timeout: 200
+model: dummy
+name: promptflow-demo-v1-1
+readiness_probe:
+  timeout: 200
+request_settings:
+  request_timeout_ms: 200000
