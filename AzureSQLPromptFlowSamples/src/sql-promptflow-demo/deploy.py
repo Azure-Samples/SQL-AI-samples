@@ -3,8 +3,6 @@ Deploying this prompt flow to an endpoint.
 
 Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Author: Azure Data DRI Copilot Team
-Assumptions: None
 """
 
 # Imports and loading config file
