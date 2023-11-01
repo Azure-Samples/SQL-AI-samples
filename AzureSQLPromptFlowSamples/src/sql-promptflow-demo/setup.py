@@ -14,6 +14,7 @@ import subprocess
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 
+pf = PFClient()
 # %%
 # Keyvault Setup
 
@@ -66,11 +67,8 @@ print("Setting up AOAI connections.")
 print('Getting AOAI API key from keyvault')
 aoai_api_key = get_keyvault_secret(config['keyvault_uri'], 'aoai-api-key')
 
-pf = PFClient()
-
-conn_name = config['azure_open_ai_connection_name']
 connection = AzureOpenAIConnection(
-    name=conn_name,
+    name=config['azure_open_ai_connection_name'],
     api_key=aoai_api_key,
     api_base=config["aoai_api_base"],
     api_type=config["aoai_api_type"],
@@ -82,27 +80,35 @@ print("successfully created connection")
 # setting up SQL connection
 print("Setting up SQL connections.")
 print('Getting SQL Connection STRING from keyvault')
-sqlConnectionString = get_keyvault_secret(
-    config['keyvault_uri'], 'connectionString')
-print('Getting Azure Congnitive Search Key from keyvault')
-acs_key = get_keyvault_secret(config['keyvault_uri'], 'acs-key')
-print('Getting opeenai embedding key from keyvault')
-aoai_api_key_embed = get_keyvault_secret(
-    config['keyvault_uri'], 'aoai-api-key-embed')
+connection_string = get_keyvault_secret(config['keyvault_uri'], 'connection-string')
 
-conn_name = config['SQLDB_connection_name']
 connection = CustomConnection(
-    name=conn_name,
-    secrets={"connectionString": sqlConnectionString, "search-key": acs_key, "OPENAI_API_BASE_EMBED":
-             config["OPENAI_API_BASE_EMBED"], "OPENAI_API_VERSION": config["OPENAI_API_VERSION"], "OPENAI_API_KEY_EMBED": aoai_api_key_embed}
+    name=config['SQLDB_connection_name'],
+    secrets={"connection-string": connection_string}
 )
+conn = pf.connections.create_or_update(connection)
+print("successfully created connection")
+
+# setting up ACS/Embedding connection
+print("Setting up ACS connections.")
+print('Getting ACS/Embedding connection STRING from keyvault')
+acs_key = get_keyvault_secret(config['keyvault_uri'], 'acs-key')
+aoai_api_key_embed = get_keyvault_secret(config['keyvault_uri'], 'aoai-api-key-embed')
+
+connection = CustomConnection(
+    name=config['ACS_connection_name'],
+    secrets={"acs-search-key": acs_key,
+             "OPENAI_API_BASE_EMBED": config["OPENAI_API_BASE_EMBED"], "OPENAI_API_KEY_EMBED": aoai_api_key_embed,
+             "OPENAI_API_VERSION": config["OPENAI_API_VERSION"]}
+)
+# Create the connection, note that all secret values will be scrubbed in the returned result
 conn = pf.connections.create_or_update(connection)
 print("successfully created connection")
 
 # %%
 # Load the yaml file to dictionary path is azure_openai.yml
 print("Setting up flow.dag.yaml.")
-with open('./promptflow/flow.dag.sample.yaml') as f:
+with open('./promptflow_v2/flow.dag.sample.yaml') as f:
     config_flow = yaml.load(f, Loader=yaml.FullLoader)
 # import pdb; pdb.set_trace()
 # replace the deployment_name with the one you want to use
@@ -117,11 +123,13 @@ for node in config_flow["nodes"]:
         if 'connection' in node:
             node['connection'] = config['azure_open_ai_connection_name']
     else:
+        if 'conn_db' in node['inputs']:
+            node['inputs']['conn_db'] = config['SQLDB_connection_name']
         if 'conn' in node['inputs']:
-            node['inputs']['conn'] = config['SQLDB_connection_name']
+            node['inputs']['conn'] = config['ACS_connection_name']
 
 # write the yaml file back
-with open('./promptflow/flow.dag.yaml', 'w') as f:
+with open('./promptflow_v2/flow.dag.yaml', 'w') as f:
     yaml.dump(config_flow, f)
 
 # %%
