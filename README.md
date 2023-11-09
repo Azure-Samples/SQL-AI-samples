@@ -7,9 +7,10 @@ This repo hosts samples meant to help design AI applications built on data from 
 ## Description of samples
 
 ### Azure SQL ACS Samples
-The [AzureSQL_CogSearch_IntegratedVectorization](https://github.com/Azure-Samples/SQL-AI-samples/blob/main/AzureSQLACSSamples/src/AzureSQL_CogSearch_IntegratedVectorization.ipynb) sample notebook shows an example AI application that recommends products based on a database of user reviews, using Azure Cognitive Search to store and search the relevant data. It highlights new preview features of Azure Cognitive Search, including automatic chunking and integrated vectorization of user queries.
+The [AzureSQL_CogSearch_IntegratedVectorization](https://github.com/Azure-Samples/SQL-AI-samples/blob/main/AzureSQLACSSamples/src/AzureSQL_CogSearch_IntegratedVectorization.ipynb) sample notebook shows a simple AI application that recommends products based on a database of user reviews, using Azure Cognitive Search to store and search the relevant data. It highlights new preview features of Azure Cognitive Search, including automatic chunking and integrated vectorization of user queries.
 
 ### Azure SQL Promptflow Samples
+The [AzureSQL_Prompt_Flow](https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLPromptFlowSamples) sample shows an E2E example of how to build AI applications with Prompt Flow, Azure Cognitive Search, and your own data in Azure SQL database. It includes instructions on how to index your data with Azure Cognitive Search, a sample Prompt Flow local development that links everything together with Azure OpenAI connections, and also how to create an endpoint of the flow to an Azure ML workspace.
 
 ## Getting started
 
