@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 from promptflow import tool
 import pandas as pd
 from promptflow.connections import CustomConnection
