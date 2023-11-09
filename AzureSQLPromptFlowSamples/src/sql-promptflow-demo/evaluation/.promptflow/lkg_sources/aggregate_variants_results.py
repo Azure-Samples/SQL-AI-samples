@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 from typing import List
 from promptflow import tool, log_metric
 import numpy as np

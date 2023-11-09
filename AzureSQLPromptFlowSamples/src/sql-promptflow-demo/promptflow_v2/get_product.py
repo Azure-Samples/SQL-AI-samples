@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 from promptflow import tool
 from promptflow.connections import CustomConnection
 from azure.core.credentials import AzureKeyCredential

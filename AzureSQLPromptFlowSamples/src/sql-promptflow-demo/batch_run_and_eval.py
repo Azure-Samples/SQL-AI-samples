@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 # %%
 from azure.identity import DefaultAzureCredential, InteractiveBrowserCredential
 # azure version promptflow apis

@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT license.
+
 from promptflow import tool
 
 # The inputs section will change based on the arguments of the tool function, after you save the code
