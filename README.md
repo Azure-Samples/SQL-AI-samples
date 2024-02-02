@@ -4,19 +4,33 @@
 
 This repo hosts samples meant to help design AI applications built on data from an Azure SQL Database. We illustrate key technical concepts and demonstrate workflows that integrate Azure SQL data with other popular AI application components inside and outside of Azure. 
 
-## Description of samples
+## Available Samples
 
-### Azure SQL ACS Samples
+### Azure SQL + Azure Cognitive Services
 
 The [AzureSQL_CogSearch_IntegratedVectorization](https://github.com/Azure-Samples/SQL-AI-samples/blob/main/AzureSQLACSSamples/src/AzureSQL_CogSearch_IntegratedVectorization.ipynb) sample notebook shows a simple AI application that recommends products based on a database of user reviews, using Azure Cognitive Search to store and search the relevant data. It highlights new preview features of Azure Cognitive Search, including automatic chunking and integrated vectorization of user queries.
 
-### Azure SQL Promptflow Samples
+### Azure SQL + Azure Promptflow 
 
 The [AzureSQL_Prompt_Flow](https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLPromptFlowSamples) sample shows an E2E example of how to build AI applications with Prompt Flow, Azure Cognitive Search, and your own data in Azure SQL database. It includes instructions on how to index your data with Azure Cognitive Search, a sample Prompt Flow local development that links everything together with Azure OpenAI connections, and also how to create an endpoint of the flow to an Azure ML workspace.
 
-### Similarity Search Samples
+### Azure SQL + Azure OpenAI 
 
-OpenAI embeddings, and thus vectors, can be used to perform similarity search and create solution that provide customer with a better user experience, better search results and in general a more natural way to find relevant data in a reference dataset. Due to ability to provide an answer even when search request do not perfectly match a given content, similary search is ideal for creating recommenders. A fully working end-to-end sample is available here: https://github.com/Azure-Samples/azure-sql-db-session-recommender
+This example shows how to use Azure OpenAI from Azure SQL database to get the vector embeddings of any choosen text, and then calculate the cosine similarity against the Wikipedia articles (for which vector embeddings have been already calculated,) to find the articles that covers topics that are close - or similar - to the provided text.
+
+https://github.com/Azure-Samples/azure-sql-db-openai
+
+### End-To-End Similarity Search Sample: Session Recommender
+
+OpenAI embeddings, and thus vectors, can be used to perform similarity search and create solution that provide customer with a better user experience, better search results and in general a more natural way to find relevant data in a reference dataset. Due to ability to provide an answer even when search request do not perfectly match a given content, similary search is ideal for creating recommenders. A fully working end-to-end sample is available here: 
+
+https://github.com/Azure-Samples/azure-sql-db-session-recommender
+
+### Retrieval Augmented Generation
+
+In this repo you will find a step-by-step guide on how to use Azure SQL Database to do Retrieval Augmented Generation (RAG) using the data you have in Azure SQL and integrating with OpenAI, directly from the Azure SQL database itself. You'll be able to ask queries in natural language and get answers from the OpenAI GPT model, using the data you have in Azure SQL Database.
+
+https://github.com/Azure-Samples/azure-sql-db-chatbot
 
 ## Getting started
 
