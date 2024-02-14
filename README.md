@@ -32,6 +32,12 @@ In this repo you will find a step-by-step guide on how to use Azure SQL Database
 
 https://github.com/Azure-Samples/azure-sql-db-chatbot
 
+### Content Moderation
+
+In this folder are two T-SQL scripts that call Azure OpenAI Content Safety and Language AI. The Content Safety example will analyze a text string and return a severity in four categories: violence, sexual, self-harm, and hate. The Language AI script will analyze text and return what PII it found, what category of PII it is, and redact the results to obfuscate the PII in the original text string.
+
+https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/ContentModeration
+
 ## Getting started
 
 See the description in each sample for instructions (projects will have either a README file or instructions in the notebooks themselves.)
