@@ -38,6 +38,12 @@ In this folder are two T-SQL scripts that call Azure OpenAI Content Safety and L
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/ContentModeration
 
+### LangChain and Azure SQL Database
+
+This folder contains 2 python notebooks that use LangChain to create a NL2SQL agent against an Azure SQL Database. The notebooks use either Azure OpenAI or OpenAI for the LLM. To get started immedietly, you can create a codespace on this repository, use the terminal to change to the LangChain directory and follow one of the notebooks.
+
+https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/LangChain
+
 ## Getting started
 
 See the description in each sample for instructions (projects will have either a README file or instructions in the notebooks themselves.)
