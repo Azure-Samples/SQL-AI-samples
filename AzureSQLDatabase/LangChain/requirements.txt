@@ -1,6 +1,5 @@
 langchain
 pyodbc
-dotenv
 python-dotenv
 openai
 langchain_openai
