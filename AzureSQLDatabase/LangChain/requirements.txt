@@ -1,0 +1,6 @@
+langchain
+pyodbc
+python-dotenv
+openai
+langchain_openai
+SQLAlchemy
