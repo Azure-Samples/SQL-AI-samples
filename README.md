@@ -48,7 +48,7 @@ https://github.com/Azure-Samples/azure-sql-db-session-recommender
 
 ###  Session Conference Assistant
 
-This sample demonstrates how to build a session assistant using Jamstack and Event-Driven architecture, using Azure SQL DB to store and search vectors embeddings generated using OpenAI. The solution is built using Azure Static Web Apps, Azure Functions, Azure SQL Database, and Azure OpenAI. A fully working, production ready, version of this sample, that has been used at VS Live conferences, is available here: https://ai.lasvegas.vslive.com/
+This sample demonstrates how to build a session assistant using Jamstack, Retrieval Augmented Generation (RAG) and Event-Driven architecture, using Azure SQL DB to store and search vectors embeddings generated using OpenAI. The solution is built using Azure Static Web Apps, Azure Functions, Azure SQL Database, and Azure OpenAI. A fully working, production ready, version of this sample, that has been used at VS Live conferences, is available here: https://ai.lasvegas.vslive.com/
 
 https://github.com/azure-samples/azure-sql-db-session-recommender-v2
 
