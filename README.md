@@ -20,13 +20,7 @@ This example shows how to use Azure OpenAI from Azure SQL database to get the ve
 
 https://github.com/Azure-Samples/azure-sql-db-openai
 
-### End-To-End Similarity Search Sample: Session Recommender
-
-OpenAI embeddings, and thus vectors, can be used to perform similarity search and create solution that provide customer with a better user experience, better search results and in general a more natural way to find relevant data in a reference dataset. Due to ability to provide an answer even when search request do not perfectly match a given content, similary search is ideal for creating recommenders. A fully working end-to-end sample is available here: 
-
-https://github.com/Azure-Samples/azure-sql-db-session-recommender
-
-### Retrieval Augmented Generation
+### Retrieval Augmented Generation (T-SQL Sample)
 
 In this repo you will find a step-by-step guide on how to use Azure SQL Database to do Retrieval Augmented Generation (RAG) using the data you have in Azure SQL and integrating with OpenAI, directly from the Azure SQL database itself. You'll be able to ask queries in natural language and get answers from the OpenAI GPT model, using the data you have in Azure SQL Database.
 
@@ -43,6 +37,20 @@ https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/Conte
 This folder contains 2 python notebooks that use LangChain to create a NL2SQL agent against an Azure SQL Database. The notebooks use either Azure OpenAI or OpenAI for the LLM. To get started immedietly, you can create a codespace on this repository, use the terminal to change to the LangChain directory and follow one of the notebooks.
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/LangChain
+
+## End-To-End Samples
+
+### Similar Content Finder
+
+OpenAI embeddings, and thus vectors, can be used to perform similarity search and create solution that provide customer with a better user experience, better search results and in general a more natural way to find relevant data in a reference dataset. Due to ability to provide an answer even when search request do not perfectly match a given content, similary search is ideal for creating recommenders. A fully working end-to-end sample is available here: 
+
+https://github.com/Azure-Samples/azure-sql-db-session-recommender
+
+###  Session Conference Assistant
+
+This sample demonstrates how to build a session assistant using Jamstack and Event-Driven architecture, using Azure SQL DB to store and search vectors embeddings generated using OpenAI. The solution is built using Azure Static Web Apps, Azure Functions, Azure SQL Database, and Azure OpenAI. A fully working, production ready, version of this sample, that has been used at VS Live conferences, is available here: https://ai.lasvegas.vslive.com/
+
+https://github.com/azure-samples/azure-sql-db-session-recommender-v2
 
 ## Getting started
 
