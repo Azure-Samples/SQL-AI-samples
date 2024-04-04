@@ -6,9 +6,15 @@ This repo hosts samples meant to help design [AI applications built on data from
 
 ## Available Samples
 
+### Generating SQL for Azure SQL Database using Vanna.AI
+This notebook runs through the process of using the `vanna` Python package to generate SQL using AI (RAG + LLMs) including connecting to a database and training.
+
+
 ### Azure SQL + Azure Cognitive Services
 
 The [AzureSQL_CogSearch_IntegratedVectorization](https://github.com/Azure-Samples/SQL-AI-samples/blob/main/AzureSQLACSSamples/src/AzureSQL_CogSearch_IntegratedVectorization.ipynb) sample notebook shows a simple AI application that recommends products based on a database of user reviews, using Azure Cognitive Search to store and search the relevant data. It highlights new preview features of Azure Cognitive Search, including automatic chunking and integrated vectorization of user queries.
+
+https://github.com/Azure-Samples/SQL-AI-samples/blob/main/AzureSQLDatabase/Vanna.ai/vanna_and_sql.ipynb
 
 ### Azure SQL + Azure Promptflow 
 
