@@ -4,3 +4,4 @@ python-dotenv
 openai
 langchain_openai
 SQLAlchemy
+langchain_community
