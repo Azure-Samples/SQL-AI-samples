@@ -1,0 +1,1001 @@
+ProductId,ProductName,ProductType,Color,OrderQuantity,Size,Category,Country,Date,PurchasePrice,SellingPrice
+006,Bike Pump,Accessory,Red,32,Large,Hydration,Spain,2019-04-03,52.5,200.63
+006,Bike Pump,Accessory,Blue,59,Small,Hydration,Italy,2018-03-03,58.69,241.03
+005,Cycling Gloves,Accessory,Blue,63,Medium,Hydration,Switzerland,2021-08-23,52.65,179.68
+005,Cycling Gloves,Accessory,Yellow,42,Medium,Hydration,Spain,2022-07-09,130.94,126.79
+003,Bike Lights,Accessory,Yellow,34,Small,Hydration,Italy,2018-07-29,71.53,334.96
+003,Bike Lights,Accessory,Red,47,Medium,Hydration,Sweden,2022-02-03,110.37,346.96
+001,Bike Lock,Accessory,Blue,60,Large,Hydration,Netherlands,2022-12-19,79.32,297.88
+001,Bike Lock,Accessory,Red,27,Medium,Hydration,Germany,2018-06-13,116.13,337.59
+003,Bike Lights,Accessory,Blue,54,Large,Hydration,Netherlands,2020-01-29,113.57,225.33
+003,Bike Lights,Accessory,Blue,69,Small,Hydration,Spain,2021-06-01,143.67,303.21
+004,Water Bottle,Accessory,Green,49,Small,Hydration,Germany,2021-11-10,76.99,379.48
+002,Bike Bell,Accessory,Green,27,Small,Hydration,Germany,2018-05-16,130.5,235.32
+006,Bike Pump,Accessory,Green,56,Small,Hydration,Spain,2020-07-28,89.56,376.5
+002,Bike Bell,Accessory,Green,60,Small,Hydration,Switzerland,2020-05-27,103.9,330.43
+002,Bike Bell,Accessory,Blue,57,Large,Hydration,Italy,2022-10-30,99.35,332.84
+002,Bike Bell,Accessory,Green,68,Large,Hydration,Sweden,2020-02-21,92.22,142.47
+007,Cycling Jacket,Accessory,Green,25,Small,Hydration,United Kingdom,2022-12-18,118.03,156.5
+003,Bike Lights,Accessory,Blue,52,Large,Hydration,United Kingdom,2022-01-18,65.82,125.89
+001,Bike Lock,Accessory,Blue,65,Medium,Hydration,Germany,2021-06-01,79.84,300.71
+007,Cycling Jacket,Accessory,Green,35,Medium,Hydration,France,2020-12-22,103.94,339.12
+001,Bike Lock,Accessory,Blue,32,Small,Hydration,United Kingdom,2022-08-31,142.91,366.65
+002,Bike Bell,Accessory,Blue,61,Small,Hydration,Italy,2020-09-22,144.69,148.55
+006,Bike Pump,Accessory,Blue,55,Large,Hydration,Switzerland,2020-12-16,144.68,170.41
+007,Cycling Jacket,Accessory,Yellow,69,Large,Hydration,Netherlands,2021-10-07,70.12,210.72
+004,Water Bottle,Accessory,Blue,32,Small,Hydration,Germany,2018-02-13,74.79,142.61
+001,Bike Lock,Accessory,Red,70,Large,Hydration,Netherlands,2018-03-06,113.11,187.96
+002,Bike Bell,Accessory,Blue,42,Medium,Hydration,Sweden,2018-09-28,116.9,183.92
+007,Cycling Jacket,Accessory,Yellow,51,Medium,Hydration,Netherlands,2020-06-01,69.04,151.66
+004,Water Bottle,Accessory,Yellow,28,Large,Hydration,France,2018-07-21,117.34,395.65
+003,Bike Lights,Accessory,Yellow,31,Small,Hydration,Spain,2020-07-07,74.87,177.31
+003,Bike Lights,Accessory,Red,54,Large,Hydration,Italy,2020-06-26,74.98,378.9
+005,Cycling Gloves,Accessory,Blue,25,Medium,Hydration,Germany,2022-10-05,146.9,379.75
+004,Water Bottle,Accessory,Yellow,55,Small,Hydration,Spain,2018-05-01,71.37,235.29
+004,Water Bottle,Accessory,Yellow,41,Small,Hydration,Switzerland,2019-08-08,142.65,340.91
+002,Bike Bell,Accessory,Green,43,Small,Hydration,France,2022-02-15,71.77,141.08
+001,Bike Lock,Accessory,Red,62,Large,Hydration,Spain,2020-12-23,97.68,377.83
+001,Bike Lock,Accessory,Yellow,36,Small,Hydration,Germany,2022-11-01,56.85,143.69
+005,Cycling Gloves,Accessory,Green,40,Medium,Hydration,Switzerland,2018-06-17,107.89,135.93
+002,Bike Bell,Accessory,Green,67,Medium,Hydration,Spain,2020-03-21,121.62,190.64
+003,Bike Lights,Accessory,Red,29,Large,Hydration,Italy,2021-02-27,50.93,295.82
+002,Bike Bell,Accessory,Blue,57,Medium,Hydration,Italy,2022-12-10,76.52,381.65
+003,Bike Lights,Accessory,Green,35,Large,Hydration,France,2019-09-12,93.82,274.38
+001,Bike Lock,Accessory,Green,33,Medium,Hydration,Spain,2022-03-01,76.45,369.67
+005,Cycling Gloves,Accessory,Yellow,38,Medium,Hydration,United Kingdom,2021-07-22,121.76,180.99
+007,Cycling Jacket,Accessory,Red,28,Medium,Hydration,France,2019-07-21,59.23,241.48
+007,Cycling Jacket,Accessory,Yellow,33,Large,Hydration,Sweden,2022-02-27,113.71,197.04
+001,Bike Lock,Accessory,Green,32,Large,Hydration,France,2018-11-02,57.52,367.85
+005,Cycling Gloves,Accessory,Green,34,Small,Hydration,France,2020-01-17,92.98,136.5
+006,Bike Pump,Accessory,Blue,40,Small,Hydration,Switzerland,2021-02-20,116.69,222.26
+007,Cycling Jacket,Accessory,Red,35,Small,Hydration,Switzerland,2022-12-11,147.62,347.96
+006,Bike Pump,Accessory,Green,46,Small,Hydration,Germany,2021-10-03,128.24,238.22
+007,Cycling Jacket,Accessory,Blue,69,Small,Hydration,Sweden,2022-10-25,60.81,364.85
+007,Cycling Jacket,Accessory,Blue,54,Small,Hydration,Germany,2022-11-20,84.97,350.65
+006,Bike Pump,Accessory,Green,37,Large,Hydration,United Kingdom,2018-05-23,89.85,201.62
+005,Cycling Gloves,Accessory,Red,50,Medium,Hydration,France,2019-11-10,117.95,357.01
+002,Bike Bell,Accessory,Green,62,Large,Hydration,Switzerland,2018-08-11,146.25,198.0
+007,Cycling Jacket,Accessory,Blue,45,Medium,Hydration,Switzerland,2018-08-25,93.64,395.66
+001,Bike Lock,Accessory,Green,70,Medium,Hydration,Germany,2022-07-10,93.61,267.98
+001,Bike Lock,Accessory,Green,67,Large,Hydration,Italy,2021-09-20,142.08,296.37
+003,Bike Lights,Accessory,Blue,67,Medium,Hydration,Spain,2019-08-29,90.84,235.66
+006,Bike Pump,Accessory,Yellow,49,Large,Hydration,United Kingdom,2021-06-14,117.73,373.27
+007,Cycling Jacket,Accessory,Yellow,25,Medium,Hydration,Netherlands,2022-05-29,80.39,182.8
+004,Water Bottle,Accessory,Red,68,Medium,Hydration,Spain,2022-06-19,71.37,255.13
+005,Cycling Gloves,Accessory,Green,67,Small,Hydration,Germany,2022-08-04,113.29,217.18
+007,Cycling Jacket,Accessory,Yellow,37,Medium,Hydration,Italy,2020-08-31,64.74,137.71
+006,Bike Pump,Accessory,Blue,61,Small,Hydration,Switzerland,2020-10-09,69.44,316.5
+006,Bike Pump,Accessory,Yellow,69,Small,Hydration,Italy,2022-04-27,50.55,331.52
+002,Bike Bell,Accessory,Yellow,69,Small,Hydration,Italy,2019-05-26,101.8,138.81
+007,Cycling Jacket,Accessory,Yellow,54,Large,Hydration,Netherlands,2021-05-04,116.76,396.67
+007,Cycling Jacket,Accessory,Yellow,57,Medium,Hydration,Spain,2020-07-02,92.67,374.39
+003,Bike Lights,Accessory,Blue,40,Medium,Hydration,Sweden,2022-05-12,133.99,201.26
+004,Water Bottle,Accessory,Red,29,Small,Hydration,Netherlands,2019-11-19,121.35,189.49
+002,Bike Bell,Accessory,Yellow,39,Medium,Hydration,Italy,2019-03-15,88.3,167.02
+003,Bike Lights,Accessory,Yellow,59,Large,Hydration,Switzerland,2022-09-02,96.59,142.12
+006,Bike Pump,Accessory,Red,26,Medium,Hydration,Sweden,2020-02-19,135.67,335.54
+003,Bike Lights,Accessory,Yellow,49,Small,Hydration,Germany,2020-05-08,135.34,387.19
+003,Bike Lights,Accessory,Blue,52,Medium,Hydration,Switzerland,2021-10-01,98.56,231.94
+002,Bike Bell,Accessory,Red,64,Large,Hydration,France,2021-04-27,103.41,374.41
+004,Water Bottle,Accessory,Green,33,Small,Hydration,Switzerland,2019-06-17,136.69,174.98
+004,Water Bottle,Accessory,Green,45,Small,Hydration,Switzerland,2019-07-24,83.75,366.9
+004,Water Bottle,Accessory,Red,26,Large,Hydration,Germany,2019-12-18,124.9,139.32
+001,Bike Lock,Accessory,Blue,26,Small,Hydration,Spain,2018-02-11,144.96,179.82
+004,Water Bottle,Accessory,Green,67,Small,Hydration,United Kingdom,2020-08-10,61.44,385.63
+005,Cycling Gloves,Accessory,Green,63,Small,Hydration,Spain,2022-05-12,146.37,322.55
+005,Cycling Gloves,Accessory,Blue,26,Small,Hydration,Switzerland,2020-02-08,142.89,283.34
+005,Cycling Gloves,Accessory,Red,69,Large,Hydration,United Kingdom,2021-11-28,133.06,191.78
+007,Cycling Jacket,Accessory,Green,27,Small,Hydration,Italy,2020-01-29,84.72,242.8
+007,Cycling Jacket,Accessory,Blue,51,Medium,Hydration,Sweden,2020-01-12,132.23,154.02
+002,Bike Bell,Accessory,Yellow,58,Medium,Hydration,Sweden,2022-07-14,146.55,199.27
+007,Cycling Jacket,Accessory,Green,62,Medium,Hydration,Italy,2022-08-29,76.84,359.22
+002,Bike Bell,Accessory,Yellow,54,Medium,Hydration,France,2019-11-20,106.98,308.75
+002,Bike Bell,Accessory,Green,56,Large,Hydration,United Kingdom,2019-11-29,71.21,344.4
+001,Bike Lock,Accessory,Yellow,58,Large,Hydration,Switzerland,2022-01-14,144.81,148.54
+007,Cycling Jacket,Accessory,Red,40,Small,Hydration,Sweden,2020-10-02,119.06,302.62
+003,Bike Lights,Accessory,Yellow,39,Large,Hydration,Netherlands,2021-09-21,90.44,191.91
+005,Cycling Gloves,Accessory,Yellow,47,Medium,Hydration,Netherlands,2019-11-09,92.55,330.13
+003,Bike Lights,Accessory,Blue,41,Small,Hydration,Italy,2019-10-09,73.05,323.35
+002,Bike Bell,Accessory,Red,55,Small,Hydration,United Kingdom,2022-04-06,77.65,287.14
+003,Bike Lights,Accessory,Green,39,Small,Hydration,Spain,2021-12-21,86.09,208.12
+001,Bike Lock,Accessory,Red,60,Small,Hydration,Sweden,2021-07-30,79.21,384.62
+005,Cycling Gloves,Accessory,Green,43,Medium,Hydration,France,2019-01-13,96.94,246.13
+001,Bike Lock,Accessory,Blue,29,Small,Hydration,France,2021-07-13,90.07,145.37
+007,Cycling Jacket,Accessory,Yellow,61,Large,Hydration,Italy,2019-05-24,144.91,148.42
+005,Cycling Gloves,Accessory,Green,64,Large,Hydration,Sweden,2020-07-11,72.57,268.71
+004,Water Bottle,Accessory,Blue,44,Large,Hydration,Italy,2022-02-24,106.86,141.56
+002,Bike Bell,Accessory,Blue,41,Small,Hydration,Italy,2018-12-22,116.04,168.19
+004,Water Bottle,Accessory,Green,53,Large,Hydration,Germany,2018-03-08,118.94,254.23
+003,Bike Lights,Accessory,Blue,69,Medium,Hydration,United Kingdom,2019-04-24,135.96,144.57
+001,Bike Lock,Accessory,Red,59,Small,Hydration,Spain,2019-06-29,72.48,165.97
+002,Bike Bell,Accessory,Red,44,Medium,Hydration,Sweden,2019-08-15,109.5,351.67
+006,Bike Pump,Accessory,Yellow,44,Small,Hydration,Sweden,2020-10-21,119.97,384.24
+005,Cycling Gloves,Accessory,Red,27,Small,Hydration,United Kingdom,2021-05-21,138.94,327.0
+002,Bike Bell,Accessory,Red,68,Small,Hydration,United Kingdom,2018-02-12,133.6,283.18
+004,Water Bottle,Accessory,Yellow,58,Small,Hydration,Switzerland,2019-01-07,115.15,376.92
+004,Water Bottle,Accessory,Green,47,Medium,Hydration,Spain,2018-08-03,90.83,213.29
+006,Bike Pump,Accessory,Yellow,56,Small,Hydration,France,2022-07-25,78.82,384.93
+003,Bike Lights,Accessory,Yellow,41,Medium,Hydration,France,2020-04-07,82.33,391.8
+001,Bike Lock,Accessory,Red,37,Small,Hydration,Sweden,2020-10-17,101.84,296.22
+003,Bike Lights,Accessory,Red,60,Small,Hydration,Sweden,2022-12-09,63.1,204.21
+006,Bike Pump,Accessory,Yellow,63,Small,Hydration,France,2019-09-29,129.93,320.19
+002,Bike Bell,Accessory,Yellow,32,Large,Hydration,Spain,2022-09-01,96.14,157.3
+003,Bike Lights,Accessory,Blue,57,Medium,Hydration,Sweden,2020-09-15,120.54,239.26
+005,Cycling Gloves,Accessory,Red,34,Medium,Hydration,Spain,2020-11-06,88.36,378.51
+007,Cycling Jacket,Accessory,Green,51,Large,Hydration,France,2019-07-02,83.99,341.62
+003,Bike Lights,Accessory,Yellow,62,Large,Hydration,Spain,2022-11-08,107.99,306.48
+004,Water Bottle,Accessory,Green,47,Small,Hydration,Sweden,2020-02-12,83.24,334.79
+006,Bike Pump,Accessory,Red,40,Medium,Hydration,Switzerland,2022-05-08,107.18,189.23
+006,Bike Pump,Accessory,Yellow,55,Small,Hydration,Spain,2020-03-01,120.52,348.14
+002,Bike Bell,Accessory,Red,57,Large,Hydration,Sweden,2018-07-25,146.54,216.3
+004,Water Bottle,Accessory,Red,25,Medium,Hydration,Spain,2021-09-02,122.24,237.74
+007,Cycling Jacket,Accessory,Green,41,Large,Hydration,Italy,2021-08-23,83.86,315.49
+007,Cycling Jacket,Accessory,Red,59,Large,Hydration,Sweden,2022-01-11,88.0,212.08
+001,Bike Lock,Accessory,Yellow,40,Small,Hydration,Italy,2019-04-11,113.12,378.26
+007,Cycling Jacket,Accessory,Red,65,Small,Hydration,United Kingdom,2018-12-07,120.39,152.64
+003,Bike Lights,Accessory,Yellow,28,Large,Hydration,Germany,2018-10-26,79.34,228.08
+006,Bike Pump,Accessory,Blue,36,Medium,Hydration,Switzerland,2022-11-19,67.0,146.72
+005,Cycling Gloves,Accessory,Red,34,Medium,Hydration,United Kingdom,2020-07-30,73.22,300.42
+003,Bike Lights,Accessory,Yellow,68,Large,Hydration,United Kingdom,2019-12-09,104.66,145.31
+003,Bike Lights,Accessory,Red,54,Small,Hydration,Sweden,2020-02-27,134.53,179.78
+004,Water Bottle,Accessory,Red,61,Large,Hydration,United Kingdom,2021-12-03,85.9,206.36
+004,Water Bottle,Accessory,Yellow,42,Medium,Hydration,France,2022-05-13,50.81,362.89
+007,Cycling Jacket,Accessory,Green,39,Large,Hydration,Germany,2021-07-27,110.71,221.89
+007,Cycling Jacket,Accessory,Green,67,Medium,Hydration,France,2018-07-18,118.09,162.61
+001,Bike Lock,Accessory,Yellow,62,Small,Hydration,Netherlands,2019-08-28,86.49,161.14
+002,Bike Bell,Accessory,Blue,33,Medium,Hydration,United Kingdom,2020-01-20,128.65,366.03
+007,Cycling Jacket,Accessory,Red,55,Medium,Hydration,Netherlands,2022-11-18,146.74,206.16
+001,Bike Lock,Accessory,Green,34,Small,Hydration,Switzerland,2021-10-17,125.42,187.04
+007,Cycling Jacket,Accessory,Green,50,Large,Hydration,Netherlands,2020-07-20,51.39,272.56
+004,Water Bottle,Accessory,Red,65,Large,Hydration,Sweden,2019-04-24,144.03,154.8
+005,Cycling Gloves,Accessory,Green,45,Large,Hydration,Sweden,2018-05-10,141.53,185.88
+004,Water Bottle,Accessory,Red,32,Small,Hydration,Sweden,2019-09-16,63.98,385.22
+002,Bike Bell,Accessory,Blue,59,Medium,Hydration,Switzerland,2021-10-05,63.57,249.75
+006,Bike Pump,Accessory,Green,31,Small,Hydration,France,2019-07-27,133.37,294.3
+004,Water Bottle,Accessory,Green,53,Small,Hydration,Netherlands,2018-07-23,145.06,360.25
+004,Water Bottle,Accessory,Red,42,Large,Hydration,Sweden,2022-10-03,68.98,158.59
+002,Bike Bell,Accessory,Blue,66,Small,Hydration,Netherlands,2018-04-14,113.95,392.05
+007,Cycling Jacket,Accessory,Blue,61,Small,Hydration,Germany,2021-02-09,70.52,353.2
+003,Bike Lights,Accessory,Blue,34,Large,Hydration,Spain,2019-07-22,128.86,288.89
+003,Bike Lights,Accessory,Green,36,Small,Hydration,France,2018-09-27,60.99,363.27
+005,Cycling Gloves,Accessory,Red,45,Large,Hydration,Switzerland,2018-09-17,51.58,197.98
+001,Bike Lock,Accessory,Yellow,55,Large,Hydration,Italy,2021-04-30,94.83,224.56
+002,Bike Bell,Accessory,Yellow,64,Large,Hydration,United Kingdom,2022-11-11,54.34,340.39
+001,Bike Lock,Accessory,Yellow,28,Large,Hydration,Italy,2020-05-23,149.86,358.01
+004,Water Bottle,Accessory,Blue,29,Medium,Hydration,Italy,2018-10-31,139.93,213.58
+005,Cycling Gloves,Accessory,Yellow,65,Large,Hydration,United Kingdom,2020-02-20,108.54,320.84
+005,Cycling Gloves,Accessory,Yellow,52,Medium,Hydration,Germany,2022-10-13,59.92,317.99
+002,Bike Bell,Accessory,Green,51,Medium,Hydration,Italy,2020-05-01,83.89,249.71
+003,Bike Lights,Accessory,Red,67,Small,Hydration,Sweden,2021-11-07,75.49,387.24
+007,Cycling Jacket,Accessory,Blue,30,Large,Hydration,Netherlands,2022-02-22,59.32,151.56
+001,Bike Lock,Accessory,Yellow,62,Medium,Hydration,Italy,2021-10-04,145.66,279.46
+007,Cycling Jacket,Accessory,Green,67,Large,Hydration,France,2022-01-16,144.11,241.31
+003,Bike Lights,Accessory,Blue,47,Small,Hydration,Sweden,2018-11-13,60.36,264.54
+003,Bike Lights,Accessory,Yellow,60,Large,Hydration,Germany,2021-03-21,86.76,334.72
+007,Cycling Jacket,Accessory,Red,64,Small,Hydration,United Kingdom,2018-02-23,111.36,301.74
+003,Bike Lights,Accessory,Blue,69,Small,Hydration,France,2019-12-20,126.24,378.42
+005,Cycling Gloves,Accessory,Red,67,Large,Hydration,France,2021-07-20,90.08,164.02
+005,Cycling Gloves,Accessory,Green,38,Large,Hydration,Netherlands,2018-11-19,87.62,249.75
+003,Bike Lights,Accessory,Red,61,Large,Hydration,Spain,2018-11-15,109.62,367.92
+001,Bike Lock,Accessory,Yellow,42,Medium,Hydration,Sweden,2021-05-28,94.31,241.6
+002,Bike Bell,Accessory,Green,57,Small,Hydration,Sweden,2019-08-04,61.38,243.23
+002,Bike Bell,Accessory,Blue,50,Small,Hydration,United Kingdom,2019-02-23,148.44,140.07
+007,Cycling Jacket,Accessory,Blue,41,Small,Hydration,Switzerland,2020-10-15,78.94,158.0
+004,Water Bottle,Accessory,Red,59,Medium,Hydration,Netherlands,2022-09-03,120.37,262.57
+007,Cycling Jacket,Accessory,Yellow,27,Large,Hydration,Netherlands,2018-06-09,93.62,251.43
+004,Water Bottle,Accessory,Green,70,Small,Hydration,France,2020-04-09,114.01,204.62
+007,Cycling Jacket,Accessory,Yellow,64,Small,Hydration,Italy,2020-01-12,96.01,314.64
+002,Bike Bell,Accessory,Green,52,Small,Hydration,United Kingdom,2020-03-21,108.89,269.09
+003,Bike Lights,Accessory,Green,35,Medium,Hydration,Germany,2020-12-22,57.64,299.14
+006,Bike Pump,Accessory,Blue,66,Small,Hydration,United Kingdom,2018-10-27,131.5,189.97
+005,Cycling Gloves,Accessory,Yellow,34,Large,Hydration,Sweden,2018-12-29,126.02,305.26
+007,Cycling Jacket,Accessory,Green,62,Small,Hydration,Netherlands,2021-03-02,94.89,379.14
+004,Water Bottle,Accessory,Red,29,Medium,Hydration,United Kingdom,2022-06-19,96.89,298.63
+005,Cycling Gloves,Accessory,Green,29,Small,Hydration,Netherlands,2018-04-27,81.04,249.28
+006,Bike Pump,Accessory,Yellow,30,Large,Hydration,France,2020-08-05,111.5,264.44
+006,Bike Pump,Accessory,Yellow,37,Small,Hydration,France,2018-11-05,82.15,255.8
+007,Cycling Jacket,Accessory,Red,46,Small,Hydration,Spain,2021-08-16,148.24,148.19
+006,Bike Pump,Accessory,Green,53,Medium,Hydration,Spain,2021-06-02,149.1,269.12
+003,Bike Lights,Accessory,Green,49,Small,Hydration,France,2021-05-09,90.88,218.05
+003,Bike Lights,Accessory,Green,31,Small,Hydration,Spain,2019-06-01,105.8,231.31
+005,Cycling Gloves,Accessory,Blue,67,Large,Hydration,Switzerland,2021-09-05,64.14,221.2
+006,Bike Pump,Accessory,Blue,30,Large,Hydration,Netherlands,2022-06-10,80.96,228.59
+006,Bike Pump,Accessory,Green,68,Small,Hydration,Switzerland,2021-10-05,141.24,150.7
+003,Bike Lights,Accessory,Blue,44,Small,Hydration,Sweden,2022-04-19,68.03,183.9
+002,Bike Bell,Accessory,Green,34,Large,Hydration,France,2018-07-27,57.72,357.22
+002,Bike Bell,Accessory,Yellow,63,Small,Hydration,Spain,2022-08-30,87.67,169.62
+004,Water Bottle,Accessory,Yellow,48,Small,Hydration,United Kingdom,2020-06-28,117.64,190.32
+005,Cycling Gloves,Accessory,Green,40,Large,Hydration,Germany,2020-08-18,80.95,347.37
+005,Cycling Gloves,Accessory,Blue,53,Small,Hydration,Switzerland,2020-02-22,96.17,202.49
+007,Cycling Jacket,Accessory,Green,63,Large,Hydration,Sweden,2021-08-06,63.84,193.75
+001,Bike Lock,Accessory,Blue,70,Medium,Hydration,Italy,2019-08-07,134.59,359.07
+004,Water Bottle,Accessory,Green,57,Small,Hydration,Sweden,2019-03-31,64.73,245.3
+004,Water Bottle,Accessory,Green,28,Small,Hydration,Italy,2020-03-01,89.65,227.84
+001,Bike Lock,Accessory,Blue,45,Small,Hydration,Netherlands,2021-08-24,143.08,355.77
+001,Bike Lock,Accessory,Yellow,43,Medium,Hydration,Spain,2022-08-30,141.74,254.93
+005,Cycling Gloves,Accessory,Yellow,25,Small,Hydration,Spain,2019-03-18,140.59,130.23
+007,Cycling Jacket,Accessory,Yellow,43,Small,Hydration,Switzerland,2019-05-04,73.76,158.51
+001,Bike Lock,Accessory,Blue,56,Medium,Hydration,Germany,2020-11-21,109.67,129.52
+004,Water Bottle,Accessory,Red,25,Large,Hydration,Spain,2020-05-03,111.48,191.16
+003,Bike Lights,Accessory,Yellow,29,Medium,Hydration,France,2022-05-30,145.34,274.62
+001,Bike Lock,Accessory,Green,65,Small,Hydration,France,2022-03-11,88.69,227.66
+003,Bike Lights,Accessory,Blue,40,Small,Hydration,Netherlands,2022-04-30,123.29,297.77
+003,Bike Lights,Accessory,Yellow,59,Large,Hydration,Sweden,2022-08-28,83.85,301.77
+002,Bike Bell,Accessory,Green,33,Small,Hydration,France,2020-07-26,56.31,338.45
+001,Bike Lock,Accessory,Yellow,37,Medium,Hydration,Switzerland,2019-09-28,138.58,211.79
+001,Bike Lock,Accessory,Green,66,Medium,Hydration,France,2022-05-19,69.11,223.17
+001,Bike Lock,Accessory,Green,48,Small,Hydration,Switzerland,2020-06-19,93.7,235.01
+004,Water Bottle,Accessory,Red,69,Large,Hydration,United Kingdom,2020-11-29,99.75,379.19
+004,Water Bottle,Accessory,Green,30,Small,Hydration,United Kingdom,2019-01-05,93.06,398.65
+001,Bike Lock,Accessory,Blue,45,Large,Hydration,Switzerland,2021-05-19,116.09,209.29
+004,Water Bottle,Accessory,Green,47,Large,Hydration,Switzerland,2019-12-24,94.71,324.87
+007,Cycling Jacket,Accessory,Red,28,Small,Hydration,Spain,2020-01-15,57.5,300.32
+007,Cycling Jacket,Accessory,Blue,63,Large,Hydration,Italy,2018-09-16,117.81,245.5
+003,Bike Lights,Accessory,Yellow,48,Medium,Hydration,Spain,2021-05-24,88.29,280.99
+003,Bike Lights,Accessory,Yellow,53,Medium,Hydration,Netherlands,2020-12-20,126.31,282.83
+006,Bike Pump,Accessory,Yellow,42,Large,Hydration,Spain,2022-02-15,74.96,156.2
+004,Water Bottle,Accessory,Blue,60,Large,Hydration,Sweden,2021-12-12,61.78,338.12
+003,Bike Lights,Accessory,Red,69,Medium,Hydration,Spain,2018-09-09,141.65,260.08
+002,Bike Bell,Accessory,Green,70,Large,Hydration,Netherlands,2021-10-28,94.51,149.14
+001,Bike Lock,Accessory,Blue,60,Medium,Hydration,Spain,2022-10-10,104.22,370.12
+005,Cycling Gloves,Accessory,Yellow,39,Small,Hydration,Germany,2018-10-12,62.14,180.27
+003,Bike Lights,Accessory,Red,60,Small,Hydration,Spain,2021-02-03,107.23,253.54
+003,Bike Lights,Accessory,Yellow,50,Large,Hydration,Switzerland,2020-12-12,149.96,322.69
+001,Bike Lock,Accessory,Green,33,Small,Hydration,Sweden,2020-07-10,147.24,301.64
+007,Cycling Jacket,Accessory,Red,60,Small,Hydration,Switzerland,2018-09-22,113.98,175.04
+005,Cycling Gloves,Accessory,Green,34,Large,Hydration,Germany,2021-12-23,80.41,169.54
+003,Bike Lights,Accessory,Blue,30,Large,Hydration,United Kingdom,2021-02-02,75.06,299.64
+003,Bike Lights,Accessory,Blue,64,Large,Hydration,Spain,2018-12-12,103.35,263.21
+005,Cycling Gloves,Accessory,Red,63,Small,Hydration,France,2018-03-26,83.76,379.08
+006,Bike Pump,Accessory,Red,61,Medium,Hydration,Switzerland,2021-03-17,76.47,182.97
+006,Bike Pump,Accessory,Yellow,59,Medium,Hydration,Germany,2020-09-16,78.97,388.08
+004,Water Bottle,Accessory,Yellow,29,Small,Hydration,Sweden,2020-05-01,118.86,168.47
+003,Bike Lights,Accessory,Yellow,63,Small,Hydration,Netherlands,2019-10-16,64.37,361.91
+007,Cycling Jacket,Accessory,Red,48,Medium,Hydration,Sweden,2019-05-11,101.5,154.2
+004,Water Bottle,Accessory,Blue,40,Small,Hydration,Switzerland,2020-02-26,64.09,138.92
+007,Cycling Jacket,Accessory,Yellow,45,Large,Hydration,Spain,2019-01-24,143.38,323.31
+004,Water Bottle,Accessory,Yellow,56,Small,Hydration,Switzerland,2018-07-04,137.91,261.78
+002,Bike Bell,Accessory,Green,62,Large,Hydration,Sweden,2020-10-10,85.29,138.9
+001,Bike Lock,Accessory,Yellow,31,Medium,Hydration,Netherlands,2022-01-29,93.09,367.68
+001,Bike Lock,Accessory,Red,50,Medium,Hydration,United Kingdom,2020-01-13,55.12,279.5
+005,Cycling Gloves,Accessory,Blue,53,Small,Hydration,Italy,2021-06-30,126.44,201.92
+004,Water Bottle,Accessory,Blue,48,Large,Hydration,Spain,2020-01-19,129.49,218.25
+005,Cycling Gloves,Accessory,Yellow,50,Large,Hydration,Netherlands,2018-10-08,100.01,137.46
+004,Water Bottle,Accessory,Blue,34,Medium,Hydration,Netherlands,2019-11-03,110.63,266.76
+005,Cycling Gloves,Accessory,Green,44,Medium,Hydration,Sweden,2020-11-09,109.37,264.51
+007,Cycling Jacket,Accessory,Red,26,Large,Hydration,United Kingdom,2020-05-03,86.84,310.3
+004,Water Bottle,Accessory,Red,41,Large,Hydration,Germany,2022-05-09,146.71,340.3
+004,Water Bottle,Accessory,Blue,35,Large,Hydration,Switzerland,2022-05-06,102.42,323.33
+002,Bike Bell,Accessory,Yellow,27,Medium,Hydration,France,2019-01-26,107.26,317.64
+004,Water Bottle,Accessory,Red,34,Large,Hydration,Sweden,2020-10-24,91.3,181.07
+002,Bike Bell,Accessory,Yellow,58,Medium,Hydration,Sweden,2021-09-18,70.73,214.39
+002,Bike Bell,Accessory,Yellow,54,Small,Hydration,United Kingdom,2019-12-27,141.21,219.14
+002,Bike Bell,Accessory,Blue,42,Large,Hydration,United Kingdom,2019-09-02,105.81,186.84
+006,Bike Pump,Accessory,Green,56,Small,Hydration,United Kingdom,2022-06-17,81.7,220.92
+005,Cycling Gloves,Accessory,Blue,68,Medium,Hydration,Netherlands,2020-03-19,104.32,371.33
+001,Bike Lock,Accessory,Yellow,43,Small,Hydration,United Kingdom,2020-06-24,145.53,146.73
+002,Bike Bell,Accessory,Red,59,Large,Hydration,Spain,2019-07-11,77.11,279.55
+006,Bike Pump,Accessory,Blue,62,Small,Hydration,Germany,2020-12-23,73.93,138.96
+001,Bike Lock,Accessory,Red,51,Large,Hydration,Spain,2021-10-27,83.03,254.91
+002,Bike Bell,Accessory,Blue,51,Medium,Hydration,Sweden,2020-09-01,115.29,367.18
+003,Bike Lights,Accessory,Red,43,Small,Hydration,Germany,2018-07-03,114.59,374.68
+004,Water Bottle,Accessory,Yellow,36,Small,Hydration,Switzerland,2022-09-09,143.39,134.99
+006,Bike Pump,Accessory,Green,43,Medium,Hydration,Italy,2021-03-09,137.67,127.55
+004,Water Bottle,Accessory,Green,66,Small,Hydration,Sweden,2018-10-02,104.33,260.83
+007,Cycling Jacket,Accessory,Blue,32,Small,Hydration,United Kingdom,2021-08-20,83.07,326.06
+006,Bike Pump,Accessory,Blue,46,Large,Hydration,Germany,2022-03-31,129.08,281.14
+007,Cycling Jacket,Accessory,Red,65,Medium,Hydration,Netherlands,2020-11-21,139.7,352.42
+006,Bike Pump,Accessory,Red,31,Medium,Hydration,Germany,2019-10-25,68.48,163.67
+004,Water Bottle,Accessory,Red,40,Medium,Hydration,United Kingdom,2019-11-07,94.67,198.42
+006,Bike Pump,Accessory,Green,48,Small,Hydration,Sweden,2018-08-31,119.28,142.08
+004,Water Bottle,Accessory,Red,68,Large,Hydration,United Kingdom,2021-12-11,100.25,371.16
+003,Bike Lights,Accessory,Blue,48,Medium,Hydration,Sweden,2018-10-01,111.46,185.26
+006,Bike Pump,Accessory,Blue,63,Large,Hydration,Germany,2020-08-22,87.36,318.03
+007,Cycling Jacket,Accessory,Red,63,Large,Hydration,Netherlands,2020-07-03,137.31,147.51
+001,Bike Lock,Accessory,Blue,28,Medium,Hydration,Spain,2019-02-19,132.88,373.29
+007,Cycling Jacket,Accessory,Red,58,Large,Hydration,Sweden,2022-01-08,94.18,312.08
+004,Water Bottle,Accessory,Yellow,28,Large,Hydration,France,2020-07-24,95.34,266.14
+007,Cycling Jacket,Accessory,Blue,44,Large,Hydration,France,2022-07-31,122.33,233.89
+001,Bike Lock,Accessory,Red,27,Medium,Hydration,France,2021-01-13,92.37,317.61
+001,Bike Lock,Accessory,Green,43,Medium,Hydration,Switzerland,2022-04-18,90.89,336.47
+004,Water Bottle,Accessory,Green,49,Small,Hydration,Spain,2021-09-17,87.56,312.75
+002,Bike Bell,Accessory,Red,59,Medium,Safety,France,2019-04-02,89.31,160.02
+004,Water Bottle,Accessory,Blue,68,Medium,Safety,Germany,2020-02-16,121.91,241.64
+003,Bike Lights,Accessory,Red,34,Large,Safety,Italy,2022-01-24,77.56,382.79
+004,Water Bottle,Accessory,Blue,64,Small,Safety,Germany,2018-02-02,126.61,368.03
+001,Bike Lock,Accessory,Blue,63,Large,Safety,France,2021-12-11,53.36,289.39
+001,Bike Lock,Accessory,Blue,50,Large,Safety,France,2022-03-25,93.9,273.43
+003,Bike Lights,Accessory,Blue,39,Medium,Safety,Netherlands,2019-10-16,131.58,326.17
+002,Bike Bell,Accessory,Blue,67,Large,Safety,France,2019-07-18,102.13,238.73
+006,Bike Pump,Accessory,Green,52,Large,Safety,Switzerland,2019-12-07,105.59,137.89
+004,Water Bottle,Accessory,Blue,51,Small,Safety,Sweden,2022-03-26,64.92,228.53
+003,Bike Lights,Accessory,Yellow,70,Large,Safety,Switzerland,2018-04-29,64.44,252.33
+005,Cycling Gloves,Accessory,Yellow,33,Medium,Safety,Italy,2019-11-08,88.84,195.12
+001,Bike Lock,Accessory,Red,59,Small,Safety,Switzerland,2019-07-04,122.46,177.38
+002,Bike Bell,Accessory,Green,62,Medium,Safety,Germany,2020-09-08,122.43,278.68
+001,Bike Lock,Accessory,Blue,38,Large,Safety,Sweden,2018-08-29,143.72,389.57
+005,Cycling Gloves,Accessory,Green,70,Medium,Safety,Netherlands,2021-02-04,70.45,376.66
+004,Water Bottle,Accessory,Yellow,59,Small,Safety,Sweden,2020-01-07,114.87,209.82
+007,Cycling Jacket,Accessory,Green,55,Medium,Safety,Netherlands,2019-02-21,126.16,213.06
+001,Bike Lock,Accessory,Yellow,61,Medium,Safety,United Kingdom,2018-02-03,136.41,328.84
+002,Bike Bell,Accessory,Yellow,37,Large,Safety,Germany,2022-09-03,82.99,229.46
+006,Bike Pump,Accessory,Yellow,68,Small,Safety,Sweden,2020-09-27,83.76,334.92
+006,Bike Pump,Accessory,Red,47,Large,Safety,Spain,2020-09-27,66.93,323.09
+001,Bike Lock,Accessory,Yellow,29,Small,Safety,France,2022-04-15,144.52,308.76
+007,Cycling Jacket,Accessory,Yellow,65,Medium,Safety,Germany,2018-01-19,73.14,319.47
+001,Bike Lock,Accessory,Red,64,Small,Safety,Sweden,2020-09-16,113.77,381.82
+005,Cycling Gloves,Accessory,Green,60,Small,Safety,United Kingdom,2022-01-19,91.13,129.6
+005,Cycling Gloves,Accessory,Red,69,Large,Safety,Italy,2019-01-03,117.4,346.7
+002,Bike Bell,Accessory,Green,40,Medium,Safety,Netherlands,2022-07-28,69.19,269.78
+001,Bike Lock,Accessory,Green,48,Large,Safety,Germany,2019-05-14,145.93,251.22
+007,Cycling Jacket,Accessory,Red,30,Medium,Safety,France,2022-04-05,115.37,361.01
+004,Water Bottle,Accessory,Red,49,Medium,Safety,Spain,2018-01-20,105.27,140.43
+007,Cycling Jacket,Accessory,Red,52,Small,Safety,Italy,2022-10-24,114.49,216.1
+002,Bike Bell,Accessory,Green,69,Large,Safety,Italy,2018-04-06,138.76,255.76
+005,Cycling Gloves,Accessory,Blue,67,Large,Safety,France,2019-10-07,53.29,380.41
+002,Bike Bell,Accessory,Blue,70,Large,Safety,Spain,2019-09-05,132.09,380.44
+007,Cycling Jacket,Accessory,Red,49,Large,Safety,Spain,2020-02-26,117.7,273.65
+006,Bike Pump,Accessory,Green,47,Large,Safety,Italy,2022-09-14,55.37,245.2
+007,Cycling Jacket,Accessory,Red,64,Large,Safety,Netherlands,2022-05-04,145.49,234.09
+003,Bike Lights,Accessory,Blue,53,Large,Safety,Switzerland,2020-02-08,99.06,222.85
+005,Cycling Gloves,Accessory,Red,67,Small,Safety,Germany,2019-08-28,88.01,337.35
+003,Bike Lights,Accessory,Green,34,Medium,Safety,Switzerland,2018-11-12,88.0,340.57
+001,Bike Lock,Accessory,Red,30,Small,Safety,United Kingdom,2020-01-08,50.52,209.77
+001,Bike Lock,Accessory,Red,36,Small,Safety,Switzerland,2020-11-15,93.1,278.17
+001,Bike Lock,Accessory,Yellow,47,Small,Safety,Netherlands,2022-05-26,105.42,289.15
+003,Bike Lights,Accessory,Blue,51,Large,Safety,Germany,2021-02-19,88.78,148.29
+004,Water Bottle,Accessory,Red,35,Small,Safety,Spain,2020-10-06,63.88,207.81
+004,Water Bottle,Accessory,Green,42,Small,Safety,Netherlands,2018-06-07,92.11,258.16
+006,Bike Pump,Accessory,Blue,65,Medium,Safety,Italy,2020-07-26,99.58,294.58
+001,Bike Lock,Accessory,Yellow,50,Medium,Safety,Netherlands,2022-07-05,83.22,295.55
+004,Water Bottle,Accessory,Yellow,66,Medium,Safety,Germany,2019-10-19,147.42,162.43
+002,Bike Bell,Accessory,Blue,50,Medium,Safety,Sweden,2021-11-24,146.87,205.15
+004,Water Bottle,Accessory,Blue,42,Large,Safety,Germany,2018-08-22,131.65,233.06
+007,Cycling Jacket,Accessory,Yellow,60,Medium,Safety,Germany,2021-12-21,52.69,324.98
+007,Cycling Jacket,Accessory,Yellow,69,Small,Safety,Switzerland,2022-06-17,56.92,358.14
+006,Bike Pump,Accessory,Yellow,44,Small,Safety,Switzerland,2022-01-04,74.2,306.13
+004,Water Bottle,Accessory,Red,63,Medium,Safety,Switzerland,2020-11-03,97.92,235.22
+006,Bike Pump,Accessory,Green,59,Small,Safety,Germany,2018-08-12,109.38,376.46
+006,Bike Pump,Accessory,Green,64,Medium,Safety,Switzerland,2021-10-19,54.43,395.49
+001,Bike Lock,Accessory,Yellow,25,Medium,Safety,Germany,2022-03-10,59.86,186.05
+004,Water Bottle,Accessory,Green,54,Small,Safety,Spain,2020-10-21,127.23,286.86
+004,Water Bottle,Accessory,Blue,31,Medium,Safety,Italy,2018-06-25,79.54,378.15
+003,Bike Lights,Accessory,Yellow,46,Small,Safety,Netherlands,2020-09-16,95.53,181.89
+004,Water Bottle,Accessory,Red,69,Medium,Safety,Italy,2018-04-02,95.24,143.47
+006,Bike Pump,Accessory,Blue,31,Large,Safety,Germany,2022-02-25,117.71,170.2
+002,Bike Bell,Accessory,Blue,46,Small,Safety,Switzerland,2019-04-20,105.98,388.58
+006,Bike Pump,Accessory,Yellow,67,Large,Safety,Germany,2021-06-11,93.21,133.03
+004,Water Bottle,Accessory,Red,49,Large,Safety,Italy,2019-07-25,50.45,184.07
+002,Bike Bell,Accessory,Green,48,Large,Safety,Sweden,2019-06-22,82.6,250.83
+004,Water Bottle,Accessory,Blue,64,Large,Safety,Sweden,2019-12-22,89.25,156.41
+006,Bike Pump,Accessory,Green,44,Small,Safety,Spain,2021-10-08,141.87,287.3
+002,Bike Bell,Accessory,Yellow,44,Large,Safety,Switzerland,2018-10-17,61.69,227.66
+002,Bike Bell,Accessory,Blue,61,Medium,Safety,Spain,2021-07-25,88.37,176.08
+003,Bike Lights,Accessory,Green,33,Small,Safety,France,2021-06-22,68.71,356.55
+004,Water Bottle,Accessory,Yellow,33,Large,Safety,Sweden,2021-02-24,69.51,230.58
+004,Water Bottle,Accessory,Red,51,Small,Safety,Italy,2018-12-09,121.01,247.06
+003,Bike Lights,Accessory,Yellow,27,Large,Safety,Sweden,2018-12-11,77.49,272.84
+005,Cycling Gloves,Accessory,Red,32,Large,Safety,Netherlands,2021-01-17,107.27,198.67
+004,Water Bottle,Accessory,Green,59,Small,Safety,Germany,2022-02-16,71.85,241.92
+004,Water Bottle,Accessory,Blue,41,Small,Safety,Italy,2020-06-18,84.86,349.6
+007,Cycling Jacket,Accessory,Blue,62,Large,Safety,Switzerland,2021-06-03,118.91,361.79
+002,Bike Bell,Accessory,Green,38,Large,Safety,Netherlands,2021-03-13,131.35,346.5
+005,Cycling Gloves,Accessory,Red,35,Small,Safety,United Kingdom,2019-08-16,82.37,318.61
+007,Cycling Jacket,Accessory,Blue,51,Small,Safety,Spain,2022-11-11,141.88,397.93
+002,Bike Bell,Accessory,Yellow,70,Small,Safety,Switzerland,2022-09-24,82.21,193.08
+005,Cycling Gloves,Accessory,Red,65,Medium,Safety,Italy,2020-07-14,76.87,238.91
+005,Cycling Gloves,Accessory,Green,42,Large,Safety,Sweden,2020-07-20,119.47,366.26
+001,Bike Lock,Accessory,Red,30,Large,Safety,Netherlands,2021-09-22,123.09,251.07
+004,Water Bottle,Accessory,Green,38,Medium,Safety,United Kingdom,2020-10-10,146.81,351.83
+003,Bike Lights,Accessory,Red,60,Small,Safety,Netherlands,2020-09-20,107.79,280.69
+001,Bike Lock,Accessory,Yellow,65,Medium,Safety,Spain,2018-09-12,128.39,251.38
+001,Bike Lock,Accessory,Blue,52,Medium,Safety,United Kingdom,2018-09-28,70.23,314.36
+001,Bike Lock,Accessory,Red,66,Medium,Safety,Spain,2021-09-22,86.04,147.67
+006,Bike Pump,Accessory,Red,44,Small,Safety,Italy,2020-05-29,122.6,332.69
+002,Bike Bell,Accessory,Red,55,Small,Safety,Sweden,2020-11-29,57.79,288.26
+006,Bike Pump,Accessory,Yellow,46,Small,Safety,Spain,2020-05-14,131.71,396.74
+002,Bike Bell,Accessory,Green,49,Medium,Safety,Netherlands,2018-07-31,58.93,346.64
+002,Bike Bell,Accessory,Red,49,Large,Safety,Spain,2018-09-30,127.35,332.12
+005,Cycling Gloves,Accessory,Blue,25,Medium,Safety,Germany,2019-12-21,111.03,170.13
+005,Cycling Gloves,Accessory,Red,68,Large,Safety,Spain,2018-07-25,94.24,184.74
+006,Bike Pump,Accessory,Blue,49,Medium,Safety,Spain,2022-06-09,85.15,243.08
+006,Bike Pump,Accessory,Red,30,Large,Safety,United Kingdom,2022-01-16,74.82,290.27
+003,Bike Lights,Accessory,Green,38,Large,Safety,Switzerland,2022-03-12,101.77,265.12
+001,Bike Lock,Accessory,Red,40,Medium,Safety,Italy,2020-10-20,99.49,156.0
+003,Bike Lights,Accessory,Blue,33,Medium,Safety,Netherlands,2020-05-11,88.68,355.72
+007,Cycling Jacket,Accessory,Red,29,Small,Safety,Germany,2019-06-21,51.67,143.57
+007,Cycling Jacket,Accessory,Yellow,50,Large,Safety,Switzerland,2020-10-23,100.66,297.86
+004,Water Bottle,Accessory,Red,30,Medium,Safety,United Kingdom,2018-11-09,114.05,272.86
+001,Bike Lock,Accessory,Yellow,57,Large,Safety,Netherlands,2018-11-15,142.09,392.94
+006,Bike Pump,Accessory,Blue,66,Small,Safety,Switzerland,2021-12-01,118.11,143.18
+002,Bike Bell,Accessory,Green,30,Large,Safety,France,2021-06-07,142.46,156.9
+006,Bike Pump,Accessory,Red,67,Small,Safety,Spain,2021-12-20,124.07,157.85
+004,Water Bottle,Accessory,Blue,47,Medium,Safety,United Kingdom,2022-01-16,102.3,340.32
+002,Bike Bell,Accessory,Yellow,42,Medium,Safety,Netherlands,2018-03-02,123.29,157.47
+005,Cycling Gloves,Accessory,Yellow,29,Medium,Safety,Italy,2021-07-09,76.29,393.14
+005,Cycling Gloves,Accessory,Blue,48,Medium,Safety,Netherlands,2018-12-08,55.54,361.32
+007,Cycling Jacket,Accessory,Red,31,Small,Safety,Germany,2018-08-25,139.43,310.38
+007,Cycling Jacket,Accessory,Blue,25,Small,Safety,Spain,2020-02-24,74.46,254.74
+005,Cycling Gloves,Accessory,Yellow,70,Large,Safety,Germany,2019-10-22,124.07,240.33
+003,Bike Lights,Accessory,Blue,42,Small,Safety,France,2018-09-02,132.6,282.17
+007,Cycling Jacket,Accessory,Green,58,Medium,Safety,Sweden,2018-05-22,148.14,387.37
+003,Bike Lights,Accessory,Green,30,Large,Safety,United Kingdom,2019-02-15,105.31,127.19
+005,Cycling Gloves,Accessory,Blue,40,Small,Safety,Germany,2020-10-07,96.39,287.72
+001,Bike Lock,Accessory,Green,51,Small,Safety,France,2021-07-26,52.39,273.92
+007,Cycling Jacket,Accessory,Blue,67,Large,Safety,Italy,2019-09-22,87.63,327.97
+002,Bike Bell,Accessory,Red,51,Small,Safety,United Kingdom,2018-10-19,99.2,141.47
+002,Bike Bell,Accessory,Red,58,Large,Safety,Italy,2020-07-27,91.31,371.28
+002,Bike Bell,Accessory,Yellow,65,Large,Safety,France,2021-03-08,132.0,145.58
+002,Bike Bell,Accessory,Green,40,Medium,Safety,Switzerland,2022-06-29,79.17,359.0
+004,Water Bottle,Accessory,Blue,42,Small,Safety,Italy,2018-10-06,73.36,384.48
+002,Bike Bell,Accessory,Blue,53,Medium,Safety,Netherlands,2021-01-02,96.61,236.79
+003,Bike Lights,Accessory,Red,54,Small,Safety,United Kingdom,2018-11-19,76.5,157.98
+007,Cycling Jacket,Accessory,Red,45,Large,Safety,Switzerland,2019-12-30,64.83,320.57
+003,Bike Lights,Accessory,Blue,41,Small,Safety,Sweden,2020-04-08,132.01,172.81
+004,Water Bottle,Accessory,Blue,31,Small,Safety,France,2018-01-25,130.39,163.44
+002,Bike Bell,Accessory,Green,50,Small,Safety,Italy,2021-08-13,87.22,298.33
+001,Bike Lock,Accessory,Red,29,Medium,Safety,Spain,2022-07-16,69.78,302.65
+001,Bike Lock,Accessory,Yellow,27,Medium,Safety,Switzerland,2021-03-21,144.23,138.93
+001,Bike Lock,Accessory,Green,49,Medium,Safety,Spain,2019-03-16,118.32,172.52
+004,Water Bottle,Accessory,Yellow,34,Medium,Safety,United Kingdom,2019-05-19,53.46,295.27
+005,Cycling Gloves,Accessory,Blue,55,Large,Safety,Switzerland,2018-10-09,56.1,201.94
+007,Cycling Jacket,Accessory,Yellow,58,Large,Safety,France,2021-01-18,74.91,398.37
+003,Bike Lights,Accessory,Yellow,55,Medium,Safety,Netherlands,2021-03-04,104.45,258.29
+002,Bike Bell,Accessory,Red,26,Medium,Safety,United Kingdom,2022-07-19,81.89,185.23
+005,Cycling Gloves,Accessory,Blue,47,Large,Safety,Italy,2018-11-23,126.68,399.89
+002,Bike Bell,Accessory,Blue,42,Large,Safety,France,2022-02-18,103.37,342.59
+007,Cycling Jacket,Accessory,Blue,49,Small,Safety,Spain,2022-09-28,85.48,355.79
+005,Cycling Gloves,Accessory,Green,45,Large,Safety,France,2021-04-26,130.62,316.85
+005,Cycling Gloves,Accessory,Green,34,Small,Safety,Sweden,2022-07-18,106.31,176.76
+004,Water Bottle,Accessory,Yellow,27,Small,Safety,France,2019-03-25,59.03,188.97
+003,Bike Lights,Accessory,Green,64,Small,Safety,Spain,2022-01-08,70.15,160.88
+001,Bike Lock,Accessory,Green,34,Small,Safety,Italy,2022-05-05,108.66,377.24
+003,Bike Lights,Accessory,Green,70,Medium,Safety,Netherlands,2018-07-26,144.19,233.79
+002,Bike Bell,Accessory,Green,35,Small,Safety,Sweden,2021-08-02,123.24,245.14
+006,Bike Pump,Accessory,Blue,60,Large,Safety,Netherlands,2022-05-31,119.36,380.43
+005,Cycling Gloves,Accessory,Blue,36,Large,Safety,Spain,2019-08-27,87.84,326.85
+001,Bike Lock,Accessory,Blue,69,Large,Safety,France,2022-04-28,144.87,232.69
+003,Bike Lights,Accessory,Green,64,Large,Safety,Spain,2020-10-13,72.09,280.53
+001,Bike Lock,Accessory,Green,40,Medium,Safety,Italy,2021-07-26,84.68,212.87
+001,Bike Lock,Accessory,Red,41,Large,Safety,United Kingdom,2019-12-19,70.97,315.62
+001,Bike Lock,Accessory,Yellow,28,Medium,Safety,Switzerland,2018-12-07,88.59,326.46
+003,Bike Lights,Accessory,Blue,59,Medium,Safety,Germany,2022-06-04,87.53,352.92
+001,Bike Lock,Accessory,Green,27,Small,Safety,Italy,2018-08-03,79.49,212.65
+004,Water Bottle,Accessory,Yellow,35,Large,Safety,Netherlands,2018-07-10,123.2,275.44
+001,Bike Lock,Accessory,Blue,52,Small,Safety,Switzerland,2022-12-28,144.24,170.37
+001,Bike Lock,Accessory,Green,46,Medium,Safety,United Kingdom,2021-11-28,70.56,177.25
+002,Bike Bell,Accessory,Blue,31,Small,Safety,Sweden,2022-09-17,54.96,282.24
+003,Bike Lights,Accessory,Blue,25,Small,Safety,Sweden,2021-09-17,92.76,206.0
+001,Bike Lock,Accessory,Red,38,Medium,Safety,Sweden,2018-06-17,67.08,205.25
+007,Cycling Jacket,Accessory,Yellow,50,Small,Safety,Italy,2019-06-27,97.09,371.09
+003,Bike Lights,Accessory,Yellow,49,Medium,Safety,Sweden,2019-06-24,86.94,247.59
+002,Bike Bell,Accessory,Red,42,Large,Safety,Italy,2021-11-27,106.42,166.56
+003,Bike Lights,Accessory,Yellow,59,Large,Safety,France,2019-04-11,91.4,333.03
+004,Water Bottle,Accessory,Yellow,59,Medium,Safety,Germany,2021-03-18,118.71,382.5
+001,Bike Lock,Accessory,Red,50,Medium,Safety,Spain,2020-10-25,140.28,321.43
+002,Bike Bell,Accessory,Yellow,35,Small,Safety,France,2018-09-16,147.22,347.33
+006,Bike Pump,Accessory,Green,52,Large,Safety,United Kingdom,2018-10-30,70.19,351.21
+007,Cycling Jacket,Accessory,Green,29,Large,Safety,Netherlands,2021-02-04,58.7,278.0
+004,Water Bottle,Accessory,Red,25,Medium,Safety,Switzerland,2020-12-06,128.66,296.34
+002,Bike Bell,Accessory,Red,34,Medium,Safety,Italy,2018-07-25,106.66,285.24
+007,Cycling Jacket,Accessory,Yellow,59,Large,Safety,Switzerland,2019-06-25,138.01,366.42
+005,Cycling Gloves,Accessory,Red,55,Medium,Safety,Switzerland,2018-10-22,53.75,200.74
+003,Bike Lights,Accessory,Red,69,Medium,Safety,Netherlands,2019-07-05,73.76,330.08
+007,Cycling Jacket,Accessory,Blue,44,Small,Safety,Italy,2022-10-24,81.09,356.78
+003,Bike Lights,Accessory,Red,53,Small,Safety,Switzerland,2022-02-01,127.4,213.24
+004,Water Bottle,Accessory,Red,38,Large,Safety,Netherlands,2020-09-19,141.34,236.97
+007,Cycling Jacket,Accessory,Red,35,Small,Safety,Spain,2020-04-06,56.56,320.13
+002,Bike Bell,Accessory,Green,37,Large,Safety,France,2020-07-23,133.7,193.61
+002,Bike Bell,Accessory,Red,42,Small,Safety,Italy,2020-03-23,86.84,252.66
+003,Bike Lights,Accessory,Green,56,Medium,Safety,Sweden,2022-11-18,109.4,173.84
+002,Bike Bell,Accessory,Yellow,41,Small,Safety,France,2019-08-07,124.9,314.43
+002,Bike Bell,Accessory,Blue,61,Medium,Safety,Germany,2019-03-30,127.98,183.94
+006,Bike Pump,Accessory,Yellow,51,Small,Safety,France,2022-04-21,101.33,362.77
+006,Bike Pump,Accessory,Green,36,Medium,Safety,United Kingdom,2019-06-01,110.11,127.33
+004,Water Bottle,Accessory,Red,47,Small,Safety,Switzerland,2019-09-11,95.9,185.01
+005,Cycling Gloves,Accessory,Green,67,Large,Safety,United Kingdom,2021-02-23,146.65,355.83
+001,Bike Lock,Accessory,Green,55,Medium,Safety,Netherlands,2021-08-04,56.38,396.8
+006,Bike Pump,Accessory,Blue,70,Small,Safety,Spain,2019-01-21,145.22,304.15
+007,Cycling Jacket,Accessory,Yellow,63,Medium,Safety,France,2018-10-14,90.41,212.89
+003,Bike Lights,Accessory,Green,51,Large,Safety,Germany,2021-04-09,90.46,327.6
+006,Bike Pump,Accessory,Green,39,Small,Safety,Netherlands,2020-09-01,118.63,300.54
+007,Cycling Jacket,Accessory,Blue,67,Large,Safety,Sweden,2018-07-19,137.65,174.81
+003,Bike Lights,Accessory,Red,60,Small,Safety,Netherlands,2021-10-24,126.29,175.34
+003,Bike Lights,Accessory,Green,39,Medium,Safety,Netherlands,2022-06-03,124.42,209.45
+005,Cycling Gloves,Accessory,Yellow,43,Small,Safety,Italy,2018-04-20,96.38,157.39
+005,Cycling Gloves,Accessory,Red,32,Small,Safety,Switzerland,2019-09-04,136.75,229.96
+002,Bike Bell,Accessory,Green,37,Large,Safety,Spain,2020-07-26,84.27,396.48
+002,Bike Bell,Accessory,Red,30,Small,Safety,Netherlands,2018-12-29,98.76,298.53
+004,Water Bottle,Accessory,Yellow,42,Small,Safety,Spain,2021-03-26,70.94,337.72
+002,Bike Bell,Accessory,Yellow,64,Small,Safety,Sweden,2020-05-28,93.37,243.09
+001,Bike Lock,Accessory,Blue,59,Small,Safety,Netherlands,2018-01-29,69.94,227.6
+006,Bike Pump,Accessory,Green,25,Small,Safety,Netherlands,2021-11-21,112.67,193.43
+001,Bike Lock,Accessory,Green,49,Medium,Safety,France,2018-05-14,100.33,209.18
+004,Water Bottle,Accessory,Green,58,Medium,Safety,Spain,2022-12-24,109.64,217.9
+003,Bike Lights,Accessory,Red,37,Small,Safety,Switzerland,2022-07-21,66.49,374.4
+002,Bike Bell,Accessory,Red,33,Medium,Safety,Spain,2020-10-30,71.12,131.03
+006,Bike Pump,Accessory,Red,66,Large,Safety,United Kingdom,2021-08-04,129.21,228.18
+001,Bike Lock,Accessory,Yellow,67,Medium,Safety,Italy,2018-04-09,60.81,354.93
+004,Water Bottle,Accessory,Red,32,Medium,Safety,Germany,2018-11-10,104.73,255.46
+004,Water Bottle,Accessory,Yellow,67,Small,Safety,Spain,2021-06-29,60.1,268.09
+005,Cycling Gloves,Accessory,Blue,64,Large,Safety,Sweden,2018-08-06,61.77,156.35
+002,Bike Bell,Accessory,Green,41,Small,Safety,Switzerland,2020-01-04,133.15,392.61
+001,Bike Lock,Accessory,Blue,60,Small,Safety,Netherlands,2020-09-11,99.64,182.12
+001,Bike Lock,Accessory,Blue,67,Small,Safety,Sweden,2021-03-21,58.9,155.37
+007,Cycling Jacket,Accessory,Yellow,57,Medium,Safety,Germany,2019-06-09,57.5,323.98
+003,Bike Lights,Accessory,Green,54,Medium,Safety,France,2022-11-26,55.01,348.62
+007,Cycling Jacket,Accessory,Red,68,Small,Safety,France,2018-07-14,81.27,328.1
+006,Bike Pump,Accessory,Red,66,Medium,Safety,United Kingdom,2020-06-15,67.05,223.32
+007,Cycling Jacket,Accessory,Yellow,46,Large,Safety,United Kingdom,2020-07-23,68.29,235.21
+007,Cycling Jacket,Accessory,Red,55,Small,Safety,Spain,2022-06-21,129.99,303.43
+006,Bike Pump,Accessory,Yellow,28,Large,Safety,Switzerland,2018-08-01,148.16,357.2
+006,Bike Pump,Accessory,Blue,53,Medium,Safety,France,2020-01-05,68.13,229.43
+004,Water Bottle,Accessory,Green,32,Small,Safety,United Kingdom,2018-05-10,138.76,246.19
+006,Bike Pump,Accessory,Green,68,Large,Safety,Germany,2022-01-22,102.48,329.5
+005,Cycling Gloves,Accessory,Yellow,69,Medium,Safety,Germany,2021-09-17,120.06,151.19
+006,Bike Pump,Accessory,Red,68,Large,Safety,France,2022-08-20,114.14,165.88
+002,Bike Bell,Accessory,Red,57,Medium,Safety,Spain,2022-11-16,134.88,359.26
+003,Bike Lights,Accessory,Yellow,40,Medium,Safety,Germany,2020-11-04,83.09,201.49
+007,Cycling Jacket,Accessory,Red,40,Medium,Safety,Sweden,2021-03-19,57.88,247.15
+004,Water Bottle,Accessory,Red,45,Medium,Safety,France,2021-08-31,61.87,261.78
+004,Water Bottle,Accessory,Blue,27,Large,Safety,United Kingdom,2018-07-06,105.71,125.05
+006,Bike Pump,Accessory,Yellow,54,Medium,Safety,Germany,2018-04-22,145.04,224.92
+005,Cycling Gloves,Accessory,Red,64,Small,Safety,Sweden,2020-01-15,110.0,322.08
+007,Cycling Jacket,Accessory,Green,67,Large,Safety,United Kingdom,2022-08-27,72.17,218.87
+001,Bike Lock,Accessory,Red,27,Medium,Safety,Switzerland,2022-08-11,139.69,260.42
+005,Cycling Gloves,Accessory,Yellow,37,Small,Safety,Germany,2020-03-15,68.75,380.81
+006,Bike Pump,Accessory,Yellow,46,Medium,Safety,Italy,2021-07-20,60.78,238.98
+006,Bike Pump,Accessory,Red,62,Large,Safety,France,2020-10-18,145.62,162.02
+004,Water Bottle,Accessory,Blue,62,Small,Safety,Spain,2018-12-29,98.29,264.79
+004,Water Bottle,Accessory,Yellow,67,Large,Safety,Switzerland,2020-10-29,110.05,367.74
+006,Bike Pump,Accessory,Blue,40,Small,Safety,Sweden,2019-08-26,77.36,389.99
+004,Water Bottle,Accessory,Blue,63,Small,Apparel,Netherlands,2019-09-05,120.0,330.82
+002,Bike Bell,Accessory,Blue,64,Large,Apparel,Spain,2021-10-09,121.44,313.82
+005,Cycling Gloves,Accessory,Yellow,69,Large,Apparel,Netherlands,2022-04-08,113.69,320.35
+005,Cycling Gloves,Accessory,Yellow,67,Small,Apparel,United Kingdom,2022-09-20,121.01,310.42
+005,Cycling Gloves,Accessory,Blue,31,Medium,Apparel,France,2021-10-04,52.53,164.96
+007,Cycling Jacket,Accessory,Green,35,Small,Apparel,France,2018-10-27,148.35,312.93
+007,Cycling Jacket,Accessory,Yellow,59,Small,Apparel,Germany,2018-07-29,53.23,348.86
+005,Cycling Gloves,Accessory,Yellow,69,Large,Apparel,Switzerland,2020-02-21,78.76,307.74
+003,Bike Lights,Accessory,Blue,60,Large,Apparel,Sweden,2019-02-20,55.38,329.51
+006,Bike Pump,Accessory,Blue,70,Medium,Apparel,Germany,2021-01-24,114.76,332.65
+004,Water Bottle,Accessory,Yellow,36,Small,Apparel,Italy,2018-12-22,148.35,145.48
+004,Water Bottle,Accessory,Red,42,Medium,Apparel,United Kingdom,2021-04-11,105.66,160.77
+004,Water Bottle,Accessory,Green,70,Medium,Apparel,France,2019-10-23,143.75,135.98
+007,Cycling Jacket,Accessory,Blue,61,Small,Apparel,Netherlands,2021-12-20,105.02,145.04
+005,Cycling Gloves,Accessory,Red,29,Medium,Apparel,Switzerland,2021-01-17,128.63,168.83
+002,Bike Bell,Accessory,Yellow,38,Large,Apparel,Germany,2019-08-25,116.33,216.04
+007,Cycling Jacket,Accessory,Blue,66,Small,Apparel,Germany,2020-07-01,50.88,308.96
+006,Bike Pump,Accessory,Green,45,Large,Apparel,Switzerland,2018-08-21,88.14,343.96
+006,Bike Pump,Accessory,Yellow,43,Medium,Apparel,Netherlands,2022-04-27,52.47,267.14
+001,Bike Lock,Accessory,Red,43,Small,Apparel,Italy,2020-11-18,139.83,177.94
+007,Cycling Jacket,Accessory,Yellow,59,Small,Apparel,Germany,2019-03-08,103.32,297.41
+002,Bike Bell,Accessory,Red,59,Large,Apparel,Switzerland,2022-02-27,132.87,366.63
+006,Bike Pump,Accessory,Red,34,Small,Apparel,Italy,2018-03-19,52.38,322.14
+002,Bike Bell,Accessory,Yellow,41,Medium,Apparel,United Kingdom,2019-04-12,105.81,283.11
+004,Water Bottle,Accessory,Red,65,Large,Apparel,Italy,2020-03-08,90.44,212.01
+006,Bike Pump,Accessory,Green,64,Large,Apparel,Italy,2018-04-04,56.32,330.14
+001,Bike Lock,Accessory,Yellow,43,Medium,Apparel,United Kingdom,2018-06-27,128.69,207.87
+004,Water Bottle,Accessory,Yellow,67,Large,Apparel,Spain,2019-03-27,53.08,167.99
+003,Bike Lights,Accessory,Red,65,Large,Apparel,Netherlands,2022-06-17,64.41,311.25
+007,Cycling Jacket,Accessory,Red,60,Medium,Apparel,Switzerland,2021-03-18,64.14,136.49
+002,Bike Bell,Accessory,Blue,47,Small,Apparel,Spain,2022-10-10,71.17,374.05
+002,Bike Bell,Accessory,Yellow,64,Large,Apparel,France,2019-01-07,133.47,178.44
+005,Cycling Gloves,Accessory,Yellow,29,Medium,Apparel,Germany,2018-07-21,79.07,143.52
+003,Bike Lights,Accessory,Blue,33,Medium,Apparel,Italy,2019-08-07,117.13,189.5
+004,Water Bottle,Accessory,Green,53,Medium,Apparel,Spain,2021-11-21,82.83,306.34
+004,Water Bottle,Accessory,Green,35,Medium,Apparel,Switzerland,2019-03-30,50.48,192.7
+002,Bike Bell,Accessory,Green,68,Medium,Apparel,Sweden,2020-08-05,123.3,366.42
+004,Water Bottle,Accessory,Blue,60,Large,Apparel,United Kingdom,2018-06-17,60.88,302.53
+002,Bike Bell,Accessory,Red,41,Large,Apparel,Italy,2022-01-29,123.35,297.32
+006,Bike Pump,Accessory,Red,26,Large,Apparel,Germany,2022-04-25,131.26,284.2
+003,Bike Lights,Accessory,Green,59,Medium,Apparel,Spain,2021-09-01,139.4,273.41
+002,Bike Bell,Accessory,Yellow,62,Medium,Apparel,Italy,2020-08-09,123.32,205.02
+005,Cycling Gloves,Accessory,Blue,25,Medium,Apparel,Spain,2022-07-10,116.27,358.2
+002,Bike Bell,Accessory,Yellow,36,Medium,Apparel,Spain,2022-11-22,106.64,280.6
+001,Bike Lock,Accessory,Blue,39,Small,Apparel,Netherlands,2019-06-26,126.15,188.73
+006,Bike Pump,Accessory,Yellow,38,Small,Apparel,Sweden,2020-03-05,101.79,342.65
+001,Bike Lock,Accessory,Green,66,Large,Apparel,United Kingdom,2020-12-03,82.41,318.53
+005,Cycling Gloves,Accessory,Green,61,Medium,Apparel,Italy,2020-01-19,67.38,304.76
+002,Bike Bell,Accessory,Yellow,58,Large,Apparel,Sweden,2019-12-08,90.58,349.74
+001,Bike Lock,Accessory,Green,57,Small,Apparel,Italy,2019-04-17,138.2,245.97
+002,Bike Bell,Accessory,Blue,36,Medium,Apparel,Italy,2022-08-01,65.74,290.56
+007,Cycling Jacket,Accessory,Blue,46,Large,Apparel,Sweden,2020-09-07,122.03,257.42
+002,Bike Bell,Accessory,Blue,66,Small,Apparel,Spain,2018-03-30,133.34,131.17
+006,Bike Pump,Accessory,Green,57,Small,Apparel,Spain,2018-04-25,53.92,282.37
+005,Cycling Gloves,Accessory,Red,50,Small,Apparel,United Kingdom,2018-02-08,109.94,279.99
+004,Water Bottle,Accessory,Yellow,63,Large,Apparel,Germany,2018-12-16,149.28,363.51
+002,Bike Bell,Accessory,Blue,62,Large,Apparel,United Kingdom,2021-09-12,132.05,175.02
+006,Bike Pump,Accessory,Yellow,46,Medium,Apparel,Germany,2018-05-21,142.24,289.05
+002,Bike Bell,Accessory,Blue,31,Large,Apparel,Switzerland,2020-10-29,51.66,268.75
+001,Bike Lock,Accessory,Red,36,Medium,Apparel,Italy,2018-03-21,97.59,294.06
+006,Bike Pump,Accessory,Yellow,33,Medium,Apparel,Switzerland,2018-01-03,140.2,273.3
+007,Cycling Jacket,Accessory,Yellow,27,Medium,Apparel,Sweden,2022-07-02,119.76,242.96
+005,Cycling Gloves,Accessory,Blue,69,Small,Apparel,Sweden,2019-06-06,107.61,242.01
+003,Bike Lights,Accessory,Red,63,Large,Apparel,France,2019-01-23,137.68,237.38
+005,Cycling Gloves,Accessory,Yellow,32,Medium,Apparel,Netherlands,2019-02-25,101.98,228.13
+001,Bike Lock,Accessory,Green,34,Large,Apparel,Switzerland,2019-06-20,92.61,285.98
+003,Bike Lights,Accessory,Blue,68,Medium,Apparel,Sweden,2021-02-04,89.75,181.02
+005,Cycling Gloves,Accessory,Yellow,60,Large,Apparel,Netherlands,2021-03-29,98.38,396.84
+002,Bike Bell,Accessory,Red,67,Small,Apparel,Spain,2022-05-23,61.91,188.19
+005,Cycling Gloves,Accessory,Blue,50,Medium,Apparel,France,2021-06-11,128.61,345.23
+006,Bike Pump,Accessory,Red,25,Small,Apparel,Switzerland,2020-08-23,130.44,351.4
+003,Bike Lights,Accessory,Yellow,39,Large,Apparel,Switzerland,2022-01-23,87.08,292.48
+006,Bike Pump,Accessory,Yellow,58,Medium,Apparel,Spain,2018-04-28,78.65,389.97
+001,Bike Lock,Accessory,Blue,37,Small,Apparel,United Kingdom,2020-11-27,135.06,380.96
+007,Cycling Jacket,Accessory,Red,63,Medium,Apparel,Spain,2021-06-13,101.05,317.07
+002,Bike Bell,Accessory,Green,66,Large,Apparel,Switzerland,2019-07-20,50.03,168.3
+004,Water Bottle,Accessory,Red,50,Large,Apparel,Italy,2022-02-18,108.61,267.38
+003,Bike Lights,Accessory,Blue,60,Large,Apparel,United Kingdom,2022-07-29,141.5,220.73
+002,Bike Bell,Accessory,Yellow,54,Large,Apparel,Spain,2019-06-19,142.97,283.1
+001,Bike Lock,Accessory,Green,60,Large,Apparel,United Kingdom,2018-08-28,57.24,205.92
+004,Water Bottle,Accessory,Yellow,49,Large,Apparel,Netherlands,2022-04-01,106.32,336.74
+004,Water Bottle,Accessory,Yellow,62,Large,Apparel,Italy,2019-06-13,136.2,257.54
+007,Cycling Jacket,Accessory,Green,39,Large,Apparel,Switzerland,2019-10-09,117.69,188.23
+005,Cycling Gloves,Accessory,Yellow,25,Large,Apparel,Italy,2019-08-12,120.08,197.42
+006,Bike Pump,Accessory,Green,46,Small,Apparel,Netherlands,2020-09-02,57.6,381.13
+005,Cycling Gloves,Accessory,Blue,42,Small,Apparel,Sweden,2019-01-25,68.28,330.19
+006,Bike Pump,Accessory,Green,40,Small,Apparel,Germany,2019-02-20,137.27,181.86
+007,Cycling Jacket,Accessory,Red,31,Large,Apparel,Sweden,2021-09-20,61.99,146.58
+001,Bike Lock,Accessory,Yellow,55,Small,Apparel,United Kingdom,2022-12-10,87.12,211.74
+007,Cycling Jacket,Accessory,Red,57,Large,Apparel,Spain,2021-03-27,78.03,186.08
+007,Cycling Jacket,Accessory,Yellow,52,Large,Apparel,Netherlands,2020-10-26,97.83,273.71
+007,Cycling Jacket,Accessory,Green,36,Large,Apparel,Sweden,2020-11-27,95.72,158.1
+001,Bike Lock,Accessory,Green,25,Large,Apparel,Netherlands,2018-07-26,117.41,229.34
+007,Cycling Jacket,Accessory,Green,41,Medium,Apparel,Sweden,2019-07-06,68.72,197.28
+002,Bike Bell,Accessory,Green,56,Medium,Apparel,Netherlands,2022-03-21,92.39,240.25
+003,Bike Lights,Accessory,Red,53,Large,Apparel,Germany,2021-03-25,67.99,161.06
+003,Bike Lights,Accessory,Blue,40,Medium,Apparel,Spain,2019-02-06,105.53,360.48
+007,Cycling Jacket,Accessory,Yellow,25,Medium,Apparel,Netherlands,2022-10-06,67.66,262.39
+003,Bike Lights,Accessory,Red,60,Small,Apparel,Spain,2018-07-22,135.85,138.12
+007,Cycling Jacket,Accessory,Green,41,Medium,Apparel,Netherlands,2020-07-10,97.65,298.21
+003,Bike Lights,Accessory,Yellow,60,Small,Apparel,France,2019-12-06,105.75,347.75
+003,Bike Lights,Accessory,Green,68,Medium,Apparel,Spain,2021-03-25,146.31,179.71
+003,Bike Lights,Accessory,Yellow,68,Large,Apparel,Italy,2020-07-04,101.04,338.05
+003,Bike Lights,Accessory,Yellow,54,Large,Apparel,Netherlands,2018-12-10,113.17,164.83
+005,Cycling Gloves,Accessory,Green,61,Small,Apparel,Spain,2018-06-12,90.48,374.45
+003,Bike Lights,Accessory,Green,45,Medium,Apparel,Switzerland,2021-05-24,115.3,320.37
+007,Cycling Jacket,Accessory,Blue,48,Small,Apparel,Switzerland,2020-07-11,124.79,268.26
+007,Cycling Jacket,Accessory,Blue,26,Small,Apparel,Italy,2019-05-31,62.5,189.52
+004,Water Bottle,Accessory,Red,31,Medium,Apparel,France,2020-08-27,59.56,382.62
+005,Cycling Gloves,Accessory,Green,30,Small,Apparel,Switzerland,2018-06-22,60.39,294.98
+002,Bike Bell,Accessory,Red,43,Small,Apparel,Spain,2020-12-14,94.32,159.76
+006,Bike Pump,Accessory,Green,47,Large,Apparel,Sweden,2020-09-02,136.04,214.43
+004,Water Bottle,Accessory,Yellow,33,Large,Apparel,Sweden,2018-12-29,146.95,316.85
+006,Bike Pump,Accessory,Red,65,Medium,Apparel,Germany,2020-09-13,103.38,374.95
+003,Bike Lights,Accessory,Blue,48,Medium,Apparel,France,2018-01-22,91.22,167.82
+003,Bike Lights,Accessory,Green,55,Small,Apparel,Sweden,2020-10-04,103.51,314.14
+007,Cycling Jacket,Accessory,Green,52,Small,Apparel,France,2022-06-20,129.8,289.18
+004,Water Bottle,Accessory,Yellow,60,Small,Apparel,Switzerland,2022-01-04,93.71,193.72
+003,Bike Lights,Accessory,Green,30,Large,Apparel,United Kingdom,2022-04-15,92.22,190.88
+006,Bike Pump,Accessory,Blue,59,Small,Apparel,Italy,2022-10-14,130.88,238.55
+003,Bike Lights,Accessory,Blue,32,Medium,Apparel,Sweden,2019-07-12,113.69,294.88
+001,Bike Lock,Accessory,Green,34,Medium,Apparel,Italy,2019-01-16,54.96,272.12
+002,Bike Bell,Accessory,Red,70,Medium,Apparel,Spain,2018-07-04,93.84,127.26
+002,Bike Bell,Accessory,Yellow,46,Large,Apparel,Netherlands,2020-10-17,92.02,341.07
+007,Cycling Jacket,Accessory,Green,27,Medium,Apparel,France,2018-10-27,83.02,356.98
+001,Bike Lock,Accessory,Yellow,59,Small,Apparel,United Kingdom,2022-09-20,97.01,177.85
+001,Bike Lock,Accessory,Red,70,Small,Apparel,Germany,2020-06-26,74.9,337.09
+004,Water Bottle,Accessory,Green,31,Medium,Apparel,Switzerland,2020-08-26,102.11,395.08
+002,Bike Bell,Accessory,Green,65,Medium,Apparel,Italy,2021-01-30,122.82,329.8
+006,Bike Pump,Accessory,Red,44,Small,Apparel,Germany,2022-11-04,69.87,369.07
+006,Bike Pump,Accessory,Yellow,52,Small,Apparel,Italy,2019-07-20,82.45,171.02
+001,Bike Lock,Accessory,Green,27,Small,Apparel,Spain,2021-11-10,108.11,314.96
+002,Bike Bell,Accessory,Red,35,Medium,Apparel,France,2019-11-25,99.99,313.63
+006,Bike Pump,Accessory,Blue,34,Medium,Apparel,Sweden,2018-09-15,120.13,342.65
+005,Cycling Gloves,Accessory,Red,66,Large,Apparel,Germany,2020-06-17,125.67,346.52
+004,Water Bottle,Accessory,Yellow,47,Large,Apparel,Sweden,2018-03-22,122.44,193.94
+003,Bike Lights,Accessory,Green,59,Large,Apparel,Netherlands,2019-01-18,119.7,177.19
+004,Water Bottle,Accessory,Red,42,Large,Apparel,Spain,2022-10-29,136.77,289.64
+002,Bike Bell,Accessory,Red,53,Large,Apparel,Sweden,2020-01-22,79.57,197.42
+005,Cycling Gloves,Accessory,Blue,49,Medium,Apparel,Netherlands,2021-06-23,123.37,367.81
+006,Bike Pump,Accessory,Yellow,29,Large,Apparel,Germany,2020-03-04,115.83,273.21
+002,Bike Bell,Accessory,Red,64,Large,Apparel,Italy,2019-10-22,78.31,237.7
+006,Bike Pump,Accessory,Blue,29,Small,Apparel,France,2019-01-01,54.38,382.89
+004,Water Bottle,Accessory,Yellow,37,Large,Apparel,Switzerland,2022-09-09,59.88,282.03
+005,Cycling Gloves,Accessory,Red,69,Small,Apparel,Italy,2019-03-29,109.03,138.5
+006,Bike Pump,Accessory,Green,56,Large,Apparel,France,2020-08-16,142.84,353.82
+006,Bike Pump,Accessory,Red,51,Large,Apparel,United Kingdom,2018-04-30,132.2,343.42
+001,Bike Lock,Accessory,Red,44,Large,Apparel,Italy,2020-11-29,57.79,184.37
+002,Bike Bell,Accessory,Blue,59,Large,Apparel,Germany,2021-09-07,88.53,178.11
+006,Bike Pump,Accessory,Yellow,60,Large,Apparel,Netherlands,2021-07-31,91.52,154.02
+006,Bike Pump,Accessory,Green,52,Large,Apparel,Switzerland,2019-01-05,138.28,170.87
+002,Bike Bell,Accessory,Green,59,Medium,Apparel,Netherlands,2019-12-23,149.84,246.83
+004,Water Bottle,Accessory,Blue,65,Medium,Apparel,Germany,2021-05-31,93.06,324.61
+007,Cycling Jacket,Accessory,Yellow,60,Small,Apparel,Sweden,2020-07-15,142.61,194.87
+006,Bike Pump,Accessory,Green,27,Small,Apparel,Spain,2020-11-26,148.3,288.83
+003,Bike Lights,Accessory,Blue,39,Small,Apparel,United Kingdom,2022-04-30,71.48,211.6
+001,Bike Lock,Accessory,Blue,54,Medium,Apparel,Germany,2020-01-22,85.57,163.06
+007,Cycling Jacket,Accessory,Green,44,Medium,Apparel,Italy,2019-03-22,59.19,234.94
+002,Bike Bell,Accessory,Green,56,Small,Apparel,Italy,2021-03-26,132.57,314.64
+006,Bike Pump,Accessory,Green,61,Medium,Apparel,Netherlands,2022-04-28,88.15,339.53
+004,Water Bottle,Accessory,Yellow,32,Small,Apparel,France,2021-08-29,136.98,187.35
+003,Bike Lights,Accessory,Blue,58,Small,Apparel,Netherlands,2018-11-03,54.12,273.48
+001,Bike Lock,Accessory,Blue,68,Medium,Apparel,Italy,2020-07-01,123.16,233.04
+003,Bike Lights,Accessory,Yellow,50,Medium,Apparel,France,2020-09-01,64.8,217.45
+001,Bike Lock,Accessory,Yellow,50,Large,Apparel,Spain,2018-09-25,100.18,337.8
+002,Bike Bell,Accessory,Blue,56,Small,Apparel,Germany,2021-02-23,89.53,282.12
+003,Bike Lights,Accessory,Yellow,52,Medium,Apparel,Italy,2018-07-03,82.34,379.14
+003,Bike Lights,Accessory,Green,47,Small,Apparel,France,2021-09-04,69.05,219.74
+003,Bike Lights,Accessory,Yellow,64,Small,Apparel,Spain,2021-06-30,132.16,345.77
+007,Cycling Jacket,Accessory,Red,39,Large,Apparel,Italy,2022-04-01,69.97,227.8
+001,Bike Lock,Accessory,Red,40,Medium,Apparel,United Kingdom,2022-11-15,144.89,379.85
+006,Bike Pump,Accessory,Blue,32,Small,Apparel,Germany,2019-11-11,80.51,254.58
+005,Cycling Gloves,Accessory,Red,58,Medium,Apparel,Spain,2021-06-29,125.04,275.92
+005,Cycling Gloves,Accessory,Blue,67,Large,Apparel,United Kingdom,2018-05-04,102.68,195.25
+005,Cycling Gloves,Accessory,Yellow,42,Large,Apparel,Italy,2018-01-18,55.31,305.06
+003,Bike Lights,Accessory,Red,67,Medium,Apparel,Italy,2022-11-06,135.21,306.53
+007,Cycling Jacket,Accessory,Green,66,Medium,Apparel,Italy,2020-11-07,88.65,394.44
+007,Cycling Jacket,Accessory,Red,63,Small,Apparel,Sweden,2020-10-22,103.16,176.26
+002,Bike Bell,Accessory,Red,58,Medium,Apparel,Spain,2022-03-05,80.49,259.73
+006,Bike Pump,Accessory,Red,47,Large,Apparel,United Kingdom,2020-10-23,85.54,208.14
+003,Bike Lights,Accessory,Blue,49,Small,Apparel,United Kingdom,2018-03-02,139.04,349.09
+003,Bike Lights,Accessory,Yellow,50,Small,Apparel,Germany,2020-02-22,115.69,149.14
+005,Cycling Gloves,Accessory,Yellow,34,Large,Apparel,Netherlands,2021-05-24,92.65,210.91
+002,Bike Bell,Accessory,Blue,38,Medium,Apparel,Germany,2021-11-01,115.25,284.78
+006,Bike Pump,Accessory,Blue,70,Medium,Apparel,Spain,2020-05-30,139.86,375.13
+001,Bike Lock,Accessory,Blue,60,Large,Apparel,Netherlands,2019-01-13,103.3,322.85
+001,Bike Lock,Accessory,Yellow,45,Large,Apparel,United Kingdom,2020-04-22,138.01,238.86
+007,Cycling Jacket,Accessory,Red,65,Small,Apparel,Germany,2022-05-15,143.33,200.29
+002,Bike Bell,Accessory,Blue,26,Small,Apparel,Germany,2019-07-01,126.24,293.29
+006,Bike Pump,Accessory,Yellow,26,Large,Apparel,Spain,2020-09-03,85.93,314.24
+006,Bike Pump,Accessory,Blue,48,Small,Apparel,Spain,2020-08-28,68.4,231.55
+002,Bike Bell,Accessory,Blue,27,Large,Apparel,Switzerland,2019-07-07,90.86,391.42
+006,Bike Pump,Accessory,Green,37,Medium,Apparel,Sweden,2020-06-18,125.78,143.19
+002,Bike Bell,Accessory,Green,52,Medium,Apparel,Switzerland,2022-02-14,90.49,136.5
+005,Cycling Gloves,Accessory,Red,61,Medium,Apparel,France,2022-11-29,109.38,269.44
+004,Water Bottle,Accessory,Red,27,Large,Apparel,Switzerland,2021-01-06,137.78,192.57
+004,Water Bottle,Accessory,Yellow,58,Medium,Apparel,United Kingdom,2019-01-24,126.52,389.71
+003,Bike Lights,Accessory,Blue,43,Medium,Apparel,France,2021-06-09,96.13,241.18
+007,Cycling Jacket,Accessory,Blue,66,Medium,Apparel,Spain,2018-08-20,95.17,323.73
+004,Water Bottle,Accessory,Yellow,45,Small,Apparel,Germany,2021-04-23,95.09,174.19
+003,Bike Lights,Accessory,Red,45,Small,Maintenance,Spain,2022-06-20,119.17,374.47
+001,Bike Lock,Accessory,Blue,70,Medium,Maintenance,Switzerland,2020-12-08,94.94,224.81
+005,Cycling Gloves,Accessory,Blue,49,Small,Maintenance,Spain,2019-11-18,54.39,171.99
+002,Bike Bell,Accessory,Green,70,Large,Maintenance,Sweden,2022-02-04,55.13,209.72
+002,Bike Bell,Accessory,Red,32,Medium,Maintenance,United Kingdom,2018-01-08,139.85,389.12
+004,Water Bottle,Accessory,Blue,56,Small,Maintenance,Sweden,2022-12-13,104.35,126.58
+005,Cycling Gloves,Accessory,Blue,67,Large,Maintenance,France,2018-06-12,97.57,237.79
+003,Bike Lights,Accessory,Blue,64,Small,Maintenance,France,2019-03-02,112.86,350.53
+001,Bike Lock,Accessory,Green,66,Small,Maintenance,United Kingdom,2018-03-08,84.9,164.98
+001,Bike Lock,Accessory,Blue,31,Medium,Maintenance,United Kingdom,2021-10-08,91.7,174.02
+006,Bike Pump,Accessory,Green,62,Medium,Maintenance,United Kingdom,2022-04-23,86.02,134.86
+004,Water Bottle,Accessory,Yellow,29,Small,Maintenance,United Kingdom,2018-05-13,125.84,356.91
+001,Bike Lock,Accessory,Blue,69,Large,Maintenance,Germany,2020-04-27,135.94,215.53
+001,Bike Lock,Accessory,Yellow,31,Large,Maintenance,Italy,2020-12-19,107.14,394.32
+006,Bike Pump,Accessory,Green,63,Medium,Maintenance,Switzerland,2019-08-12,143.39,396.23
+005,Cycling Gloves,Accessory,Yellow,61,Medium,Maintenance,Sweden,2018-09-23,149.5,222.31
+007,Cycling Jacket,Accessory,Red,36,Small,Maintenance,Germany,2019-08-18,138.37,189.0
+001,Bike Lock,Accessory,Yellow,54,Medium,Maintenance,Germany,2022-10-03,112.55,157.43
+001,Bike Lock,Accessory,Blue,46,Large,Maintenance,France,2019-03-11,84.97,346.66
+003,Bike Lights,Accessory,Red,41,Small,Maintenance,Netherlands,2020-11-03,129.02,209.64
+006,Bike Pump,Accessory,Blue,46,Small,Maintenance,France,2021-06-15,84.14,324.21
+003,Bike Lights,Accessory,Blue,46,Medium,Maintenance,France,2020-08-29,142.23,256.75
+002,Bike Bell,Accessory,Yellow,65,Large,Maintenance,Sweden,2019-11-18,96.06,362.94
+001,Bike Lock,Accessory,Blue,58,Large,Maintenance,France,2019-10-09,79.93,324.37
+006,Bike Pump,Accessory,Blue,46,Medium,Maintenance,Italy,2019-12-26,129.95,369.21
+007,Cycling Jacket,Accessory,Yellow,26,Small,Maintenance,Spain,2020-12-30,83.92,228.19
+005,Cycling Gloves,Accessory,Red,32,Medium,Maintenance,Netherlands,2021-12-15,136.46,331.67
+004,Water Bottle,Accessory,Blue,30,Large,Maintenance,United Kingdom,2020-07-14,99.71,190.35
+003,Bike Lights,Accessory,Red,36,Medium,Maintenance,Germany,2022-05-12,61.22,340.86
+005,Cycling Gloves,Accessory,Green,26,Medium,Maintenance,Germany,2018-11-12,129.9,373.86
+006,Bike Pump,Accessory,Blue,58,Small,Maintenance,Italy,2022-04-25,81.04,215.02
+006,Bike Pump,Accessory,Red,27,Medium,Maintenance,Italy,2020-12-05,95.94,321.26
+001,Bike Lock,Accessory,Red,68,Small,Maintenance,Sweden,2019-11-14,134.81,364.77
+005,Cycling Gloves,Accessory,Blue,67,Medium,Maintenance,United Kingdom,2022-04-03,124.56,131.18
+002,Bike Bell,Accessory,Red,37,Medium,Maintenance,Sweden,2022-05-02,78.66,271.38
+002,Bike Bell,Accessory,Blue,35,Large,Maintenance,Italy,2021-06-29,77.36,129.2
+003,Bike Lights,Accessory,Blue,60,Small,Maintenance,United Kingdom,2021-12-13,81.85,163.93
+001,Bike Lock,Accessory,Blue,44,Small,Maintenance,France,2020-06-27,111.33,218.15
+004,Water Bottle,Accessory,Yellow,68,Small,Maintenance,Switzerland,2018-06-26,55.05,230.49
+006,Bike Pump,Accessory,Green,63,Medium,Maintenance,Sweden,2021-11-14,139.13,298.1
+003,Bike Lights,Accessory,Yellow,37,Large,Maintenance,Italy,2020-12-28,121.29,309.49
+002,Bike Bell,Accessory,Yellow,30,Medium,Maintenance,Italy,2020-08-17,131.29,377.91
+006,Bike Pump,Accessory,Blue,66,Large,Maintenance,Germany,2019-04-20,121.02,252.98
+003,Bike Lights,Accessory,Green,48,Medium,Maintenance,Netherlands,2021-09-24,89.21,317.39
+004,Water Bottle,Accessory,Blue,26,Medium,Maintenance,Sweden,2020-09-07,56.54,156.04
+007,Cycling Jacket,Accessory,Red,47,Medium,Maintenance,Switzerland,2018-07-30,110.44,160.03
+005,Cycling Gloves,Accessory,Yellow,66,Small,Maintenance,Switzerland,2020-08-02,57.09,208.08
+005,Cycling Gloves,Accessory,Green,40,Small,Maintenance,Italy,2020-02-26,104.79,392.82
+007,Cycling Jacket,Accessory,Blue,69,Small,Maintenance,Netherlands,2020-06-10,109.1,340.69
+006,Bike Pump,Accessory,Red,67,Large,Maintenance,Sweden,2021-03-21,57.79,380.99
+005,Cycling Gloves,Accessory,Green,54,Medium,Maintenance,Spain,2020-06-30,82.54,151.85
+001,Bike Lock,Accessory,Green,63,Medium,Maintenance,Switzerland,2022-04-29,60.87,348.87
+006,Bike Pump,Accessory,Blue,67,Large,Maintenance,France,2018-10-12,56.15,184.84
+002,Bike Bell,Accessory,Blue,53,Small,Maintenance,Sweden,2021-03-29,103.13,232.25
+006,Bike Pump,Accessory,Yellow,45,Large,Maintenance,United Kingdom,2021-10-23,79.97,343.45
+003,Bike Lights,Accessory,Blue,30,Medium,Maintenance,Switzerland,2020-11-11,108.27,293.16
+001,Bike Lock,Accessory,Red,48,Medium,Maintenance,Netherlands,2018-01-02,140.11,391.17
+007,Cycling Jacket,Accessory,Yellow,26,Medium,Maintenance,Netherlands,2020-03-18,73.52,318.11
+004,Water Bottle,Accessory,Blue,52,Large,Maintenance,Spain,2020-08-30,104.51,307.18
+004,Water Bottle,Accessory,Blue,48,Small,Maintenance,Spain,2022-11-23,134.0,167.42
+001,Bike Lock,Accessory,Blue,66,Small,Maintenance,Switzerland,2020-09-23,51.57,323.37
+002,Bike Bell,Accessory,Blue,66,Medium,Maintenance,Switzerland,2022-06-04,130.59,361.54
+005,Cycling Gloves,Accessory,Blue,52,Medium,Maintenance,Germany,2019-12-29,105.21,248.76
+005,Cycling Gloves,Accessory,Yellow,25,Large,Maintenance,United Kingdom,2019-04-30,107.79,357.87
+005,Cycling Gloves,Accessory,Red,48,Large,Maintenance,Netherlands,2020-09-16,53.35,135.41
+004,Water Bottle,Accessory,Yellow,69,Large,Maintenance,United Kingdom,2020-12-14,58.01,325.8
+001,Bike Lock,Accessory,Green,58,Large,Maintenance,Italy,2020-08-25,138.99,149.32
+001,Bike Lock,Accessory,Green,46,Medium,Maintenance,Sweden,2020-07-18,103.5,127.97
+003,Bike Lights,Accessory,Green,43,Small,Maintenance,United Kingdom,2021-05-08,78.92,134.71
+006,Bike Pump,Accessory,Red,55,Medium,Maintenance,United Kingdom,2021-09-06,107.81,282.54
+004,Water Bottle,Accessory,Green,30,Small,Maintenance,United Kingdom,2022-05-25,62.68,146.14
+005,Cycling Gloves,Accessory,Blue,42,Large,Maintenance,Italy,2022-02-27,77.52,195.66
+006,Bike Pump,Accessory,Blue,34,Medium,Maintenance,United Kingdom,2018-12-26,115.92,226.69
+002,Bike Bell,Accessory,Blue,58,Medium,Maintenance,Spain,2018-06-22,136.2,219.28
+007,Cycling Jacket,Accessory,Blue,51,Large,Maintenance,Spain,2020-06-20,127.04,190.44
+006,Bike Pump,Accessory,Red,47,Small,Maintenance,Italy,2022-08-06,55.43,197.71
+004,Water Bottle,Accessory,Yellow,50,Large,Maintenance,Germany,2022-03-21,97.62,255.97
+006,Bike Pump,Accessory,Red,49,Medium,Maintenance,Switzerland,2022-11-18,97.46,164.92
+007,Cycling Jacket,Accessory,Red,53,Large,Maintenance,France,2020-12-21,88.2,211.81
+006,Bike Pump,Accessory,Green,47,Medium,Maintenance,United Kingdom,2021-08-28,145.62,243.74
+003,Bike Lights,Accessory,Blue,31,Large,Maintenance,Germany,2020-08-02,75.53,285.65
+003,Bike Lights,Accessory,Red,68,Small,Maintenance,France,2021-01-26,119.03,174.48
+001,Bike Lock,Accessory,Blue,51,Large,Maintenance,Netherlands,2020-07-02,59.77,153.57
+003,Bike Lights,Accessory,Blue,41,Large,Maintenance,France,2018-07-08,69.31,131.52
+006,Bike Pump,Accessory,Yellow,32,Large,Maintenance,Spain,2022-10-20,120.81,157.99
+007,Cycling Jacket,Accessory,Green,66,Medium,Maintenance,Spain,2018-08-16,106.61,390.97
+004,Water Bottle,Accessory,Green,67,Medium,Maintenance,Switzerland,2019-07-21,143.62,300.66
+002,Bike Bell,Accessory,Red,29,Medium,Maintenance,Netherlands,2020-03-06,77.73,142.16
+007,Cycling Jacket,Accessory,Blue,41,Large,Maintenance,Switzerland,2019-02-15,67.79,144.08
+004,Water Bottle,Accessory,Yellow,31,Large,Maintenance,Italy,2019-03-24,64.39,336.39
+003,Bike Lights,Accessory,Yellow,31,Small,Maintenance,United Kingdom,2022-01-30,53.49,144.36
+004,Water Bottle,Accessory,Green,34,Small,Maintenance,Switzerland,2018-03-19,115.29,125.24
+006,Bike Pump,Accessory,Yellow,46,Medium,Maintenance,Sweden,2020-11-21,140.46,283.03
+004,Water Bottle,Accessory,Red,29,Large,Maintenance,Sweden,2021-11-12,104.01,125.91
+005,Cycling Gloves,Accessory,Green,47,Large,Maintenance,Italy,2018-04-24,83.34,208.28
+007,Cycling Jacket,Accessory,Blue,46,Small,Maintenance,United Kingdom,2022-04-19,58.05,251.4
+005,Cycling Gloves,Accessory,Red,27,Large,Maintenance,Switzerland,2019-09-05,146.75,306.7
+006,Bike Pump,Accessory,Blue,47,Small,Maintenance,Germany,2020-06-15,98.65,368.43
+002,Bike Bell,Accessory,Red,26,Large,Maintenance,Switzerland,2020-09-28,121.97,288.06
+006,Bike Pump,Accessory,Red,44,Small,Maintenance,Sweden,2022-07-21,99.97,390.36
+003,Bike Lights,Accessory,Blue,28,Large,Maintenance,Italy,2020-04-10,83.77,323.28
+006,Bike Pump,Accessory,Blue,58,Small,Maintenance,Spain,2022-11-26,95.84,311.47
+001,Bike Lock,Accessory,Blue,34,Large,Maintenance,France,2021-06-20,98.89,130.24
+006,Bike Pump,Accessory,Yellow,33,Large,Maintenance,Italy,2019-09-22,51.44,298.98
+002,Bike Bell,Accessory,Blue,62,Small,Maintenance,Sweden,2018-08-22,56.4,349.8
+007,Cycling Jacket,Accessory,Green,37,Small,Maintenance,Switzerland,2022-02-20,92.62,348.17
+006,Bike Pump,Accessory,Red,61,Large,Maintenance,Germany,2022-06-13,104.59,213.44
+002,Bike Bell,Accessory,Blue,46,Large,Maintenance,Switzerland,2022-04-01,56.32,200.32
+003,Bike Lights,Accessory,Blue,60,Small,Maintenance,France,2021-04-06,66.5,192.0
+007,Cycling Jacket,Accessory,Red,65,Small,Maintenance,Sweden,2018-02-02,111.24,338.86
+001,Bike Lock,Accessory,Yellow,36,Large,Maintenance,United Kingdom,2021-04-30,142.61,319.35
+007,Cycling Jacket,Accessory,Yellow,55,Medium,Maintenance,United Kingdom,2021-08-03,119.24,181.69
+002,Bike Bell,Accessory,Red,36,Large,Maintenance,Sweden,2019-01-04,111.05,135.35
+007,Cycling Jacket,Accessory,Red,44,Large,Maintenance,Germany,2019-04-28,84.79,126.26
+001,Bike Lock,Accessory,Yellow,64,Large,Maintenance,Germany,2021-01-10,86.19,334.31
+006,Bike Pump,Accessory,Yellow,38,Medium,Maintenance,Spain,2022-06-20,77.64,178.27
+002,Bike Bell,Accessory,Green,35,Small,Maintenance,Netherlands,2021-08-13,117.01,136.86
+004,Water Bottle,Accessory,Red,41,Small,Maintenance,Sweden,2022-04-03,83.43,346.42
+006,Bike Pump,Accessory,Yellow,28,Large,Maintenance,France,2022-05-28,142.49,173.37
+001,Bike Lock,Accessory,Yellow,29,Small,Maintenance,Netherlands,2021-04-28,139.51,323.39
+006,Bike Pump,Accessory,Blue,68,Small,Maintenance,Netherlands,2018-08-14,139.84,188.27
+002,Bike Bell,Accessory,Yellow,51,Large,Maintenance,Italy,2019-03-28,136.99,228.27
+004,Water Bottle,Accessory,Blue,28,Medium,Maintenance,Sweden,2021-06-02,139.05,164.86
+003,Bike Lights,Accessory,Blue,33,Medium,Maintenance,United Kingdom,2020-01-05,95.77,178.39
+002,Bike Bell,Accessory,Yellow,27,Medium,Maintenance,Italy,2018-10-07,119.22,141.4
+004,Water Bottle,Accessory,Blue,35,Large,Maintenance,Spain,2019-08-28,126.03,185.46
+005,Cycling Gloves,Accessory,Yellow,39,Medium,Maintenance,Germany,2020-09-28,58.65,360.67
+003,Bike Lights,Accessory,Green,25,Medium,Maintenance,Germany,2019-05-21,123.0,327.45
+005,Cycling Gloves,Accessory,Yellow,39,Small,Maintenance,France,2018-11-02,139.18,287.74
+001,Bike Lock,Accessory,Yellow,55,Large,Maintenance,Switzerland,2020-05-21,123.35,263.66
+007,Cycling Jacket,Accessory,Yellow,31,Small,Maintenance,France,2021-02-17,95.24,191.14
+002,Bike Bell,Accessory,Yellow,47,Large,Maintenance,France,2018-07-05,79.58,303.1
+003,Bike Lights,Accessory,Yellow,35,Medium,Maintenance,France,2022-03-11,120.33,360.93
+007,Cycling Jacket,Accessory,Yellow,33,Large,Maintenance,Netherlands,2022-06-06,137.42,236.47
+006,Bike Pump,Accessory,Red,25,Medium,Maintenance,Netherlands,2021-11-15,136.04,144.44
+004,Water Bottle,Accessory,Red,42,Large,Maintenance,Germany,2021-03-24,119.81,293.44
+003,Bike Lights,Accessory,Red,28,Medium,Maintenance,France,2020-01-16,101.47,375.25
+003,Bike Lights,Accessory,Blue,54,Small,Maintenance,Italy,2018-12-25,111.91,225.53
+003,Bike Lights,Accessory,Blue,40,Medium,Maintenance,Germany,2022-02-19,103.96,303.49
+003,Bike Lights,Accessory,Green,42,Medium,Maintenance,Italy,2018-04-22,100.36,241.31
+004,Water Bottle,Accessory,Yellow,56,Large,Maintenance,United Kingdom,2020-08-20,100.15,353.13
+003,Bike Lights,Accessory,Blue,68,Medium,Maintenance,Italy,2022-12-14,144.54,347.42
+001,Bike Lock,Accessory,Blue,30,Medium,Maintenance,Italy,2018-06-07,89.07,174.17
+001,Bike Lock,Accessory,Green,69,Medium,Maintenance,France,2019-02-23,64.8,166.39
+006,Bike Pump,Accessory,Red,59,Medium,Maintenance,Sweden,2020-05-10,143.17,255.32
+002,Bike Bell,Accessory,Yellow,29,Large,Maintenance,Netherlands,2022-09-06,52.2,345.55
+003,Bike Lights,Accessory,Yellow,66,Medium,Maintenance,Sweden,2021-04-30,114.61,214.73
+005,Cycling Gloves,Accessory,Blue,33,Medium,Maintenance,United Kingdom,2022-06-05,139.83,209.29
+003,Bike Lights,Accessory,Yellow,43,Small,Maintenance,United Kingdom,2019-12-25,126.97,138.01
+005,Cycling Gloves,Accessory,Blue,35,Small,Maintenance,Spain,2018-12-26,121.18,203.44
+001,Bike Lock,Accessory,Green,27,Small,Maintenance,United Kingdom,2020-06-21,149.38,282.99
+002,Bike Bell,Accessory,Green,60,Medium,Maintenance,Spain,2019-12-06,120.71,308.03
+005,Cycling Gloves,Accessory,Yellow,35,Small,Maintenance,Switzerland,2018-02-21,103.36,158.41
+004,Water Bottle,Accessory,Green,45,Medium,Maintenance,Netherlands,2021-01-23,65.61,391.79
+003,Bike Lights,Accessory,Green,61,Large,Maintenance,Sweden,2022-02-01,116.69,344.88
+001,Bike Lock,Accessory,Green,55,Small,Maintenance,Italy,2021-02-02,140.02,163.34
+004,Water Bottle,Accessory,Red,64,Large,Maintenance,Netherlands,2018-07-09,134.09,247.64
+006,Bike Pump,Accessory,Blue,37,Small,Maintenance,United Kingdom,2022-04-21,108.34,186.09
+001,Bike Lock,Accessory,Blue,59,Medium,Maintenance,Switzerland,2018-06-28,134.95,311.19
+003,Bike Lights,Accessory,Yellow,63,Small,Maintenance,Netherlands,2021-09-27,110.51,384.44
+006,Bike Pump,Accessory,Green,52,Medium,Maintenance,Netherlands,2019-08-06,86.96,227.53
+004,Water Bottle,Accessory,Yellow,60,Medium,Maintenance,Switzerland,2020-06-28,58.76,325.16
+002,Bike Bell,Accessory,Blue,52,Small,Maintenance,Italy,2022-09-08,122.86,238.9
+003,Bike Lights,Accessory,Yellow,55,Small,Maintenance,Italy,2019-11-18,148.84,269.46
+001,Bike Lock,Accessory,Blue,51,Small,Maintenance,Sweden,2018-12-25,113.88,200.17
+002,Bike Bell,Accessory,Green,49,Medium,Maintenance,United Kingdom,2022-08-13,78.95,259.91
+005,Cycling Gloves,Accessory,Green,54,Large,Maintenance,United Kingdom,2018-11-12,72.45,342.59
+007,Cycling Jacket,Accessory,Blue,65,Medium,Maintenance,Switzerland,2019-08-13,97.25,304.8
+006,Bike Pump,Accessory,Red,66,Large,Maintenance,Sweden,2019-07-22,74.48,157.82
+006,Bike Pump,Accessory,Yellow,48,Large,Maintenance,United Kingdom,2022-11-14,108.11,280.53
+007,Cycling Jacket,Accessory,Blue,32,Large,Maintenance,United Kingdom,2018-02-05,87.32,326.56
+001,Bike Lock,Accessory,Blue,34,Small,Maintenance,Netherlands,2018-10-05,81.97,366.54
+003,Bike Lights,Accessory,Green,48,Medium,Maintenance,France,2019-12-31,91.95,375.83
+005,Cycling Gloves,Accessory,Red,65,Large,Maintenance,Spain,2022-04-19,143.63,266.31
+007,Cycling Jacket,Accessory,Green,35,Large,Maintenance,United Kingdom,2022-08-21,104.37,364.92
+006,Bike Pump,Accessory,Red,69,Small,Maintenance,Spain,2019-12-22,86.25,271.97
+005,Cycling Gloves,Accessory,Red,43,Small,Maintenance,Spain,2019-11-28,87.3,258.35
+002,Bike Bell,Accessory,Yellow,57,Medium,Maintenance,Italy,2021-02-18,72.11,176.81
+001,Bike Lock,Accessory,Green,32,Large,Maintenance,Netherlands,2020-09-09,131.88,378.94
+003,Bike Lights,Accessory,Blue,33,Large,Maintenance,Netherlands,2021-05-08,131.7,369.67
+003,Bike Lights,Accessory,Blue,26,Medium,Maintenance,Spain,2018-09-21,124.45,157.61
+002,Bike Bell,Accessory,Red,38,Small,Maintenance,Italy,2021-11-15,63.02,146.62
+007,Cycling Jacket,Accessory,Red,55,Medium,Maintenance,France,2018-08-09,125.73,136.69
+001,Bike Lock,Accessory,Red,41,Large,Maintenance,Italy,2018-01-22,54.33,207.95
+002,Bike Bell,Accessory,Red,62,Small,Maintenance,France,2019-12-21,140.12,175.82
+007,Cycling Jacket,Accessory,Red,42,Small,Maintenance,Germany,2018-11-25,144.88,220.66
+007,Cycling Jacket,Accessory,Green,62,Small,Maintenance,Germany,2022-01-05,126.32,270.43
+007,Cycling Jacket,Accessory,Green,59,Large,Maintenance,Sweden,2019-03-15,50.43,324.47
+005,Cycling Gloves,Accessory,Yellow,36,Medium,Maintenance,Netherlands,2019-01-06,93.97,388.38
+002,Bike Bell,Accessory,Yellow,57,Small,Maintenance,Italy,2019-10-06,72.76,156.03
+005,Cycling Gloves,Accessory,Red,33,Medium,Maintenance,France,2019-08-14,99.58,224.34
+004,Water Bottle,Accessory,Yellow,32,Small,Maintenance,United Kingdom,2022-02-16,88.48,250.66
+005,Cycling Gloves,Accessory,Yellow,51,Large,Maintenance,Italy,2019-01-22,79.06,360.23
+003,Bike Lights,Accessory,Yellow,36,Medium,Maintenance,Italy,2021-10-08,51.28,310.39
+005,Cycling Gloves,Accessory,Red,67,Large,Maintenance,Switzerland,2020-03-19,117.65,157.78
+002,Bike Bell,Accessory,Red,29,Small,Maintenance,Switzerland,2019-02-15,86.37,179.75
+007,Cycling Jacket,Accessory,Yellow,52,Medium,Maintenance,United Kingdom,2022-01-01,122.52,201.59
+004,Water Bottle,Accessory,Blue,67,Medium,Maintenance,United Kingdom,2020-09-19,110.32,236.22
+001,Bike Lock,Accessory,Red,32,Small,Maintenance,Spain,2021-07-10,75.07,261.75
+006,Bike Pump,Accessory,Yellow,28,Large,Maintenance,Spain,2018-02-24,133.03,261.99
+006,Bike Pump,Accessory,Yellow,45,Medium,Maintenance,Italy,2018-07-17,65.27,296.04
+002,Bike Bell,Accessory,Red,43,Small,Maintenance,Netherlands,2019-06-20,116.21,259.82
+004,Water Bottle,Accessory,Yellow,32,Small,Maintenance,Sweden,2020-02-10,88.36,211.5
+001,Bike Lock,Accessory,Yellow,36,Medium,Maintenance,Spain,2019-09-13,105.67,361.6
+002,Bike Bell,Accessory,Yellow,44,Medium,Maintenance,Sweden,2018-08-13,121.57,259.05
+005,Cycling Gloves,Accessory,Green,35,Medium,Maintenance,Switzerland,2020-10-10,100.67,232.63
+003,Bike Lights,Accessory,Green,28,Large,Maintenance,Netherlands,2022-09-11,52.81,137.41
+005,Cycling Gloves,Accessory,Yellow,26,Medium,Maintenance,Italy,2020-02-19,126.52,296.92
+003,Bike Lights,Accessory,Green,51,Large,Maintenance,Germany,2019-05-23,85.13,306.84
+001,Bike Lock,Accessory,Red,69,Large,Maintenance,Spain,2019-11-23,56.55,208.85
+003,Bike Lights,Accessory,Green,27,Small,Maintenance,Switzerland,2021-03-09,96.09,362.43
+006,Bike Pump,Accessory,Green,55,Large,Maintenance,Switzerland,2020-02-13,108.8,396.09
+001,Bike Lock,Accessory,Green,56,Small,Maintenance,Sweden,2019-11-20,60.01,310.66
+005,Cycling Gloves,Accessory,Blue,44,Medium,Maintenance,Italy,2020-10-14,86.33,244.9
+003,Bike Lights,Accessory,Red,28,Large,Maintenance,Germany,2022-07-06,79.73,282.72
+007,Cycling Jacket,Accessory,Yellow,62,Small,Maintenance,Sweden,2018-05-18,59.47,217.63
+003,Bike Lights,Accessory,Yellow,29,Large,Maintenance,United Kingdom,2022-07-05,115.15,208.01
+005,Cycling Gloves,Accessory,Blue,45,Small,Maintenance,Sweden,2021-07-03,70.01,235.63
+006,Bike Pump,Accessory,Yellow,70,Medium,Maintenance,Germany,2020-10-19,101.62,176.3
+006,Bike Pump,Accessory,Blue,59,Medium,Maintenance,France,2020-06-07,130.89,359.51
+004,Water Bottle,Accessory,Yellow,34,Medium,Maintenance,United Kingdom,2022-04-17,74.04,330.27
+003,Bike Lights,Accessory,Blue,29,Medium,Maintenance,United Kingdom,2019-07-01,113.39,357.64
+006,Bike Pump,Accessory,Red,63,Small,Maintenance,Germany,2018-11-04,73.61,190.58
+007,Cycling Jacket,Accessory,Red,44,Small,Maintenance,Switzerland,2020-06-12,96.42,278.95
+002,Bike Bell,Accessory,Blue,42,Large,Maintenance,United Kingdom,2022-07-04,63.64,196.06
+007,Cycling Jacket,Accessory,Red,27,Medium,Maintenance,France,2018-02-10,146.38,258.61
+005,Cycling Gloves,Accessory,Red,44,Medium,Maintenance,Netherlands,2020-04-13,136.72,372.66
+007,Cycling Jacket,Accessory,Green,33,Medium,Maintenance,Italy,2020-10-21,73.6,282.02
+001,Bike Lock,Accessory,Yellow,40,Large,Maintenance,Netherlands,2019-10-04,109.98,337.63
+006,Bike Pump,Accessory,Blue,40,Medium,Maintenance,Spain,2018-08-07,143.55,184.95
+004,Water Bottle,Accessory,Red,51,Medium,Maintenance,Netherlands,2020-10-01,75.43,287.11
+005,Cycling Gloves,Accessory,Green,52,Medium,Maintenance,Spain,2019-07-23,97.49,192.75
+006,Bike Pump,Accessory,Red,48,Large,Maintenance,France,2021-05-25,132.14,130.8
+007,Cycling Jacket,Accessory,Red,67,Large,Maintenance,Netherlands,2019-09-26,73.97,277.0
+007,Cycling Jacket,Accessory,Green,40,Small,Maintenance,United Kingdom,2020-03-15,135.76,231.83
+007,Cycling Jacket,Accessory,Green,40,Large,Maintenance,Sweden,2018-11-25,79.74,361.34
+004,Water Bottle,Accessory,Yellow,27,Large,Maintenance,Sweden,2022-05-16,77.4,147.03
+004,Water Bottle,Accessory,Blue,46,Large,Maintenance,Italy,2022-08-07,121.74,366.11
+003,Bike Lights,Accessory,Yellow,57,Large,Maintenance,Netherlands,2022-02-02,56.64,240.74
+001,Bike Lock,Accessory,Red,28,Medium,Maintenance,Spain,2020-06-27,114.14,175.53
+002,Bike Bell,Accessory,Blue,65,Large,Maintenance,Spain,2018-08-15,80.55,283.35
+006,Bike Pump,Accessory,Green,66,Medium,Maintenance,Switzerland,2021-11-05,126.32,357.91
+004,Water Bottle,Accessory,Green,33,Small,Maintenance,Netherlands,2022-08-21,76.07,314.05
+001,Bike Lock,Accessory,Red,51,Small,Maintenance,Germany,2020-02-12,86.76,233.21
+005,Cycling Gloves,Accessory,Blue,66,Medium,Maintenance,Sweden,2018-07-02,111.2,187.89
+006,Bike Pump,Accessory,Blue,35,Small,Maintenance,United Kingdom,2021-05-14,54.98,294.95
+003,Bike Lights,Accessory,Yellow,35,Large,Maintenance,Switzerland,2022-01-11,144.72,157.27
+004,Water Bottle,Accessory,Green,32,Large,Maintenance,United Kingdom,2022-11-01,72.45,180.86
+004,Water Bottle,Accessory,Green,49,Large,Maintenance,Germany,2021-05-13,63.02,360.49
+006,Bike Pump,Accessory,Green,37,Medium,Maintenance,France,2018-10-26,91.83,237.34
