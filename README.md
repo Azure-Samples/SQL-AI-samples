@@ -62,6 +62,11 @@ In this notebook, we will learn how to use prompts as a way to develop and test 
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/Prompt-Based%20T-SQL%20Database%20Development
 
+### Redis Vector Search Demo Application using ACRE and Cache Prefetching from Azure SQL with Azure Functions
+We based this project from our Product Search Demo which showcase how to use Redis as a Vector Db. We modified the demo by adding a Cache Prefetching pattern from Azure SQL to ACRE using Azure Functions. The Azure Function uses a SQL Trigger that will trigger for any updates that happen in the table.
+
+https://github.com/AzureSQLDB/redis-azure-ai-demo
+
 ## Getting started
 
 See the description in each sample for instructions (projects will have either a README file or instructions in the notebooks themselves.)
