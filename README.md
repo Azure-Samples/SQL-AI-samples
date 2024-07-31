@@ -67,6 +67,12 @@ We based this project from our Product Search Demo which showcase how to use Red
 
 https://github.com/AzureSQLDB/redis-azure-ai-demo
 
+
+### Similarity Search with FAISS and Azure SQL
+This contains Python notebooks that integrate Azure SQL Database with FAISS for efficient similarity search. The notebooks demonstrate how to store and query data in Azure SQL, leveraging FAISS for fast similarity search. We will be demonstrating it with Wikipedia movie plots data stored in Azure SQL. We’ll encode these movie plots into dense vectors using a pre-trained model and then create a FAISS index to perform similarity searches.
+
+https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLFaiss
+
 ## Getting started
 
 See the description in each sample for instructions (projects will have either a README file or instructions in the notebooks themselves.)
