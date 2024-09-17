@@ -53,22 +53,36 @@ https://github.com/Azure-Samples/azure-sql-db-session-recommender
 
 ###  Session Conference Assistant
 
-This sample demonstrates how to build a session assistant using Jamstack, Retrieval Augmented Generation (RAG) and Event-Driven architecture, using Azure SQL DB to store and search vectors embeddings generated using OpenAI. The solution is built using Azure Static Web Apps, Azure Functions, Azure SQL Database, and Azure OpenAI. A fully working, production ready, version of this sample, that has been used at VS Live conferences, is available here: https://ai.lasvegas.vslive.com/
+This sample demonstrates how to build a session assistant using Jamstack, Retrieval Augmented Generation (RAG) and Event-Driven architecture, using Azure SQL DB to store and search vectors embeddings generated using OpenAI. The solution is built using Azure Static Web Apps, Azure Functions, Azure SQL Database, and Azure OpenAI. A fully working, production ready, version of this sample, that has been used at VS Live conferences, is available here: https://ai.microsofthq.vslive.com/
 
 https://github.com/azure-samples/azure-sql-db-session-recommender-v2
 
+### Chatbot on your own data with LangChain and Chainlit
+
+Sample RAG pattern, with full UX, using Azure SQL DB, Langchain and Chainlit as demonstrated in the [#RAGHack](https://github.com/microsoft/RAG_Hack) conference. Full details and video recording available here: [RAG on Azure SQL Server](https://github.com/microsoft/RAG_Hack/discussions/53).
+
+https://github.com/Azure-Samples/azure-sql-db-rag-langchain-chainlit
+
+### Azure SQL DB Vectorizer
+
+Quickly chunk text and generate embeddings at scale with data from Azure SQL. 
+
+https://github.com/Azure-Samples/azure-sql-db-vectorizer
+
 ###  SQL Server Database Development using Prompts as T-SQL Development
+
 In this notebook, we will learn how to use prompts as a way to develop and test Transact-SQL (T-SQL) code for SQL Server databases. Prompts are natural language requests that can be converted into T-SQL statements by using Generative AI models, such as GPT-4. This can help us write code faster, easier, and more accurately, as well as learn from the generated code examples.
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/Prompt-Based%20T-SQL%20Database%20Development
 
 ### Redis Vector Search Demo Application using ACRE and Cache Prefetching from Azure SQL with Azure Functions
+
 We based this project from our Product Search Demo which showcase how to use Redis as a Vector Db. We modified the demo by adding a Cache Prefetching pattern from Azure SQL to ACRE using Azure Functions. The Azure Function uses a SQL Trigger that will trigger for any updates that happen in the table.
 
 https://github.com/AzureSQLDB/redis-azure-ai-demo
 
-
 ### Similarity Search with FAISS and Azure SQL
+
 This contains Python notebooks that integrate Azure SQL Database with FAISS for efficient similarity search. The notebooks demonstrate how to store and query data in Azure SQL, leveraging FAISS for fast similarity search. We will be demonstrating it with Wikipedia movie plots data stored in Azure SQL. We’ll encode these movie plots into dense vectors using a pre-trained model and then create a FAISS index to perform similarity searches.
 Learn more in the detail blog and video: https://aka.ms/azuresql-faiss
 
