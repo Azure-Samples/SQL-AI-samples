@@ -63,6 +63,12 @@ Sample RAG pattern, with full UX, using Azure SQL DB, Langchain and Chainlit as 
 
 https://github.com/Azure-Samples/azure-sql-db-rag-langchain-chainlit
 
+### Chatbot on structured and unstructured data with Semantic Kernel
+
+A chatbot that can answer using RAG and using SQL Queries to answer any question you may want to ask it, be it on unstructured data (eg: what is the common issue raised for product XYZ) or on structured data (eg: how many customers from Canada called the support line?). Built using Semantic Kernel.
+
+https://github.com/Azure-Samples/azure-sql-db-chat-sk
+
 ### Azure SQL DB Vectorizer
 
 Quickly chunk text and generate embeddings at scale with data from Azure SQL. 
