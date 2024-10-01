@@ -4,7 +4,25 @@
 
 This repo hosts samples meant to help design [AI applications built on data from an Azure SQL Database](aka.ms/sql-ai). We illustrate key technical concepts and demonstrate workflows that integrate Azure SQL data with other popular AI application components inside and outside of Azure.
 
-## Available Samples
+- [AI Features Samples](#ai-features-samples)
+    - [Azure SQL + Azure Cognitive Services](#azure-sql--azure-cognitive-services)
+    - [Azure SQL + Azure Promptflow](#azure-sql--azure-promptflow)
+    - [Azure SQL + Azure OpenAI](#azure-sql--azure-openai)
+    - [Generating SQL for Azure SQL Database using Vanna.AI](#generating-sql-for-azure-sql-database-using-vannaai)
+    - [Retrieval Augmented Generation (T-SQL Sample)](#retrieval-augmented-generation-t-sql-sample)
+    - [Content Moderation](#content-moderation)
+    - [LangChain and Azure SQL Database](#langchain-and-azure-sql-database)
+- [End-To-End Samples](#end-to-end-samples)
+    - [Similar Content Finder](#similar-content-finder)
+    - [Session Conference Assistant](#session-conference-assistant)
+    - [Chatbot on your own data with LangChain and Chainlit](#chatbot-on-your-own-data-with-langchain-and-chainlit)
+    - [Chatbot on structured and unstructured data with Semantic Kernel](#chatbot-on-structured-and-unstructured-data-with-semantic-kernel)
+    - [Azure SQL DB Vectorizer](#azure-sql-db-vectorizer)
+    - [SQL Server Database Development using Prompts as T-SQL Development](#sql-server-database-development-using-prompts-as-t-sql-development)
+    - [Redis Vector Search Demo Application using ACRE and Cache Prefetching from Azure SQL with Azure Functions](#redis-vector-search-demo-application-using-acre-and-cache-prefetching-from-azure-sql-with-azure-functions)
+    - [Similarity Search with FAISS and Azure SQL](#similarity-search-with-faiss-and-azure-sql)
+
+## AI Features Samples
 
 ### Azure SQL + Azure Cognitive Services
 
