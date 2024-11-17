@@ -2,7 +2,7 @@
 
 ## About this repo
 
-This repo hosts samples meant to help design [AI applications built on data from an Azure SQL Database](aka.ms/sql-ai). We illustrate key technical concepts and demonstrate workflows that integrate Azure SQL data with other popular AI application components inside and outside of Azure.
+This repo hosts samples meant to help design [AI applications built on data from an Azure SQL Database](https://aka.ms/sql-ai). We illustrate key technical concepts and demonstrate workflows that integrate Azure SQL data with other popular AI application components inside and outside of Azure.
 
 - [AI Features Samples](#ai-features-samples)
     - [Azure SQL + Azure Cognitive Services](#azure-sql--azure-cognitive-services)
