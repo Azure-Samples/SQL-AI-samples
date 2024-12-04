@@ -61,6 +61,10 @@ This folder contains 2 python notebooks that use LangChain to create a NL2SQL ag
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLDatabase/LangChain
 
+You can also use the Getting Started samples available on LangChain website, but using Azure SQL:
+
+https://github.com/Azure-Samples/azure-sql-langchain
+
 ## End-To-End Samples
 
 ### Similar Content Finder
