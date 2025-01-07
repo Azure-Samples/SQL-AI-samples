@@ -21,6 +21,7 @@ This repo hosts samples meant to help design [AI applications built on data from
     - [SQL Server Database Development using Prompts as T-SQL Development](#sql-server-database-development-using-prompts-as-t-sql-development)
     - [Redis Vector Search Demo Application using ACRE and Cache Prefetching from Azure SQL with Azure Functions](#redis-vector-search-demo-application-using-acre-and-cache-prefetching-from-azure-sql-with-azure-functions)
     - [Similarity Search with FAISS and Azure SQL](#similarity-search-with-faiss-and-azure-sql)
+    - [Build your own IVFFlat index with KMeans](#build-your-own-ivfflat-index-with-kmeans)
 
 ## AI Features Samples
 
@@ -115,6 +116,10 @@ This contains Python notebooks that integrate Azure SQL Database with FAISS for 
 Learn more in the detail blog and video: https://aka.ms/azuresql-faiss
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLFaiss
+
+### Build your own IVFFlat index with KMeans
+
+This sample demonstrates how to perform Approximate Nearest Neighbor (ANN) search on a vector column in Azure SQL DB using KMeans clustering, a technique known as IVFFlat or Cell-Probing. The project utilizes the SciKit Learn library for clustering, storing results in a SQL DB table to facilitate ANN search. This approach is beneficial for speeding up vector searches in Azure SQL DB. 
 
 ## Getting started
 
