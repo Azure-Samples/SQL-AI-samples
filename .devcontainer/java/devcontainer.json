@@ -1,0 +1,16 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/maven-sdkman:2": {},
+		"ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"ms-azuretools.vscode-docker",
+				"ms-mssql.mssql"
+			]
+		}
+	}
+}

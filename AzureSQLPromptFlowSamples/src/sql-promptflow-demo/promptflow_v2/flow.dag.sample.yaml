@@ -1,0 +1,111 @@
+id: template_chat_flow
+name: Template Chat Flow
+inputs:
+  chat_history:
+    type: list
+    default: []
+    is_chat_input: false
+    is_chat_history: true
+  question:
+    type: string
+    default: Hello
+    is_chat_input: true
+  customer:
+    type: string
+    default: Donald Blanton
+    is_chat_input: false
+outputs:
+  answer:
+    type: string
+    reference: ${chat.output}
+    is_chat_output: true
+  retrieved_documents:
+    type: string
+    reference: ${get_retrieved_documents.output}
+nodes:
+- name: sql_query_store
+  type: python
+  source:
+    type: code
+    path: sql_query_store.py
+  inputs: {}
+  use_variants: false
+- name: get_customer
+  type: python
+  source:
+    type: code
+    path: get_customer.py
+  inputs:
+    conn_db: dummy
+    customer: ${inputs.customer}
+  use_variants: false
+- name: get_past_orders
+  type: python
+  source:
+    type: code
+    path: get_pastorders.py
+  inputs:
+    conn_db: dummy
+    customer: ${get_customer.output}
+    sql_query_prep: ${sql_query_store.output}
+  use_variants: false
+- name: get_product
+  type: python
+  source:
+    type: code
+    path: get_product.py
+  inputs:
+    conn_db: dummy
+    conn: dummy
+    search_text: ${inputs.question}
+    sql_query_prep: ${sql_query_store.output}
+    top_k: 5
+  use_variants: false
+- name: get_sales_stat
+  type: python
+  source:
+    type: code
+    path: get_produt_stats.py
+  inputs:
+    conn_db: dummy
+    products: ${get_product.output}
+    sql_query_prep: ${sql_query_store.output}
+  use_variants: false
+- name: get_retrieved_documents
+  type: python
+  source:
+    type: code
+    path: get_retrieved_documents.py
+  inputs:
+    input1: ${get_past_orders.output}
+    input2: ${get_product.output}
+    input3: ${get_sales_stat.output}
+  use_variants: false
+- name: chat
+  type: llm
+  source:
+    type: code
+    path: chat.jinja2
+  inputs:
+    deployment_name: dummy
+    temperature: 0
+    top_p: 1
+    stop: ""
+    max_tokens: 1000
+    presence_penalty: 0
+    frequency_penalty: 0
+    logit_bias: ""
+    chat_history: ${inputs.chat_history}
+    question: ${inputs.question}
+    retrieved_customers: ${get_customer.output}
+    retrieved_orders: ${get_past_orders.output}
+    retrieved_products: ${get_product.output}
+    retrieved_sales_stat: ${get_sales_stat.output}
+  provider: AzureOpenAI
+  connection: dummy
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+node_variants: {}
+environment:
+  python_requirements_txt: requirements.txt

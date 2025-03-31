@@ -1,0 +1,14 @@
+{
+	"ghcr.io/devcontainers/features/python:1":{},
+  	"features": {
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"ms-mssql.mssql"
+			]
+		}
+	}
+}
