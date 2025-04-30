@@ -14,7 +14,6 @@ This project is a .NET 8 console application implementing a Model Context Protoc
   - InsertData: Insert data into tables.
   - ReadData: Read/query data from tables.
   - UpdateData: Update values in tables.
-  - SearchData: Perform vector or full-text search on table columns.
 - **Logging**: Console logging using Microsoft.Extensions.Logging.
 - **Unit Tests**: xUnit-based unit tests for all major components.
 
@@ -50,6 +49,8 @@ This project is a .NET 8 console application implementing a Model Context Protoc
 ```
 ---
 
+NOTE: Replace the path "C:\\src\\SQL-AI-samples" with the location of your SQL-AI-samples repo on your machine.
+
 e.g. your MCP settings should look like this if "MSSQL MCP" is your own MCP Server in VSCode settings:
 
 ---
@@ -59,9 +60,26 @@ e.g. your MCP settings should look like this if "MSSQL MCP" is your own MCP Serv
     "servers": {
         "MSSQL MCP": {
             "type": "stdio",
-            "command": "C:\\src\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
+            "command": "C:\\src\\SQL-AI-samples\\MssqlMcp\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
                 "env": {
                 "CONNECTION_STRING": "Server=.;Database=test;Trusted_Connection=True;TrustServerCertificate=True"
+            }
+    }
+}
+```
+---
+
+And example of using a connection string for Azure SQL Database:
+---
+```json
+"mcp": {
+
+    "servers": {
+        "MSSQL MCP": {
+            "type": "stdio",
+            "command": "C:\\src\\SQL-AI-samples\\MssqlMcp\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
+                "env": {
+                "CONNECTION_STRING": "Server=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;Encrypt=Mandatory;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
             }
     }
 }
@@ -90,7 +108,7 @@ Add a new MCP Server with the following settings:
 {
     "mcpServers": {
         "MSSQL MCP": {
-            "command": "C:\\src\\MssqlMcp\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
+            "command": "C:\\src\\SQL-AI-samples\\MssqlMcp\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
             "env": {
                     "CONNECTION_STRING": "Server=.;Database=test;Trusted_Connection=True;TrustServerCertificate=True"
                 }
@@ -100,6 +118,10 @@ Add a new MCP Server with the following settings:
 ```
 
 Save the file, start a new Chat, you'll see the "Tools" icon, it should list 8 MSSQL MCP tools.
+
+# Troubleshooting
+
+1. If you get a connection reset error using "Active Directory Default", try "Active Directory Interactive"
 
 
 
