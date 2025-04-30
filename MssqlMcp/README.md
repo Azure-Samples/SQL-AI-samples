@@ -26,15 +26,7 @@ This project is a .NET 8 console application implementing a Model Context Protoc
 
 ### Setup
 
-1. **Clone the repository**
-
----
-```sh
-   git clone https://github.com/stuartpa/MssqlMcp
-```
----
-
-2. **Build ***
+1. **Build ***
 
 ---
 ```sh
@@ -44,7 +36,7 @@ This project is a .NET 8 console application implementing a Model Context Protoc
 ---
 
 
-3. VSCode: **Start VSCode, and add MCP Server config to VSCode Settings**
+2. VSCode: **Start VSCode, and add MCP Server config to VSCode Settings**
 
 ---
 ```json
@@ -57,6 +49,7 @@ This project is a .NET 8 console application implementing a Model Context Protoc
 }
 ```
 ---
+
 e.g. your MCP settings should look like this if "MSSQL MCP" is your own MCP Server in VSCode settings:
 
 ---
@@ -85,12 +78,13 @@ Click the tools icon, and ensure the "MSSQL MCP" tools are selected.
 
 Then type in the chat window "List tables in DB" and hit enter.
 
-4. Claude Desktop: **Add MCP Server config to Claude Desktop**
+3. Claude Desktop: **Add MCP Server config to Claude Desktop**
 
 Press File > Settings > Developer.
 Press the "Edit Config" button (which will load the claude_desktop_config.json file in your editor).
 
 Add a new MCP Server with the following settings:
+
 ---
 ```json
 {
