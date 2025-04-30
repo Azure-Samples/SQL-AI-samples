@@ -1,0 +1,27 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MssqlMcp.Tests", "MssqlMcp.Tests\MssqlMcp.Tests.csproj", "{06284236-507F-4730-B735-32C1A2AD87D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MssqlMcp", "MssqlMcp\MssqlMcp.csproj", "{6CBE2CB7-D019-4A0F-9AA5-38D18E6149DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06284236-507F-4730-B735-32C1A2AD87D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06284236-507F-4730-B735-32C1A2AD87D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06284236-507F-4730-B735-32C1A2AD87D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06284236-507F-4730-B735-32C1A2AD87D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CBE2CB7-D019-4A0F-9AA5-38D18E6149DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CBE2CB7-D019-4A0F-9AA5-38D18E6149DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CBE2CB7-D019-4A0F-9AA5-38D18E6149DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CBE2CB7-D019-4A0F-9AA5-38D18E6149DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A848C61-1F41-4A6E-8B72-07F834E8CF1F}
+	EndGlobalSection
+EndGlobal
