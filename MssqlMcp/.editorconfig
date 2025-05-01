@@ -7,7 +7,7 @@ indent_style = space
 # (Please don't specify an indent_size here; that has too many unintended consequences.)
 
 # IDE0073: File header
-file_header_template = Copyright (c) Microsoft Corporation. All rights reserved.
+file_header_template = Copyright (c) Microsoft Corporation. All rights reserved.\nLicensed under the MIT license.
 
 # Code files
 [*.{cs, sql}]
@@ -164,5 +164,5 @@ dotnet_diagnostic.CA1508.severity = error
 dotnet_diagnostic.IDE0005.severity = error
 # Require file header
 dotnet_diagnostic.IDE0073.severity = error
-# Fix formatting. TODO in October 2024 - set to error
+# Fix formatting.
 dotnet_diagnostic.IDE0055.severity = suggestion
