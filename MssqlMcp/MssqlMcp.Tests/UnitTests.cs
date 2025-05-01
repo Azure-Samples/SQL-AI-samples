@@ -6,7 +6,7 @@ using Mssql.McpServer;
 
 namespace MssqlMcp.Tests
 {
-    public sealed class MssqlMcpTests
+    public sealed class MssqlMcpTests : IDisposable
     {
         private readonly string _tableName;
         private readonly Tools _tools;
@@ -18,7 +18,7 @@ namespace MssqlMcp.Tests
             _tools = new Tools(connectionFactory, loggerMock.Object);
         }
 
-        internal void Dispose()
+        public void Dispose()
         {
             // Cleanup: Drop the table after each test
             var _ = _tools.DropTable($"DROP TABLE IF EXISTS {_tableName}").GetAwaiter().GetResult();
