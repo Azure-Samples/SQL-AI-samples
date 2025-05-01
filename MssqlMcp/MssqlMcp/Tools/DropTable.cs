@@ -9,7 +9,7 @@ namespace Mssql.McpServer;
 public partial class Tools
 {
     [McpServerTool, Description("Drops a table in the SQL Database. Expects a valid DROP TABLE SQL statement as input.")]
-    public async Task<object?> DropTable(
+    public async Task<DbOperationResult> DropTable(
         [Description("DROP TABLE SQL statement")] string sql)
     {
         var conn = await _connectionFactory.GetOpenConnectionAsync();
@@ -24,7 +24,7 @@ public partial class Tools
         }
         catch (Exception ex)
         {
-            _logger?.LogError(ex, "DropTable failed: {Message}", ex.Message);
+            _logger.LogError(ex, "DropTable failed: {Message}", ex.Message);
             return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }

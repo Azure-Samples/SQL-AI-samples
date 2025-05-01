@@ -10,7 +10,7 @@ namespace Mssql.McpServer;
 public partial class Tools
 {
     [McpServerTool, Description("Executes SQL queries against SQL Database to read data")]
-    public async Task<object?> ReadData(
+    public async Task<DbOperationResult> ReadData(
         [Description("SQL query to execute")] string sql)
     {
         var conn = await _connectionFactory.GetOpenConnectionAsync();
@@ -27,7 +27,7 @@ public partial class Tools
         }
         catch (Exception ex)
         {
-            _logger?.LogError(ex, "ReadData failed: {Message}", ex.Message);
+            _logger.LogError(ex, "ReadData failed: {Message}", ex.Message);
             return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }

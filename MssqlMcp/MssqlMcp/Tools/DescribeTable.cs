@@ -10,7 +10,7 @@ namespace Mssql.McpServer;
 public partial class Tools
 {
     [McpServerTool, Description("Returns table schema")]
-    public async Task<object?> DescribeTable(
+    public async Task<DbOperationResult> DescribeTable(
         [Description("Name of table")] string name)
     {
         // Query for table metadata
@@ -50,11 +50,11 @@ public partial class Tools
         {
             using (conn)
             {
-                var result = new Dictionary<string, object?>();
+                var result = new Dictionary<string, object>();
                 // Table info
                 using (var cmd = new SqlCommand(TableInfoQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@TableName", name);
+                    var _ = cmd.Parameters.AddWithValue("@TableName", name);
                     using var reader = await cmd.ExecuteReaderAsync();
                     if (await reader.ReadAsync())
                     {
@@ -76,7 +76,7 @@ public partial class Tools
                 // Columns
                 using (var cmd = new SqlCommand(ColumnsQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@TableName", name);
+                    var _ = cmd.Parameters.AddWithValue("@TableName", name);
                     using var reader = await cmd.ExecuteReaderAsync();
                     var columns = new List<object>();
                     while (await reader.ReadAsync())
@@ -96,7 +96,7 @@ public partial class Tools
                 // Indexes
                 using (var cmd = new SqlCommand(IndexesQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@TableName", name);
+                    var _ = cmd.Parameters.AddWithValue("@TableName", name);
                     using var reader = await cmd.ExecuteReaderAsync();
                     var indexes = new List<object>();
                     while (await reader.ReadAsync())
@@ -114,7 +114,7 @@ public partial class Tools
                 // Constraints
                 using (var cmd = new SqlCommand(ConstraintsQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@TableName", name);
+                    var _ = cmd.Parameters.AddWithValue("@TableName", name);
                     using var reader = await cmd.ExecuteReaderAsync();
                     var constraints = new List<object>();
                     while (await reader.ReadAsync())
@@ -133,7 +133,7 @@ public partial class Tools
         }
         catch (Exception ex)
         {
-            _logger?.LogError(ex, "DescribeTable failed: {Message}", ex.Message);
+            _logger.LogError(ex, "DescribeTable failed: {Message}", ex.Message);
             return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }

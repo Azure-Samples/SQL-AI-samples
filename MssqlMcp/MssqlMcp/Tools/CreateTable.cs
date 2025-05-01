@@ -9,7 +9,7 @@ namespace Mssql.McpServer;
 public partial class Tools
 {
     [McpServerTool, Description("Creates a new table in the SQL Database. Expects a valid CREATE TABLE SQL statement as input.")]
-    public async Task<object?> CreateTable(
+    public async Task<DbOperationResult> CreateTable(
         [Description("CREATE TABLE SQL statement")] string sql)
     {
         var conn = await _connectionFactory.GetOpenConnectionAsync();
@@ -24,7 +24,7 @@ public partial class Tools
         }
         catch (Exception ex)
         {
-            _logger?.LogError(ex, "CreateTable failed: {Message}", ex.Message);
+            _logger.LogError(ex, "CreateTable failed: {Message}", ex.Message);
             return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }

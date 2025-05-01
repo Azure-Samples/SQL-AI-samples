@@ -13,7 +13,7 @@ public partial class Tools
     private const string ListTablesQuery = @"SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' ORDER BY TABLE_SCHEMA, TABLE_NAME";
 
     [McpServerTool, Description("Lists all tables in the SQL Database.")]
-    public async Task<object?> ListTables()
+    public async Task<DbOperationResult> ListTables()
     {
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
@@ -29,7 +29,7 @@ public partial class Tools
         }
         catch (Exception ex)
         {
-            _logger?.LogError(ex, "ListTables failed: {Message}", ex.Message);
+            _logger.LogError(ex, "ListTables failed: {Message}", ex.Message);
             return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }
