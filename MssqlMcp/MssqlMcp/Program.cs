@@ -27,7 +27,7 @@ internal class Program
 
         // Register ISqlConnectionFactory and Tools for DI
         _ = builder.Services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>();
-        _ = builder.Services.AddScoped<Tools>();
+        _ = builder.Services.AddSingleton<Tools>();
 
         // Register MCP server and tools (instance-based)
         _ = builder.Services

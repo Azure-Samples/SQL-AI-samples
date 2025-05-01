@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 
+using Microsoft.Data.SqlClient;
+
 namespace Mssql.McpServer;
 
 public interface ISqlConnectionFactory
 {
-    Task<Microsoft.Data.SqlClient.SqlConnection> GetOpenConnectionAsync();
+    Task<SqlConnection> GetOpenConnectionAsync();
 }
-

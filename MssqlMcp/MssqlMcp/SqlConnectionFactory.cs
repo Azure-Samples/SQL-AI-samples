@@ -1,13 +1,15 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 
+using Microsoft.Data.SqlClient;
+
 namespace Mssql.McpServer;
 
 public class SqlConnectionFactory : ISqlConnectionFactory
 {
-    public async Task<Microsoft.Data.SqlClient.SqlConnection> GetOpenConnectionAsync()
+    public async Task<SqlConnection> GetOpenConnectionAsync()
     {
         var connectionString = SqlConnectionManager.GetSqlConfig();
-        var conn = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
+        var conn = new SqlConnection(connectionString);
         await conn.OpenAsync();
         return conn;
     }
