@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
 using System.Data;
-using ModelContextProtocol.Server;
 using Microsoft.Extensions.Logging;
+using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
 

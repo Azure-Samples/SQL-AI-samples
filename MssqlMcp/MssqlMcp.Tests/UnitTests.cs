@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-using Mssql.McpServer;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Mssql.McpServer;
 
 namespace MssqlMcp.Tests
 {

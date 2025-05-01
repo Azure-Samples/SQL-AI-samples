@@ -2,8 +2,8 @@
 
 using System.ComponentModel;
 using Microsoft.Data.SqlClient;
-using ModelContextProtocol.Server;
 using Microsoft.Extensions.Logging;
+using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
 
@@ -70,7 +70,7 @@ public partial class Tools
                     }
                     else
                     {
-                        return new DbOperationResult { Success = false, Error = $"Table '{name}' not found." };
+                        return new DbOperationResult(success: false, error: $"Table '{name}' not found.");
                     }
                 }
                 // Columns
@@ -128,13 +128,13 @@ public partial class Tools
                     }
                     result["constraints"] = constraints;
                 }
-                return new DbOperationResult { Success = true, Data = result };
+                return new DbOperationResult(success: true, data: result);
             }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "DescribeTable failed: {Message}", ex.Message);
-            return new DbOperationResult { Success = false, Error = ex.Message };
+            return new DbOperationResult(success: false, error: ex.Message);
         }
     }
 }

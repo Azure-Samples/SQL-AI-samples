@@ -62,7 +62,8 @@ internal class Program
             {
                 Console.Error.WriteLine($"Unhandled exception: {ex}");
             }
-            // Optionally, set a non-zero exit code
+
+            // Set a non-zero exit code
             Environment.ExitCode = 1;
         }
     }

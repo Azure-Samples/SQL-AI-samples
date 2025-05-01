@@ -1,10 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
 using System.ComponentModel;
-using System.Data;
 using Microsoft.Data.SqlClient;
-using ModelContextProtocol.Server;
 using Microsoft.Extensions.Logging;
+using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
 
@@ -21,16 +20,19 @@ public partial class Tools
             using (conn)
             {
                 using var cmd = new SqlCommand(ListTablesQuery, conn);
+                var tables = new List<string>();
                 using var reader = await cmd.ExecuteReaderAsync();
-                var table = new DataTable();
-                table.Load(reader);
-                return new DbOperationResult { Success = true, Data = DataTableToList(table) };
+                while (await reader.ReadAsync())
+                {
+                    tables.Add($"{reader.GetString(0)}.{reader.GetString(1)}");
+                }
+                return new DbOperationResult(success: true, data: tables);
             }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "ListTables failed: {Message}", ex.Message);
-            return new DbOperationResult { Success = false, Error = ex.Message };
+            return new DbOperationResult(success: false, error: ex.Message);
         }
     }
 }
