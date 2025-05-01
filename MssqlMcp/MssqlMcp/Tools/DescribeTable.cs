@@ -1,14 +1,16 @@
-using System.Data;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+
+using System.ComponentModel;
 using Microsoft.Data.SqlClient;
 using ModelContextProtocol.Server;
-using System.ComponentModel;
+using Microsoft.Extensions.Logging;
 
 namespace Mssql.McpServer;
 
-public static partial class MssqlMcpTools
+public partial class Tools
 {
     [McpServerTool, Description("Returns table schema")]
-    public static async Task<object?> DescribeTable(
+    public async Task<object?> DescribeTable(
         [Description("Name of table")] string name)
     {
         // Query for table metadata
@@ -43,93 +45,96 @@ public static partial class MssqlMcpTools
             FROM sys.key_constraints kc
             WHERE kc.parent_object_id = (SELECT object_id FROM sys.tables WHERE name = @TableName)";
 
-        var (conn, error) = await SqlConnectionManager.GetOpenConnectionAsync();
-        if (error != null) return error;
+        var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {
-            var result = new Dictionary<string, object?>();
-            // Table info
-            using (var cmd = new SqlCommand(TableInfoQuery, conn))
+            using (conn)
             {
-                cmd.Parameters.AddWithValue("@TableName", name);
-                using var reader = await cmd.ExecuteReaderAsync();
-                if (await reader.ReadAsync())
+                var result = new Dictionary<string, object?>();
+                // Table info
+                using (var cmd = new SqlCommand(TableInfoQuery, conn))
                 {
-                    result["table"] = new
+                    cmd.Parameters.AddWithValue("@TableName", name);
+                    using var reader = await cmd.ExecuteReaderAsync();
+                    if (await reader.ReadAsync())
                     {
-                        id = reader["id"],
-                        name = reader["name"],
-                        schema = reader["schema"],
-                        owner = reader["owner"],
-                        type = reader["type"],
-                        description = reader["description"] is DBNull ? null : reader["description"]
-                    };
-                }
-                else
-                {
-                    return new { success = false, error = $"Table '{name}' not found." };
-                }
-            }
-            // Columns
-            using (var cmd = new SqlCommand(ColumnsQuery, conn))
-            {
-                cmd.Parameters.AddWithValue("@TableName", name);
-                using var reader = await cmd.ExecuteReaderAsync();
-                var columns = new List<object>();
-                while (await reader.ReadAsync())
-                {
-                    columns.Add(new
+                        result["table"] = new
+                        {
+                            id = reader["id"],
+                            name = reader["name"],
+                            schema = reader["schema"],
+                            owner = reader["owner"],
+                            type = reader["type"],
+                            description = reader["description"] is DBNull ? null : reader["description"]
+                        };
+                    }
+                    else
                     {
-                        name = reader["name"],
-                        type = reader["type"],
-                        length = reader["length"],
-                        precision = reader["precision"],
-                        nullable = (bool)reader["nullable"],
-                        description = reader["description"] is DBNull ? null : reader["description"]
-                    });
+                        return new DbOperationResult { Success = false, Error = $"Table '{name}' not found." };
+                    }
                 }
-                result["columns"] = columns;
-            }
-            // Indexes
-            using (var cmd = new SqlCommand(IndexesQuery, conn))
-            {
-                cmd.Parameters.AddWithValue("@TableName", name);
-                using var reader = await cmd.ExecuteReaderAsync();
-                var indexes = new List<object>();
-                while (await reader.ReadAsync())
+                // Columns
+                using (var cmd = new SqlCommand(ColumnsQuery, conn))
                 {
-                    indexes.Add(new
+                    cmd.Parameters.AddWithValue("@TableName", name);
+                    using var reader = await cmd.ExecuteReaderAsync();
+                    var columns = new List<object>();
+                    while (await reader.ReadAsync())
                     {
-                        name = reader["name"],
-                        type = reader["type"],
-                        description = reader["description"] is DBNull ? null : reader["description"],
-                        keys = reader["keys"]
-                    });
+                        columns.Add(new
+                        {
+                            name = reader["name"],
+                            type = reader["type"],
+                            length = reader["length"],
+                            precision = reader["precision"],
+                            nullable = (bool)reader["nullable"],
+                            description = reader["description"] is DBNull ? null : reader["description"]
+                        });
+                    }
+                    result["columns"] = columns;
                 }
-                result["indexes"] = indexes;
-            }
-            // Constraints
-            using (var cmd = new SqlCommand(ConstraintsQuery, conn))
-            {
-                cmd.Parameters.AddWithValue("@TableName", name);
-                using var reader = await cmd.ExecuteReaderAsync();
-                var constraints = new List<object>();
-                while (await reader.ReadAsync())
+                // Indexes
+                using (var cmd = new SqlCommand(IndexesQuery, conn))
                 {
-                    constraints.Add(new
+                    cmd.Parameters.AddWithValue("@TableName", name);
+                    using var reader = await cmd.ExecuteReaderAsync();
+                    var indexes = new List<object>();
+                    while (await reader.ReadAsync())
                     {
-                        name = reader["name"],
-                        type = reader["type"],
-                        keys = reader["keys"]
-                    });
+                        indexes.Add(new
+                        {
+                            name = reader["name"],
+                            type = reader["type"],
+                            description = reader["description"] is DBNull ? null : reader["description"],
+                            keys = reader["keys"]
+                        });
+                    }
+                    result["indexes"] = indexes;
                 }
-                result["constraints"] = constraints;
+                // Constraints
+                using (var cmd = new SqlCommand(ConstraintsQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TableName", name);
+                    using var reader = await cmd.ExecuteReaderAsync();
+                    var constraints = new List<object>();
+                    while (await reader.ReadAsync())
+                    {
+                        constraints.Add(new
+                        {
+                            name = reader["name"],
+                            type = reader["type"],
+                            keys = reader["keys"]
+                        });
+                    }
+                    result["constraints"] = constraints;
+                }
+                return new DbOperationResult { Success = true, Data = result };
             }
-            return result;
         }
         catch (Exception ex)
         {
-            return new { success = false, error = ex.Message };
+            _logger?.LogError(ex, "DescribeTable failed: {Message}", ex.Message);
+            return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }
 }

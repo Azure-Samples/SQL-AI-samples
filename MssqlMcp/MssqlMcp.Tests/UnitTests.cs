@@ -1,53 +1,60 @@
-using System.Threading.Tasks;
-using Xunit;
-using Moq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+
 using Mssql.McpServer;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace MssqlMcp.Tests
 {
-    public class MssqlMcpToolsTests
+    public sealed class MssqlMcpTests
     {
-        static MssqlMcpToolsTests()
+        private readonly string _tableName;
+        private readonly Tools _tools;
+        public MssqlMcpTests()
         {
-            // Ensure the test table does not exist before each test
-            var _ = MssqlMcpTools.DropTable("DROP TABLE IF EXISTS TestTable").GetAwaiter().GetResult();
+            _tableName = $"TestTable_{Guid.NewGuid():N}";
+            var connectionFactory = new SqlConnectionFactory();
+            var loggerMock = new Mock<ILogger<Tools>>();
+            _tools = new Tools(connectionFactory, loggerMock.Object);
+        }
+
+        internal void Dispose()
+        {
+            // Cleanup: Drop the table after each test
+            var _ = _tools.DropTable($"DROP TABLE IF EXISTS {_tableName}").GetAwaiter().GetResult();
         }
 
         [Fact]
         public async Task CreateTable_ReturnsSuccess_WhenSqlIsValid()
         {
-            // Arrange
-            var sql = "CREATE TABLE TestTable (Id INT PRIMARY KEY)";
-            // Act
-            var result = await MssqlMcpTools.CreateTable(sql);
-            // Assert
+            var sql = $"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)";
+            var result = await _tools.CreateTable(sql) as DbOperationResult;
             Assert.NotNull(result);
-            Assert.True((bool?)result.GetType().GetProperty("success")?.GetValue(result) ?? false);
+            Assert.True(result.Success);
         }
 
         [Fact]
         public async Task DescribeTable_ReturnsSchema_WhenTableExists()
         {
-            var result = await MssqlMcpTools.DescribeTable("TestTable");
+            // Ensure table exists
+            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
+            Assert.NotNull(createResult);
+            Assert.True(createResult.Success);
+
+            var result = await _tools.DescribeTable(_tableName) as DbOperationResult;
             Assert.NotNull(result);
-            var type = result.GetType();
-            // Should not be an error object
-            var errorProp = type.GetProperty("error");
-            Assert.True(errorProp == null || errorProp.GetValue(result) == null, $"DescribeTable returned error: {errorProp?.GetValue(result)}");
-            // Should have table, columns, indexes, constraints
-            var dict = result as System.Collections.IDictionary;
+            Assert.True(result.Success);
+            var dict = result.Data as System.Collections.IDictionary;
             Assert.NotNull(dict);
             Assert.True(dict.Contains("table"));
             Assert.True(dict.Contains("columns"));
             Assert.True(dict.Contains("indexes"));
             Assert.True(dict.Contains("constraints"));
-            // Table info should have name and schema
             var table = dict["table"];
             Assert.NotNull(table);
             var tableType = table.GetType();
             Assert.NotNull(tableType.GetProperty("name"));
             Assert.NotNull(tableType.GetProperty("schema"));
-            // Columns should be a list
             var columns = dict["columns"] as System.Collections.IEnumerable;
             Assert.NotNull(columns);
         }
@@ -55,105 +62,129 @@ namespace MssqlMcp.Tests
         [Fact]
         public async Task DropTable_ReturnsSuccess_WhenSqlIsValid()
         {
-            var sql = "DROP TABLE IF EXISTS TestTable";
-            var result = await MssqlMcpTools.DropTable(sql);
+            var sql = $"DROP TABLE IF EXISTS {_tableName}";
+            var result = await _tools.DropTable(sql) as DbOperationResult;
             Assert.NotNull(result);
-            Assert.True((bool?)result.GetType().GetProperty("success")?.GetValue(result) ?? false);
+            Assert.True(result.Success);
         }
 
         [Fact]
         public async Task InsertData_ReturnsSuccess_WhenSqlIsValid()
         {
-            var sql = "INSERT INTO TestTable (Id) VALUES (1)";
-            var result = await MssqlMcpTools.InsertData(sql);
+            // Ensure table exists
+            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
+            Assert.NotNull(createResult);
+            Assert.True(createResult.Success);
+
+            var sql = $"INSERT INTO {_tableName} (Id) VALUES (1)";
+            var result = await _tools.InsertData(sql) as DbOperationResult;
             Assert.NotNull(result);
-            Assert.True((bool?)result.GetType().GetProperty("success")?.GetValue(result) ?? false);
+            Assert.True(result.Success);
+            Assert.True(result.RowsAffected.HasValue && result.RowsAffected.Value > 0);
         }
 
         [Fact]
         public async Task ListTables_ReturnsTables()
         {
-            var result = await MssqlMcpTools.ListTables();
+            var result = await _tools.ListTables() as DbOperationResult;
             Assert.NotNull(result);
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
         }
 
         [Fact]
         public async Task ReadData_ReturnsData_WhenSqlIsValid()
         {
-            var sql = "SELECT * FROM TestTable";
-            var result = await MssqlMcpTools.ReadData(sql);
+            // Ensure table exists and has data
+            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
+            Assert.NotNull(createResult);
+            Assert.True(createResult.Success);
+            var insertResult = await _tools.InsertData($"INSERT INTO {_tableName} (Id) VALUES (1)") as DbOperationResult;
+            Assert.NotNull(insertResult);
+            Assert.True(insertResult.Success);
+
+            var sql = $"SELECT * FROM {_tableName}";
+            var result = await _tools.ReadData(sql) as DbOperationResult;
             Assert.NotNull(result);
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
         }
 
         [Fact]
         public async Task UpdateData_ReturnsSuccess_WhenSqlIsValid()
         {
-            var sql = "UPDATE TestTable SET Id = 2 WHERE Id = 1";
-            var result = await MssqlMcpTools.UpdateData(sql);
+            // Ensure table exists and has data
+            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
+            Assert.NotNull(createResult);
+            Assert.True(createResult.Success);
+            var insertResult = await _tools.InsertData($"INSERT INTO {_tableName} (Id) VALUES (1)") as DbOperationResult;
+            Assert.NotNull(insertResult);
+            Assert.True(insertResult.Success);
+
+            var sql = $"UPDATE {_tableName} SET Id = 2 WHERE Id = 1";
+            var result = await _tools.UpdateData(sql) as DbOperationResult;
             Assert.NotNull(result);
-            Assert.True((bool?)result.GetType().GetProperty("success")?.GetValue(result) ?? false);
+            Assert.True(result.Success);
+            Assert.True(result.RowsAffected.HasValue);
         }
 
         [Fact]
         public async Task CreateTable_ReturnsError_WhenSqlIsInvalid()
         {
-            // Arrange
-            var sql = "CREATE TABLE"; // Invalid SQL
-            // Act
-            var result = await MssqlMcpTools.CreateTable(sql);
-            // Assert
+            var sql = "CREATE TABLE";
+            var result = await _tools.CreateTable(sql) as DbOperationResult;
             Assert.NotNull(result);
-            var error = result.GetType().GetProperty("error")?.GetValue(result)?.ToString();
-            Assert.Contains("syntax", error, StringComparison.OrdinalIgnoreCase);
+            Assert.False(result.Success);
+            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
         public async Task DescribeTable_ReturnsError_WhenTableDoesNotExist()
         {
-            var result = await MssqlMcpTools.DescribeTable("NonExistentTable");
+            var result = await _tools.DescribeTable("NonExistentTable") as DbOperationResult;
             Assert.NotNull(result);
-            var error = result.GetType().GetProperty("error")?.GetValue(result)?.ToString();
-            Assert.Contains("Table 'NonExistentTable' not found.", error, StringComparison.OrdinalIgnoreCase);
+            Assert.False(result.Success);
+            Assert.Contains("Table 'NonExistentTable' not found.", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
         public async Task DropTable_ReturnsError_WhenSqlIsInvalid()
         {
-            var sql = "DROP"; // Invalid SQL
-            var result = await MssqlMcpTools.DropTable(sql);
+            var sql = "DROP";
+            var result = await _tools.DropTable(sql) as DbOperationResult;
             Assert.NotNull(result);
-            var error = result.GetType().GetProperty("error")?.GetValue(result)?.ToString();
-            Assert.Contains("syntax", error, StringComparison.OrdinalIgnoreCase);
+            Assert.False(result.Success);
+            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
         public async Task InsertData_ReturnsError_WhenSqlIsInvalid()
         {
-            var sql = "INSERT INTO TestTable"; // Invalid SQL
-            var result = await MssqlMcpTools.InsertData(sql);
+            var sql = "INSERT INTO TestTable";
+            var result = await _tools.InsertData(sql) as DbOperationResult;
             Assert.NotNull(result);
-            var error = result.GetType().GetProperty("error")?.GetValue(result)?.ToString();
-            Assert.Contains("syntax", error, StringComparison.OrdinalIgnoreCase);
+            Assert.False(result.Success);
+            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
         public async Task ReadData_ReturnsError_WhenSqlIsInvalid()
         {
-            var sql = "SELECT FROM"; // Invalid SQL
-            var result = await MssqlMcpTools.ReadData(sql);
+            var sql = "SELECT FROM";
+            var result = await _tools.ReadData(sql) as DbOperationResult;
             Assert.NotNull(result);
-            var error = result.GetType().GetProperty("error")?.GetValue(result)?.ToString();
-            Assert.Contains("syntax", error, StringComparison.OrdinalIgnoreCase);
+            Assert.False(result.Success);
+            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
         public async Task UpdateData_ReturnsError_WhenSqlIsInvalid()
         {
-            var sql = "UPDATE TestTable"; // Invalid SQL
-            var result = await MssqlMcpTools.UpdateData(sql);
+            var sql = "UPDATE TestTable";
+            var result = await _tools.UpdateData(sql) as DbOperationResult;
             Assert.NotNull(result);
-            var error = result.GetType().GetProperty("error")?.GetValue(result)?.ToString();
-            Assert.Contains("syntax", error, StringComparison.OrdinalIgnoreCase);
+            Assert.False(result.Success);
+            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

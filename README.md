@@ -68,6 +68,12 @@ You can also use the Getting Started samples available on LangChain website, but
 
 https://github.com/Azure-Samples/azure-sql-langchain
 
+### MSSQL MCP Server
+
+A Model Context Protocol (MCP) server for MSSQL Databases using the official [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk).
+
+https://github.com/Azure-Samples/SQL-AI-samples/tree/main/MssqlMcp
+
 ## End-To-End Samples
 
 ### Similar Content Finder

@@ -1,26 +1,31 @@
-using Microsoft.Data.SqlClient;
-using ModelContextProtocol.Server;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+
 using System.ComponentModel;
+using ModelContextProtocol.Server;
+using Microsoft.Extensions.Logging;
 
 namespace Mssql.McpServer;
 
-public static partial class MssqlMcpTools
+public partial class Tools
 {
     [McpServerTool, Description("Creates a new table in the SQL Database. Expects a valid CREATE TABLE SQL statement as input.")]
-    public static async Task<object?> CreateTable(
+    public async Task<object?> CreateTable(
         [Description("CREATE TABLE SQL statement")] string sql)
     {
-        var (conn, error) = await SqlConnectionManager.GetOpenConnectionAsync();
-        if (error != null) return error;
+        var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {
-            using var cmd = new SqlCommand(sql, conn);
-            await cmd.ExecuteNonQueryAsync();
-            return new { success = true };
+            using (conn)
+            {
+                using var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, conn);
+                _ = await cmd.ExecuteNonQueryAsync();
+                return new DbOperationResult { Success = true };
+            }
         }
         catch (Exception ex)
         {
-            return new { success = false, error = ex.Message };
+            _logger?.LogError(ex, "CreateTable failed: {Message}", ex.Message);
+            return new DbOperationResult { Success = false, Error = ex.Message };
         }
     }
 }
