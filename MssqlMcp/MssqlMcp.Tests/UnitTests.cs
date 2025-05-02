@@ -187,5 +187,28 @@ namespace MssqlMcp.Tests
             Assert.False(result.Success);
             Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
+
+        [Fact]
+        public async Task SqlInjection_NotExecuted_When_QueryFails()
+        {
+            // Ensure table exists
+            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY, Name NVARCHAR(100))") as DbOperationResult;
+            Assert.NotNull(createResult);
+            Assert.True(createResult.Success);
+
+            // Attempt SQL Injection
+            var maliciousInput = "1; DROP TABLE " + _tableName + "; --";
+            var sql = $"INSERT INTO {_tableName} (Id, Name) VALUES ({maliciousInput}, 'Malicious')";
+            var result = await _tools.InsertData(sql) as DbOperationResult;
+
+            Assert.NotNull(result);
+            Assert.False(result.Success);
+            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
+
+            // Verify table still exists
+            var describeResult = await _tools.DescribeTable(_tableName) as DbOperationResult;
+            Assert.NotNull(describeResult);
+            Assert.True(describeResult.Success);
+        }
     }
 }
