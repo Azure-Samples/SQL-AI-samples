@@ -37,12 +37,16 @@ This project is a .NET 8 console application implementing a Model Context Protoc
 
 2. VSCode: **Start VSCode, and add MCP Server config to VSCode Settings**
 
+Load the settings file in VSCode (Ctrl+Shift+P > Preferences: Open Settings (JSON)).
+
+Add a new MCP Server with the following settings:
+
 ---
 ```json
-"MSSQL MCP": {
-	"type": "stdio",
-	"command": "C:\\src\\MssqlMcp\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
-	"env": {
+    "MSSQL MCP": {
+        "type": "stdio",
+        "command": "C:\\src\\MssqlMcp\\MssqlMcp\\bin\\Debug\\net8.0\\MssqlMcp.exe",
+        "env": {
             "CONNECTION_STRING": "Server=.;Database=test;Trusted_Connection=True;TrustServerCertificate=True"
             }
 }
@@ -56,7 +60,6 @@ e.g. your MCP settings should look like this if "MSSQL MCP" is your own MCP Serv
 ---
 ```json
 "mcp": {
-
     "servers": {
         "MSSQL MCP": {
             "type": "stdio",
@@ -69,11 +72,10 @@ e.g. your MCP settings should look like this if "MSSQL MCP" is your own MCP Serv
 ```
 ---
 
-And example of using a connection string for Azure SQL Database:
+An example of using a connection string for Azure SQL Database:
 ---
 ```json
 "mcp": {
-
     "servers": {
         "MSSQL MCP": {
             "type": "stdio",
@@ -88,13 +90,13 @@ And example of using a connection string for Azure SQL Database:
 
 **Run the MCP Server**
 
-Save the Settings file, and then you should see the "Start" button appear in the Settings json.  Click "start" to start the MCP Server.
+Save the Settings file, and then you should see the "Start" button appear in the settings.json.  Click "Start" to start the MCP Server. (You can then click on "Running" to view the Output window).
 
 Start Chat (Ctrl+Shift+I), make sure Agent Mode is selected.
 
 Click the tools icon, and ensure the "MSSQL MCP" tools are selected.
 
-Then type in the chat window "List tables in DB" and hit enter.
+Then type in the chat window "List tables in the database" and hit enter. (If you have other tools loaded, you may need to specify "MSSQL MCP" in the initial prompt, e.g. "Using MSSQL MCP, list tables").
 
 3. Claude Desktop: **Add MCP Server config to Claude Desktop**
 
@@ -116,12 +118,13 @@ Add a new MCP Server with the following settings:
     }
 }
 ```
+---
 
-Save the file, start a new Chat, you'll see the "Tools" icon, it should list 8 MSSQL MCP tools.
+Save the file, start a new Chat, you'll see the "Tools" icon, it should list 7 MSSQL MCP tools.
 
 # Troubleshooting
 
-1. If you get a connection reset error using "Active Directory Default", try "Active Directory Interactive"
+1. If you get a "Task canceled" error using "Active Directory Default", try "Active Directory Interactive".
 
 
 

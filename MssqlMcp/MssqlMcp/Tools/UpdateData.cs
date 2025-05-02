@@ -9,7 +9,11 @@ namespace Mssql.McpServer;
 
 public partial class Tools
 {
-    [McpServerTool, Description("Updates data in a table in the SQL Database. Expects a valid UPDATE SQL statement as input.")]
+    [McpServerTool(
+        Title = "Update Data",
+        ReadOnly = false,
+        Destructive = true),
+        Description("Updates data in a table in the SQL Database. Expects a valid UPDATE SQL statement as input.")]
     public async Task<DbOperationResult> UpdateData(
         [Description("UPDATE SQL statement")] string sql)
     {

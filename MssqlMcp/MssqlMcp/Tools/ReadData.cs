@@ -9,7 +9,12 @@ using ModelContextProtocol.Server;
 namespace Mssql.McpServer;
 public partial class Tools
 {
-    [McpServerTool, Description("Executes SQL queries against SQL Database to read data")]
+    [McpServerTool(
+        Title = "Read Data",
+        ReadOnly = true,
+        Idempotent = true,
+        Destructive = false),
+        Description("Executes SQL queries against SQL Database to read data")]
     public async Task<DbOperationResult> ReadData(
         [Description("SQL query to execute")] string sql)
     {

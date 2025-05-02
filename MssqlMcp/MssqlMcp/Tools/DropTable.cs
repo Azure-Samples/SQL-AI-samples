@@ -9,7 +9,11 @@ namespace Mssql.McpServer;
 
 public partial class Tools
 {
-    [McpServerTool, Description("Drops a table in the SQL Database. Expects a valid DROP TABLE SQL statement as input.")]
+    [McpServerTool(
+        Title = "Drop Table",
+        ReadOnly = false,
+        Destructive = true),
+        Description("Drops a table in the SQL Database. Expects a valid DROP TABLE SQL statement as input.")]
     public async Task<DbOperationResult> DropTable(
         [Description("DROP TABLE SQL statement")] string sql)
     {

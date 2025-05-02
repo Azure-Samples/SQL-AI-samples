@@ -9,7 +9,11 @@ namespace Mssql.McpServer;
 
 public partial class Tools
 {
-    [McpServerTool, Description("Creates a new table in the SQL Database. Expects a valid CREATE TABLE SQL statement as input.")]
+    [McpServerTool(
+        Title = "Create Table",
+        ReadOnly = false,
+        Destructive = false),
+        Description("Creates a new table in the SQL Database. Expects a valid CREATE TABLE SQL statement as input.")]
     public async Task<DbOperationResult> CreateTable(
         [Description("CREATE TABLE SQL statement")] string sql)
     {
