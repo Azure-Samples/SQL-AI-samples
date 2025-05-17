@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # This powershell script takes a $projectPath
 # as a parameter and copies the tSQLt.dacpac file to the $projectPath\Tests
 # from the "$env:TEMP\tSQLt\tSQLtDacpacs" folder

@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # Return the ADO.Net SQL connection string by running `sqlcmd config connection-strings`, which will return
 #
 

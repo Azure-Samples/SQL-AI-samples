@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # Use the dotnet CLI to see if Build.Sql.Templates are installed, if not, install them
 
 # Check if Build.Sql.Templates is installed

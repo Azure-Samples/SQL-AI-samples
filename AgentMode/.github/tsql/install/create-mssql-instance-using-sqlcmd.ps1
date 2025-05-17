@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # This script takes a parameter which is the context-name (passed into sqlcmd)
 # and creates a new SQL Server instance using the sqlcmd command line tool:
 #   `sqlcmd create mssql --tag 2019-latest --context-name $ContextName`

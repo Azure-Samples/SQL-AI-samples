@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # -SourceFile e.g. ConfMS/bin/Debug/ConfMS.dacpac
 param (
     [string]$ProjectName

@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # Install tSQLt if it is not already installed
 
 # If tSQLt is not installed:

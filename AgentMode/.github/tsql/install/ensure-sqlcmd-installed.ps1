@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
 # Ensure sqlcmd is installed in C:\Program Files\SqlCmd\sqlcmd.exe
 
 # Test if 'sqlcmd' is available in `C:\Program Files\SqlCmd`

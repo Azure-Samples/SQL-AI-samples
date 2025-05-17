@@ -1,4 +1,8 @@
-# A powershell script for Windows to check if any desktop container runtime is available and running
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT license.
+
+# A powershell script for Windows to check if any desktop container runtime is
+# available and running
 
 function Write-ContainerRuntimeInstructions {
     Write-Host "To install a container runtime, please visit the following links:"
