@@ -74,6 +74,12 @@ A Model Context Protocol (MCP) server for MSSQL Databases using the official [MC
 
 https://github.com/Azure-Samples/SQL-AI-samples/tree/main/MssqlMcp
 
+### Using Agent Mode to build and test SQL Database Projects
+
+An example of how to use VSCode Agent Mode to carry out a multi-step chain-of-thought process to iteratively build and test SQL Database projects.
+
+https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AgentMode
+
 ## End-To-End Samples
 
 ### Similar Content Finder
