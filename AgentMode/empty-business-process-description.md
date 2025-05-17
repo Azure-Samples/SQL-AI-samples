@@ -5,20 +5,10 @@ Create a SQL Server application that implements a _______ called `_____`.
 
 NOTES: 
 - You (the AI Agent) **must not** edit this file.
-- Human reader (not the AI)
- 1. Copy and paste the chat below into Agent-Mode.
- 2. You'll need to type `proceed` about 15 times.
- 3. At the end you should have about "50 files changed", press the `Keep` button.
-
-```chat
-#copilot-instructions.md
-#guidelines-to-ai-assistants.md
-#tsql-best-practices.md
-
-Follow instructions in the current file
-```
-
-NOTE TO LLM: **Do not** edit this file!
+- Human reader (not the AI):
+  1. Copy and paste `Follow instructions in current file` into the Agent-Mode chat window.
+  2. You'll need to type `proceed` about 15 times.
+  3. At the end you should have about "40 files changed", press the `Keep` button.
 
 # Roles
 

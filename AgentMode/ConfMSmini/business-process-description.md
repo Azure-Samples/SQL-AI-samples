@@ -7,8 +7,9 @@ NOTES:
 - You (the AI Agent) **must not** edit this file.
 - Human reader (not the AI):
   1. Copy and paste `Follow instructions in current file` into the Agent-Mode chat window.
-  2. You'll need to type `proceed` about 15 times.
-  3. At the end you should have about "40 files changed", press the `Keep` button.
+  2. You'll need to type `proceed` about 15 times. (HINT: arrow up key to repeat)
+  3. After the final step, the reponse should be something like: "Your SQL Database Project is now complete and fully tested".  
+    - You should have about "40 files changed", press the `Keep` button.
 
 # Roles
 
