@@ -20,9 +20,10 @@ if (!(Test-Path $sourceFile)) {
 
 # Print the source file path
 Write-Host "Source file: $sourceFile"
+
 # Run SqlPackage.exe /Action:Publish /SourceFile:$SourceFile /TargetConnectionString:$targetConnectionString /p:IncludeCompositeObjects=true
 # Note $targetConnectionString can have $ in it
-$publishCommand = "SqlPackage.exe /Action:Publish /SourceFile:$sourceFile /TargetConnectionString:$quotedConnectionString /p:IncludeCompositeObjects=true"
+$publishCommand = "$env:USERPROFILE\.dotnet\tools\SqlPackage.exe /Action:Publish /SourceFile:$sourceFile /TargetConnectionString:$quotedConnectionString /p:IncludeCompositeObjects=true"
 $publishCommand = $publishCommand -replace '\$', '`$' # Escape $ in the connection string
 Write-Host "Running command: $publishCommand"
 Invoke-Expression $publishCommand
