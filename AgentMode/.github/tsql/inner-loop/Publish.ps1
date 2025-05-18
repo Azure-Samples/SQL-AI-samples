@@ -20,11 +20,19 @@ if (!(Test-Path $sourceFile)) {
 
 # Print the source file path
 Write-Host "Source file: $sourceFile"
-# Run SqlPackage.exe /Action:Publish /SourceFile:$SourceFile /TargetConnectionString:$targetConnectionString /p:IncludeCompositeObjects=true
-# Note $targetConnectionString can have $ in it
+
+# Mask password in connection string for display
+$maskedConnectionString = $targetConnectionString -replace '(?i)(Password|Pwd)=([^;]*)', '$1=*****'
+
+# Print the publish command with masked password
+$maskedQuotedConnectionString = '"' + $maskedConnectionString + '"'
+$maskedPublishCommand = "$env:USERPROFILE\.dotnet\tools\SqlPackage.exe /Action:Publish /SourceFile:$sourceFile /TargetConnectionString:$maskedQuotedConnectionString /p:IncludeCompositeObjects=true"
+$maskedPublishCommand = $maskedPublishCommand -replace '\$', '`$' # Escape $ in the connection string
+Write-Host "Running command: $maskedPublishCommand"
+
+# Run the actual publish command (with real password)
 $publishCommand = "$env:USERPROFILE\.dotnet\tools\SqlPackage.exe /Action:Publish /SourceFile:$sourceFile /TargetConnectionString:$quotedConnectionString /p:IncludeCompositeObjects=true"
 $publishCommand = $publishCommand -replace '\$', '`$' # Escape $ in the connection string
-Write-Host "Running command: $publishCommand"
 Invoke-Expression $publishCommand
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Failed to publish the DACPAC. Please check the output for errors."
