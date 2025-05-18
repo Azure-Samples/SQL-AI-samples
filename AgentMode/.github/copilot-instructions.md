@@ -236,7 +236,15 @@ and
   - You **MUST** start all stored procedure names with the word `test`.
   - You **MUST NOT** put a CREATE SCHEMA statement in the test .sql files. (this is because tSQLt already created the [UserStoryTests] schema for you)
 
-### Step 12: User to check .sql files in ./Tests folder have all been saved
+### Step 12: Ensure all User Stories are fully implemented as tSQLt tests.
+
+**Thought:** The above step can create .sql files in the `./Tests` folder, that have NotYetImplemented in them.
+
+**Action:**
+- Ensure each User Story is fully implemented as a tSQLt test in a .sql file.
+- Exhaustively check each line of each user story is full validated by a test.
+
+### Step 13: Check .sql files in ./Tests folder have all been saved
 
 **Thought:** The above step can take a long time to complete, and Agent-Mode runs
  in parallel and asynchronously, so user needs to check that all the .sql files 
@@ -246,13 +254,13 @@ and
 - The user must check that all the test .sql files have been saved in the `./Tests` folder.
 - If not, user must wait to proceed until all .sql files in the ./Tests folder have been saved by the agent.
 
-### Step 13: Build and Publish the tSQLt User Story tests to SQL Server
+### Step 14: Build and Publish the tSQLt User Story tests to SQL Server
 
 **Action:**
 - Build by running `Build.ps1` (which takes `-ProjectName` as the single parameter) and ensure no errors.
 - Publish to the SQL Server using SqlPackage by running `Publish.ps1` (which takes `-ProjectName` as the single parameter) and ensure no errors.
 
-### Step 14: Run user story tests until they all pass.
+### Step 15: Run user story tests until they all pass.
 
 **Action:**
 - Run `Test.ps1` (which takes `-ProjectName` as the single parameter) to run all the tests in the [UserStoryTests] schema. `Test.ps1` is in the `./.github/tsql/inner-loop` folder.
