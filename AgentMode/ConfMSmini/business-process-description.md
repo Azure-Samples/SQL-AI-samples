@@ -87,11 +87,12 @@ The operations per role are:
 - All Roles (these operations are available to all roles)
   - Register as a user
     - Register as user should generate a unique username (if one is not passed in) using the First Name and Last Name, it must be unique.  By default use the first 6 characters of the first name, and the first two characters of the 2nd name.  If the username is not unique, append a number to the end of the username, starting with 1.  For example, if the first name is "John" and the last name is "Doe", the username would be "johndo".  If that username already exists, the next one would be "johndo1", and so on.
+    - Takes a role type as parameter (attendee, speaker, organizer)
   - Get username
     Based on first name and last name return the username.
   - See a list of conferences (that haven't happened yet)
 - Organizer
-  - Register as a user (implicitly assign the organizer, attendee, speaker role)
+  - Register as a user
   - Add a conference
   - Add a ticket type
   - See ticket sales
@@ -104,7 +105,7 @@ The operations per role are:
   - Buy a ticket for a conference
   - Build a list of sessions they want to attend for a conference
 - Speakers
-  - Register as a user (implicitly assign the attendee and speaker role)
+  - Register as a user
   - Submit session proposal for a conference
 
 # User Stories
