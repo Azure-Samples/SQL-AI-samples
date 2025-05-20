@@ -8,7 +8,7 @@ NOTES:
 - Human reader (not the AI):
   1. Copy and paste `Follow instructions in current file` into the Agent-Mode chat window.
   2. You'll need to type `proceed` about 15 times.
-  3. At the end you should have about "40 files changed", press the `Keep` button.
+  3. At the end you should have about "n files changed", press the `Keep` button.
 
 # Roles
 

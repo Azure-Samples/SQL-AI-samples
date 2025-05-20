@@ -78,14 +78,17 @@ NOTES:
 
 **Thought:** Ensure all dependencies are installed for the SQL Database Project.  Make sure you run these actions one at a time (don't try to concatenate them with ; or &).
 
-
 **Action:**
 - Ensure a container runtime (e.g. docker or podman) is running by running `./.github/tsql/install/is-container-runtime-running.ps1`
   - If a container runtime is not running, ensure the user does not proceed until a container runtime is installed and running.
-- Ensure `sqlcmd` is installed by running `./.github/tsql/install/ensure-sqlcmd-installed.ps1`
-- Ensure `Build.Sql.Templates` is installed by running `./.github/tsql/install/ensure-build-sql-templates-installed.ps1`  
 - Ensure `SqlPackage` is installed by running `./.github/tsql/install/ensure-sqlpackage-installed.ps1`
-  - NOTE: If the following message is returned after installing `SqlPackage`: `Since you just installed the .NET SDK, you will need to reopen the Command Prompt window before running the tool you installed.`, run `exit` in the terminal window, so another terminal window will be created for the next command.
+  - NOTE: If the following message is returned after installing `SqlPackage`: `Since you just installed the .NET SDK, you will need
+  to reopen the Command Prompt window before running the tool you installed.`, run `exit` in the
+  terminal window, so another terminal window will be created for the next command.
+    - NOTE: Running `exit` in the chat window will cause the Agent to hang.  The user will need to clik the `Stop` button in the
+    chat window to stop the agent and type `proceed` to continue.
+- Ensure `Build.Sql.Templates` is installed by running `./.github/tsql/install/ensure-build-sql-templates-installed.ps1`  
+- Ensure `sqlcmd` is installed by running `./.github/tsql/install/ensure-sqlcmd-installed.ps1`
 
 ### Step 2: Create a Local SQL Server Instance
 
