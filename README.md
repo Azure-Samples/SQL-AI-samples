@@ -23,7 +23,8 @@ This repo hosts samples meant to help design [AI applications built on data from
     - [Similarity Search with FAISS and Azure SQL](#similarity-search-with-faiss-and-azure-sql)
     - [Build your own IVFFlat index with KMeans](#build-your-own-ivfflat-index-with-kmeans)
 - [Workshops](#workshops)
-    - [Build an AI App GraphQL Endpoint with SQL DB in Fabric​](#build-an-ai-app-graphql-endpoint-with-sql-db-in-fabric​)     
+    - [Azure SQL Cryptozoology AI Embeddings Lab​](#azure-sql-cryptozoology-ai-embeddings-lab​)  
+    - [Build an AI App GraphQL Endpoint with SQL DB in Fabric​](#build-an-ai-app-graphql-endpoint-with-sql-db-in-fabric​)
 
 ## AI Features Samples
 
@@ -136,6 +137,12 @@ https://github.com/Azure-Samples/SQL-AI-samples/tree/main/AzureSQLFaiss
 This sample demonstrates how to perform Approximate Nearest Neighbor (ANN) search on a vector column in Azure SQL DB using KMeans clustering, a technique known as IVFFlat or Cell-Probing. The project utilizes the SciKit Learn library for clustering, storing results in a SQL DB table to facilitate ANN search. This approach is beneficial for speeding up vector searches in Azure SQL DB. 
 
 ## Workshops
+
+### Azure SQL Cryptozoology AI Embeddings Lab
+
+Dive into a unique cryptozoology experience using Azure SQL and Azure AI to uncover intriguing (and true) connections among cryptids worldwide.
+
+[https://github.com/Azure-Samples/sql-in-fabric-ai-embeddings-workshop](https://github.com/AzureSQLDB/azure-sql-cryptozoology-ai-embeddings-lab)
 
 ### Build an AI App GraphQL Endpoint with SQL DB in Fabric​
 
