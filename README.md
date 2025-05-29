@@ -23,8 +23,8 @@ This repo hosts samples meant to help design [AI applications built on data from
     - [Similarity Search with FAISS and Azure SQL](#similarity-search-with-faiss-and-azure-sql)
     - [Build your own IVFFlat index with KMeans](#build-your-own-ivfflat-index-with-kmeans)
 - [Workshops](#workshops)
-    - [Azure SQL Cryptozoology AI Embeddings Lab​](#azure-sql-cryptozoology-ai-embeddings-lab​)
-    - [Build an AI App GraphQL Endpoint with SQL DB in Fabric​](#build-an-ai-app-graphql-endpoint-with-sql-db-in-fabric​)
+    - [Azure SQL Cryptozoology AI Embeddings Lab​](#azure-sql-cryptozoology-ai-embeddings-lab)
+    - [Build an AI App GraphQL Endpoint with SQL DB in Fabric​](#build-an-ai-app-graphql-endpoint-with-sql-db-in-fabric)
 
 ## AI Features Samples
 
