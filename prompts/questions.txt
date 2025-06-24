@@ -1,0 +1,2 @@
+query the database: how many employees per job title?
+query the database: : group orders by product
