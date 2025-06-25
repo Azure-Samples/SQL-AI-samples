@@ -25,6 +25,7 @@ export class UpdateDataTool implements Tool {
   } as any;
 
   async run(params: any) {
+    let query: string | undefined;
     try {
       const { tableName, updates, whereClause } = params;
       
@@ -44,7 +45,7 @@ export class UpdateDataTool implements Tool {
         })
         .join(", ");
 
-      const query = `UPDATE [${tableName}] SET ${setClause} WHERE ${whereClause}`;
+      query = `UPDATE ${tableName} SET ${setClause} WHERE ${whereClause}`;
       const result = await request.query(query);
       
       return {
@@ -56,7 +57,7 @@ export class UpdateDataTool implements Tool {
       console.error("Error updating data:", error);
       return {
         success: false,
-        message: `Failed to update data: ${error}`,
+        message: `Failed to update data ${query ? ` with '${query}'` : ''}: ${error}`,
       };
     }
   }
