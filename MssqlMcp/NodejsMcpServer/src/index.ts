@@ -25,7 +25,7 @@ import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 // Load environment variables
 dotenv.config({ path: './src/variables.env' });
 
-// Azure SQL Database connection configuration
+// MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
 
 

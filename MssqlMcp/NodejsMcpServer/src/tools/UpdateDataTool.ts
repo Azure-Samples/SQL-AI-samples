@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class UpdateDataTool implements Tool {
   [key: string]: any;
   name = "update_data";
-  description = "Updates data in an Azure SQL Database table by its ID";
+  description = "Updates data in an MSSQL Database table by its ID";
   inputSchema = {
     type: "object",
     properties: {

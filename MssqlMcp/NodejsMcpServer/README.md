@@ -1,17 +1,17 @@
-# Azure SQL DB MCP  Server
+# MSSQL Database MCP  Server
 
 <div align="center">
-  <img src="./src/img/logo.png" alt="Azure SQL DB MCP server logo" width="400"/>
+  <img src="./src/img/logo.png" alt="MSSQL Database MCP server logo" width="400"/>
 </div>
 
 ## What is this? 🤔
 
-This is a server that lets your LLMs (like Claude) talk directly to your Azure SQL DB data! Think of it as a friendly translator that sits between your AI assistant and your database, making sure they can chat securely and efficiently.
+This is a server that lets your LLMs (like Claude) talk directly to your MSSQL Database data! Think of it as a friendly translator that sits between your AI assistant and your database, making sure they can chat securely and efficiently.
 
 ### Quick Example
 ```text
-You: "What were our top 10 customers last month?"
-Claude: *queries your Azure SQL DB database and gives you the answer in plain English*
+You: "Show me all customers from New York"
+Claude: *queries your MSSQL Database database and gives you the answer in plain English*
 ```
 
 
@@ -22,11 +22,15 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 Here's all you need to do:
 1. Set up project (see below)
 2. Add your project details to Claude Desktop's config file
-3. Start chatting with your Azure SQL DB data naturally!
+3. Start chatting with your MSSQL Database data naturally!
 
 ### What Can It Do? 📊
 
-- Run Azure SQL DB queries by just asking questions in plain English
+- Run MSSQL Database queries by just asking questions in plain English
+- Create, read, update, and delete data
+- Manage database schema (tables, indexes)
+- Secure connection handling
+- Real-time data interaction
 
 ## Quick Start 🚀
 
@@ -36,7 +40,7 @@ Here's all you need to do:
 
 ### Set up project
 
-- Obtain Azure SQL DB server_name, database_name. Create an '.env' file and fill in details with the obtained values
+- Obtain MSSQL Database server_name, database_name. Create an '.env' file and fill in details with the obtained values
 
 ```
 SERVER_NAME='<INSERT>'
@@ -66,7 +70,7 @@ DATABASE_NAME='<INSERT>'
 4. **Confirmation Message**  
    You should see the following message:  
    ```
-   Azure SQL DB Server running on stdio
+   MSSQL Database Server running on stdio
    ```
 
 ### Add your project details to Claude Destkop's config file, and set parameters accordingly
@@ -90,4 +94,4 @@ Open Claude Desktop and Navigate to File -> Settings -> Developer -> Edit Config
 
 ```
 
-You should now have successfully configured the MCP server for Azure SQL DB with Claude Desktop. This setup allows you to seamlessly interact with Azure SQL DB through the MCP server.
+You should now have successfully configured the MCP server for MSSQL Database with Claude Desktop. This setup allows you to seamlessly interact with MSSQL Database through the MCP server.

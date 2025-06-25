@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class QueryTableTool implements Tool {
   [key: string]: any;
   name = "query_table";
-  description = "Queries an Azure SQL Database table using SQL syntax";
+  description = "Queries an MSSQL Database table using SQL syntax";
   inputSchema = {
     type: "object",
     properties: {

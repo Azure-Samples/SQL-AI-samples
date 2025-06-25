@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class DropTableTool implements Tool {
   [key: string]: any;
   name = "drop_table";
-  description = "Drops a table from the Azure SQL Database.";
+  description = "Drops a table from the MSSQL Database.";
   inputSchema = {
     type: "object",
     properties: {

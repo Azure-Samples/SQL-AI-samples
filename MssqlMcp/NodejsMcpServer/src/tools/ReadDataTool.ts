@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class ReadDataTool implements Tool {
   [key: string]: any;
   name = "read_data";
-  description = "Retrieves data from an Azure SQL Database table by its ID";
+  description = "Retrieves data from an MSSQL Database table by its ID";
   inputSchema = {
     type: "object",
     properties: {
