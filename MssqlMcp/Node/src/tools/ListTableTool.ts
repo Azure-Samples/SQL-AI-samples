@@ -8,7 +8,14 @@ export class ListTableTool implements Tool {
   inputSchema = {
     type: "object",
     properties: {
-      parameters: { type: "array", description: "Schemas" },
+      parameters: { 
+        type: "array", 
+        description: "Schemas to filter by (optional)",
+        items: {
+          type: "string"
+        },
+        minItems: 0
+      },
     },
     required: [],
   } as any;
