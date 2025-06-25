@@ -14,15 +14,9 @@ You: "Show me all customers from New York"
 Claude: *queries your MSSQL Database database and gives you the answer in plain English*
 ```
 
-
 ## How Does It Work? 🛠️
 
-This server leverages the Model Context Protocol (MCP), a versatile framework that acts as a universal translator between AI models and databases. Although MCP is built to support any AI model, it is currently accessible as a developer preview in Claude Desktop.
-
-Here's all you need to do:
-1. Set up project (see below)
-2. Add your project details to Claude Desktop's config file
-3. Start chatting with your MSSQL Database data naturally!
+This server leverages the Model Context Protocol (MCP), a versatile framework that acts as a universal translator between AI models and databases. It supports multiple AI assistants including Claude Desktop and VS Code Agent.
 
 ### What Can It Do? 📊
 
@@ -36,18 +30,9 @@ Here's all you need to do:
 
 ### Prerequisites
 - Node.js 14 or higher
-- Claude Desktop 
+- Claude Desktop or VS Code with Agent extension
 
 ### Set up project
-
-- Obtain MSSQL Database server_name, database_name. Create an '.env' file and fill in details with the obtained values
-
-```
-SERVER_NAME='<INSERT>'
-DATABASE_NAME='<INSERT>'
-```
-
-### Getting Started
 
 1. **Install Dependencies**  
    Run the following command in the root folder to install all necessary dependencies:  
@@ -73,25 +58,122 @@ DATABASE_NAME='<INSERT>'
    MSSQL Database Server running on stdio
    ```
 
-### Add your project details to Claude Destkop's config file, and set parameters accordingly
+## Configuration Setup
 
-Open Claude Desktop and Navigate to File -> Settings -> Developer -> Edit Config and open the `claude_desktop_config` file and replace with the values below,
+### Option 1: VS Code Agent Setup
 
-```json
-{
-    "mcpServers": {
-      "mssql": {
-        "command": "node",
-        "args": [ "C:/repos/MCP/dist/index.js" ],
-        "env": {
-          "SERVER_NAME": "",
-          "DATABASE_NAME": "",
-          "READONLY": "" // set to "true" to restrict to read-only operations
+1. **Install VS Code Agent Extension**
+   - Open VS Code
+   - Go to Extensions (Ctrl+Shift+X)
+   - Search for "Agent" and install the official Agent extension
+
+2. **Create MCP Configuration File**
+   - Create a `.vscode/mcp.json` file in your workspace
+   - Add the following configuration:
+
+   ```json
+   {
+     "servers": {
+       "mssql-nodejs": {
+          "type": "stdio",
+          "command": "node",
+          "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\NodejsMcpServer\\dist\\index.js"],
+          "env": {
+            "SERVER_NAME": "your-server-name.database.windows.net",
+            "DATABASE_NAME": "your-database-name",
+            "READONLY": "false"
+          }
         }
       }
+   }
+   ```
+
+3. **Alternative: User Settings Configuration**
+   - Open VS Code Settings (Ctrl+,)
+   - Search for "mcp"
+   - Click "Edit in settings.json"
+   - Add the following configuration:
+
+  ```json
+   {
+    "mcp": {
+        "servers": {
+            "mssql": {
+                "command": "node",
+                "args": ["C:/path/to/your/NodejsMcpServer/dist/index.js"],
+                "env": {
+                "SERVER_NAME": "your-server-name.database.windows.net",
+                "DATABASE_NAME": "your-database-name",
+                "READONLY": "false"
+                }
+            }
+        }
     }
   }
+  ```
 
-```
+4. **Restart VS Code**
+   - Close and reopen VS Code for the changes to take effect
 
-You should now have successfully configured the MCP server for MSSQL Database with Claude Desktop. This setup allows you to seamlessly interact with MSSQL Database through the MCP server.
+5. **Verify MCP Server**
+   - Open Command Palette (Ctrl+Shift+P)
+   - Run "MCP: List Servers" to verify your server is configured
+   - You should see "mssql" in the list of available servers
+
+### Option 2: Claude Desktop Setup
+
+1. **Open Claude Desktop Settings**
+   - Navigate to File → Settings → Developer → Edit Config
+   - Open the `claude_desktop_config` file
+
+2. **Add MCP Server Configuration**
+   Replace the content with the configuration below, updating the path and credentials:
+
+   ```json
+   {
+     "mcpServers": {
+       "mssql": {
+         "command": "node",
+         "args": ["C:/path/to/your/NodejsMcpServer/dist/index.js"],
+         "env": {
+           "SERVER_NAME": "your-server-name.database.windows.net",
+           "DATABASE_NAME": "your-database-name",
+           "READONLY": "false"
+         }
+       }
+     }
+   }
+   ```
+
+3. **Restart Claude Desktop**
+   - Close and reopen Claude Desktop for the changes to take effect
+
+### Configuration Parameters
+
+- **SERVER_NAME**: Your MSSQL Database server name (e.g., `my-server.database.windows.net`)
+- **DATABASE_NAME**: Your database name
+- **READONLY**: Set to `"true"` to restrict to read-only operations, `"false"` for full access
+- **Path**: Update the path in `args` to point to your actual project location
+
+## Sample Configurations
+
+You can find sample configuration files in the `src/samples/` folder:
+- `claude_desktop_config.json` - For Claude Desktop
+- `vscode_agent_config.json` - For VS Code Agent
+
+## Usage Examples
+
+Once configured, you can interact with your database using natural language:
+
+- "Show me all users from New York"
+- "Create a new table called products with columns for id, name, and price"
+- "Update all pending orders to completed status"
+- "List all tables in the database"
+
+## Security Notes
+
+- The server requires a WHERE clause for read operations to prevent accidental full table scans
+- Update operations require explicit WHERE clauses for security
+- Set `READONLY: "true"` in production environments if you only need read access
+
+You should now have successfully configured the MCP server for MSSQL Database with your preferred AI assistant. This setup allows you to seamlessly interact with MSSQL Database through natural language queries!
