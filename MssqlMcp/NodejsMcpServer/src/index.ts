@@ -28,7 +28,6 @@ dotenv.config({ path: './src/variables.env' });
 // MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
 
-
 // Globals for connection and token reuse
 let globalSqlPool: sql.ConnectionPool | null = null;
 let globalAccessToken: string | null = null;
@@ -59,7 +58,6 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
     expiresOn: accessToken?.expiresOnTimestamp ? new Date(accessToken.expiresOnTimestamp) : new Date(Date.now() + 30 * 60 * 1000)
   };
 }
-
 
 const updateDataTool = new UpdateDataTool();
 const insertDataTool = new InsertDataTool();
