@@ -46,18 +46,6 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
    npm run build
    ```
 
-3. **Start the Server**  
-   Navigate to the `dist` folder and start the server:  
-   ```bash
-   npm start
-   ```
-
-4. **Confirmation Message**  
-   You should see the following message:  
-   ```
-   MSSQL Database Server running on stdio
-   ```
-
 ## Configuration Setup
 
 ### Option 1: VS Code Agent Setup
