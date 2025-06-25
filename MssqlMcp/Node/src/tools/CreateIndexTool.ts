@@ -22,12 +22,12 @@ export class CreateIndexTool implements Tool {
         default: false
       },
       isClustered: { 
-        type: "booleam", 
+        type: "boolean", 
         description: "Whether the index should be clustered (default: false)",
         default: false
       },
     },
-    required: ["tableName", "indexName", "columnNames"],
+    required: ["tableName", "indexName", "columns"],
   } as any;
 
   async run(params: any) {
