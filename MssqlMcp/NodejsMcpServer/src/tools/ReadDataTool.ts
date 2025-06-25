@@ -4,33 +4,42 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class ReadDataTool implements Tool {
   [key: string]: any;
   name = "read_data";
-  description = "Retrieves data from an MSSQL Database table by its ID";
+  description = "Executes a SELECT query on an MSSQL Database table. The query must start with SELECT for security.";
   inputSchema = {
     type: "object",
     properties: {
-      tableName: { type: "string", description: "Name of the table" },
-      id: { type: "string", description: "ID of the data to retrieve" },
+      query: { 
+        type: "string", 
+        description: "SQL SELECT query to execute (must start with SELECT). Example: SELECT * FROM movies WHERE genre = 'comedy'" 
+      },
     },
-    required: ["tableName", "id"],
+    required: ["query"],
   } as any;
 
   async run(params: any) {
     try {
-      const { tableName, id } = params;
+      const { query } = params;
+      
+      // Basic validation: ensure query starts with SELECT (case insensitive)
+      const trimmedQuery = query.trim();
+      if (!trimmedQuery.toUpperCase().startsWith('SELECT')) {
+        throw new Error("Query must start with SELECT for security reasons");
+      }
+
       const request = new sql.Request();
-      request.input("id", sql.VarChar, id);
-      const query = `SELECT * FROM ${tableName} WHERE id = @id`;
-      const result = await request.query(query);
+      const result = await request.query(trimmedQuery);
+      
       return {
         success: true,
-        message: `Data retrieved successfully`,
-        data: result.recordset[0],
+        message: `Query executed successfully. Retrieved ${result.recordset.length} record(s)`,
+        data: result.recordset,
+        recordCount: result.recordset.length,
       };
     } catch (error) {
-      console.error("Error retrieving data:", error);
+      console.error("Error executing query:", error);
       return {
         success: false,
-        message: `Failed to retrieve data: ${error}`,
+        message: `Failed to execute query: ${error}`,
       };
     }
   }
