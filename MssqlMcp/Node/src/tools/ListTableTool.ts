@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class ListTableTool implements Tool {
   [key: string]: any;
   name = "list_table";
-  description = "Lists tables in an Azure SQL Database, or list tables in specific schemas";
+  description = "Lists tables in an MSSQL Database, or list tables in specific schemas";
   inputSchema = {
     type: "object",
     properties: {

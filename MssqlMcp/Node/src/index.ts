@@ -14,7 +14,6 @@ import {
 import { UpdateDataTool } from "./tools/UpdateDataTool.js";
 import { InsertDataTool } from "./tools/InsertDataTool.js";
 import { ReadDataTool } from "./tools/ReadDataTool.js";
-import { QueryTableTool } from "./tools/QueryTableTool.js";
 import { CreateTableTool } from "./tools/CreateTableTool.js";
 import { CreateIndexTool } from "./tools/CreateIndexTool.js";
 import { ListTableTool } from "./tools/ListTableTool.js";
@@ -22,12 +21,8 @@ import { DropTableTool } from "./tools/DropTableTool.js";
 import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/identity";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 
-// Load environment variables
-dotenv.config({ path: './src/variables.env' });
-
-// Azure SQL Database connection configuration
+// MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
-
 
 // Globals for connection and token reuse
 let globalSqlPool: sql.ConnectionPool | null = null;
@@ -60,11 +55,9 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
   };
 }
 
-
 const updateDataTool = new UpdateDataTool();
 const insertDataTool = new InsertDataTool();
 const readDataTool = new ReadDataTool();
-const queryTableTool = new QueryTableTool();
 const createTableTool = new CreateTableTool();
 const createIndexTool = new CreateIndexTool();
 const listTableTool = new ListTableTool();
@@ -91,7 +84,7 @@ const isReadOnly = process.env.READONLY === "true";
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
     ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, queryTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool],
+    : [insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool],
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -104,9 +97,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         break;
       case readDataTool.name:
         result = await readDataTool.run(args);
-        break;
-      case queryTableTool.name:
-        result = await queryTableTool.run(args);
         break;
       case updateDataTool.name:
         result = await updateDataTool.run(args);
@@ -201,4 +191,4 @@ function wrapToolRun(tool: { run: (...args: any[]) => Promise<any> }) {
   };
 }
 
-[insertDataTool, readDataTool, queryTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool].forEach(wrapToolRun);
+[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool].forEach(wrapToolRun);

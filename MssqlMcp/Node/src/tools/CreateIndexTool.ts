@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class CreateIndexTool implements Tool {
   [key: string]: any;
   name = "create_index";
-  description = "Creates an index on a specified column or columns in an Azure SQL Database table";
+  description = "Creates an index on a specified column or columns in an MSSQL Database table";
   inputSchema = {
     type: "object",
     properties: {

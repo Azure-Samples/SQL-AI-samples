@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class InsertDataTool implements Tool {
   [key: string]: any;
   name = "insert_data";
-  description = "Inserts or replaces data in an Azure SQL Database table";
+  description = "Inserts or replaces data in an MSSQL Database table";
   inputSchema = {
     type: "object",
     properties: {
