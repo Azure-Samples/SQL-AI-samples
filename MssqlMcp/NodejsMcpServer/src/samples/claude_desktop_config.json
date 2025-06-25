@@ -2,10 +2,10 @@
     "mcpServers": {
       "mssql": {
         "command": "node",
-        "args": [ "Q:/Repos/MCP/dist/index.js" ],
+        "args": [ "Q:/Repos/SQL-AI-samples/MssqlMcp/NodejsMcpServer/dist/index.js" ],
         "env": {
-          "SERVER_NAME": "b72dcvftmovebj2fvevle6xu54-hnqvdb2manse5oredy53issjcq.dxt-database.fabric.microsoft.com",
-          "DATABASE_NAME": "AdventureWorks-0e514e33-456f-4500-8c27-a6cfe3545811",
+          "SERVER_NAME": "your-server-name.database.windows.net",
+          "DATABASE_NAME": "your-database-name",
           "READONLY": "false"
         }
       }

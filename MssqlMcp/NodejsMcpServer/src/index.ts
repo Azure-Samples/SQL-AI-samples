@@ -21,9 +21,6 @@ import { DropTableTool } from "./tools/DropTableTool.js";
 import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/identity";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 
-// Load environment variables
-dotenv.config({ path: './src/variables.env' });
-
 // MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
 
