@@ -65,7 +65,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
        "mssql-nodejs": {
           "type": "stdio",
           "command": "node",
-          "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\NodejsMcpServer\\dist\\index.js"],
+          "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\Node\\dist\\index.js"],
           "env": {
             "SERVER_NAME": "your-server-name.database.windows.net",
             "DATABASE_NAME": "your-database-name",
@@ -88,7 +88,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
         "servers": {
             "mssql": {
                 "command": "node",
-                "args": ["C:/path/to/your/NodejsMcpServer/dist/index.js"],
+                "args": ["C:/path/to/your/Node/dist/index.js"],
                 "env": {
                 "SERVER_NAME": "your-server-name.database.windows.net",
                 "DATABASE_NAME": "your-database-name",
@@ -122,7 +122,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
      "mcpServers": {
        "mssql": {
          "command": "node",
-         "args": ["C:/path/to/your/NodejsMcpServer/dist/index.js"],
+         "args": ["C:/path/to/your/Node/dist/index.js"],
          "env": {
            "SERVER_NAME": "your-server-name.database.windows.net",
            "DATABASE_NAME": "your-database-name",

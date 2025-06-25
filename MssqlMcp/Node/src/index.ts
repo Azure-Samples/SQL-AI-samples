@@ -84,7 +84,7 @@ const isReadOnly = process.env.READONLY === "true";
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
     ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool],
+    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool], // add all new tools here
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
