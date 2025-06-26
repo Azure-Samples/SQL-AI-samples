@@ -5,7 +5,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class DescribeTableTool implements Tool {
   [key: string]: any;
   name = "describe_table";
-  description = "Describes the schema (columns and types) of a specified Azure SQL Database table.";
+  description = "Describes the schema (columns and types) of a specified MSSQL Database table.";
   inputSchema = {
     type: "object",
     properties: {
