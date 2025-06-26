@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class CreateIndexTool implements Tool {
   [key: string]: any;
   name = "create_index";
-  description = "Creates an index on a specified column or columns in an Azure SQL Database table";
+  description = "Creates an index on a specified column or columns in an MSSQL Database table";
   inputSchema = {
     type: "object",
     properties: {
@@ -22,12 +22,12 @@ export class CreateIndexTool implements Tool {
         default: false
       },
       isClustered: { 
-        type: "booleam", 
+        type: "boolean", 
         description: "Whether the index should be clustered (default: false)",
         default: false
       },
     },
-    required: ["tableName", "indexName", "columnNames"],
+    required: ["tableName", "indexName", "columns"],
   } as any;
 
   async run(params: any) {

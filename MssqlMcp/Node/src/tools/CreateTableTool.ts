@@ -4,7 +4,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 export class CreateTableTool implements Tool {
   [key: string]: any;
   name = "create_table";
-  description = "Creates a new table in the Azure SQL Database with the specified columns.";
+  description = "Creates a new table in the MSSQL Database with the specified columns.";
   inputSchema = {
     type: "object",
     properties: {
