@@ -19,7 +19,7 @@ public partial class Tools
     public async Task<DbOperationResult> DescribeTable(
         [Description("Name of table")] string name)
     {
-        string schema = null;
+        string? schema = null;
         if (name.Contains('.'))
         {
             // If the table name contains a schema, split it into schema and table name
@@ -62,6 +62,33 @@ public partial class Tools
             FROM sys.key_constraints kc
             WHERE kc.parent_object_id = (SELECT object_id FROM sys.tables t INNER JOIN sys.schemas s ON t.schema_id = s.schema_id WHERE t.name = @TableName and (s.name = @TableSchema or @TableSchema IS NULL )  )";
 
+
+        const string ForeignKeyInformation = @"SELECT
+    fk.name AS name,
+    SCHEMA_NAME(tp.schema_id) AS [schema],
+    tp.name AS table_name,
+    STRING_AGG(cp.name, ', ') WITHIN GROUP (ORDER BY fkc.constraint_column_id) AS column_names,
+    SCHEMA_NAME(tr.schema_id) AS referenced_schema,
+    tr.name AS referenced_table,
+    STRING_AGG(cr.name, ', ') WITHIN GROUP (ORDER BY fkc.constraint_column_id) AS referenced_column_names
+FROM
+    sys.foreign_keys AS fk
+JOIN
+    sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id
+JOIN
+    sys.tables AS tp ON fkc.parent_object_id = tp.object_id
+JOIN
+    sys.columns AS cp ON fkc.parent_object_id = cp.object_id AND fkc.parent_column_id = cp.column_id
+JOIN
+    sys.tables AS tr ON fkc.referenced_object_id = tr.object_id
+JOIN
+    sys.columns AS cr ON fkc.referenced_object_id = cr.object_id AND fkc.referenced_column_id = cr.column_id
+ WHERE
+            ( SCHEMA_NAME(tp.schema_id) = @TableSchema OR @TableSchema IS NULL )
+            AND tp.name = @TableName
+GROUP BY
+    fk.name, tp.schema_id, tp.name, tr.schema_id, tr.name;
+";
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {
@@ -149,6 +176,30 @@ public partial class Tools
                     }
                     result["constraints"] = constraints;
                 }
+
+                // Foreign Keys
+                using (var cmd = new SqlCommand(ForeignKeyInformation, conn))
+                {
+                    var _ = cmd.Parameters.AddWithValue("@TableName", name);
+                    _ = cmd.Parameters.AddWithValue("@TableSchema", schema == null ? DBNull.Value : schema);
+                    using var reader = await cmd.ExecuteReaderAsync();
+                    var foreignKeys = new List<object>();
+                    while (await reader.ReadAsync())
+                    {
+                        foreignKeys.Add(new
+                        {
+                            name = reader["name"],
+                            schema = reader["schema"],
+                            table_name = reader["table_name"],
+                            column_name = reader["column_names"],
+                            referenced_schema = reader["referenced_schema"],
+                            referenced_table = reader["referenced_table"],
+                            referenced_column = reader["referenced_column_names"],
+                        });
+                    }
+                    result["foreignKeys"] = foreignKeys;
+                }
+
                 return new DbOperationResult(success: true, data: result);
             }
         }
