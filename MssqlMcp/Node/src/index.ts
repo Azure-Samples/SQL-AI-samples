@@ -36,12 +36,17 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
     // disableAutomaticAuthentication : true
   });
   const accessToken = await credential.getToken('https://database.windows.net/.default');
+
+  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
+  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+
   return {
     config: {
       server: process.env.SERVER_NAME!,
       database: process.env.DATABASE_NAME!,
       options: {
         encrypt: true,
+        trustServerCertificate
       },
       authentication: {
         type: 'azure-active-directory-access-token',
@@ -49,6 +54,7 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
           token: accessToken?.token!,
         },
       },
+      connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
     },
     token: accessToken?.token!,
     expiresOn: accessToken?.expiresOnTimestamp ? new Date(accessToken.expiresOnTimestamp) : new Date(Date.now() + 30 * 60 * 1000)
@@ -84,7 +90,7 @@ const isReadOnly = process.env.READONLY === "true";
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
     ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool],
+    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool], // add all new tools here
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {

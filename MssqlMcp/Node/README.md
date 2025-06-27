@@ -141,7 +141,9 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 - **SERVER_NAME**: Your MSSQL Database server name (e.g., `my-server.database.windows.net`)
 - **DATABASE_NAME**: Your database name
 - **READONLY**: Set to `"true"` to restrict to read-only operations, `"false"` for full access
-- **Path**: Update the path in `args` to point to your actual project location
+- **Path**: Update the path in `args` to point to your actual project location.
+- **CONNECTION_TIMEOUT**: (Optional) Connection timeout in seconds. Defaults to `30` if not set.
+- **TRUST_SERVER_CERTIFICATE**: (Optional) Set to `"true"` to trust self-signed server certificates (useful for development or when connecting to servers with self-signed certs). Defaults to `"false"`.
 
 ## Sample Configurations
 
