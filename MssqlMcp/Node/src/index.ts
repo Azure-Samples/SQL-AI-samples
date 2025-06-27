@@ -36,12 +36,17 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
     // disableAutomaticAuthentication : true
   });
   const accessToken = await credential.getToken('https://database.windows.net/.default');
+
+  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
+  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+
   return {
     config: {
       server: process.env.SERVER_NAME!,
       database: process.env.DATABASE_NAME!,
       options: {
         encrypt: true,
+        trustServerCertificate
       },
       authentication: {
         type: 'azure-active-directory-access-token',
@@ -49,6 +54,7 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
           token: accessToken?.token!,
         },
       },
+      connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
     },
     token: accessToken?.token!,
     expiresOn: accessToken?.expiresOnTimestamp ? new Date(accessToken.expiresOnTimestamp) : new Date(Date.now() + 30 * 60 * 1000)
