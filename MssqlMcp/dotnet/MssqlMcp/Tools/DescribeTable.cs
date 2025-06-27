@@ -19,7 +19,7 @@ public partial class Tools
     public async Task<DbOperationResult> DescribeTable(
         [Description("Name of table")] string name)
     {
-        string schema = null;
+        string? schema = null;
         if (name.Contains('.'))
         {
             // If the table name contains a schema, split it into schema and table name
