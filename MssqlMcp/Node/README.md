@@ -92,11 +92,13 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
                 "env": {
                 "SERVER_NAME": "your-server-name.database.windows.net",
                 "DATABASE_NAME": "your-database-name",
+                "AUTH_METHOD": "azure-ad",
                 "READONLY": "false"
                 }
             }
         }
     }
+  }
   }
   ```
 
@@ -126,24 +128,115 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
          "env": {
            "SERVER_NAME": "your-server-name.database.windows.net",
            "DATABASE_NAME": "your-database-name",
+           "AUTH_METHOD": "azure-ad",
            "READONLY": "false"
          }
        }
      }
+   }
    }
    ```
 
 3. **Restart Claude Desktop**
    - Close and reopen Claude Desktop for the changes to take effect
 
+## Authentication Configuration
+
+The MCP server supports multiple authentication methods to connect to your MSSQL database. Choose the method that best fits your environment and security requirements.
+
+### Authentication Methods
+
+#### 1. Azure Active Directory (Default)
+**Best for:** Azure SQL Database, managed identities, modern security requirements
+
+This method uses Azure AD authentication with interactive browser login. No username/password needed in configuration.
+
+```json
+{
+  "env": {
+    "SERVER_NAME": "your-server.database.windows.net",
+    "DATABASE_NAME": "your-database-name",
+    "AUTH_METHOD": "azure-ad"
+  }
+}
+```
+
+**Required Environment Variables:**
+- `AUTH_METHOD`: Set to `"azure-ad"` or `"azuread"`
+- `SERVER_NAME`: Your Azure SQL server name
+- `DATABASE_NAME`: Your database name
+
+**Notes:**
+- Uses interactive browser authentication
+- Automatically handles token refresh
+- Requires Azure AD permissions for the database
+- Most secure option for Azure SQL Database
+
+#### 2. SQL Server Authentication
+**Best for:** Traditional SQL Server instances, local development
+
+Uses SQL Server's built-in authentication with username and password.
+
+```json
+{
+  "env": {
+    "SERVER_NAME": "your-server.database.windows.net",
+    "DATABASE_NAME": "your-database-name",
+    "AUTH_METHOD": "sql",
+    "SQL_USERNAME": "your-sql-username",
+    "SQL_PASSWORD": "your-sql-password"
+  }
+}
+```
+
+**Required Environment Variables:**
+- `AUTH_METHOD`: Set to `"sql"` or `"sqlserver"`
+- `SERVER_NAME`: Your SQL Server instance
+- `DATABASE_NAME`: Your database name
+- `SQL_USERNAME`: SQL Server username
+- `SQL_PASSWORD`: SQL Server password
+
+#### 3. Windows Authentication (NTLM)
+**Best for:** On-premises SQL Server with Windows domain authentication
+
+Uses Windows credentials for authentication.
+
+```json
+{
+  "env": {
+    "SERVER_NAME": "your-server-instance",
+    "DATABASE_NAME": "your-database-name",
+    "AUTH_METHOD": "windows",
+    "DOMAIN": "your-domain",
+    "USERNAME": "your-windows-username",
+    "PASSWORD": "your-windows-password"
+  }
+}
+```
+
+**Required Environment Variables:**
+- `AUTH_METHOD`: Set to `"windows"` or `"ntlm"`
+- `SERVER_NAME`: Your SQL Server instance
+- `DATABASE_NAME`: Your database name
+- `DOMAIN`: Windows domain (optional, can be empty)
+- `USERNAME`: Windows username
+- `PASSWORD`: Windows password
+
 ### Configuration Parameters
 
+#### Common Parameters (All Authentication Methods)
 - **SERVER_NAME**: Your MSSQL Database server name (e.g., `my-server.database.windows.net`)
 - **DATABASE_NAME**: Your database name
+- **AUTH_METHOD**: Authentication method to use (`"azure-ad"`, `"sql"`, or `"windows"`). Defaults to `"azure-ad"` if not specified.
 - **READONLY**: Set to `"true"` to restrict to read-only operations, `"false"` for full access
 - **Path**: Update the path in `args` to point to your actual project location.
 - **CONNECTION_TIMEOUT**: (Optional) Connection timeout in seconds. Defaults to `30` if not set.
 - **TRUST_SERVER_CERTIFICATE**: (Optional) Set to `"true"` to trust self-signed server certificates (useful for development or when connecting to servers with self-signed certs). Defaults to `"false"`.
+
+#### Authentication-Specific Parameters
+- **SQL_USERNAME** & **SQL_PASSWORD**: Required for SQL Server authentication (`AUTH_METHOD="sql"`)
+- **USERNAME**, **PASSWORD** & **DOMAIN**: Required for Windows authentication (`AUTH_METHOD="windows"`)
+- **No additional parameters needed**: For Azure AD authentication (`AUTH_METHOD="azure-ad"`)
 
 ## Sample Configurations
 
