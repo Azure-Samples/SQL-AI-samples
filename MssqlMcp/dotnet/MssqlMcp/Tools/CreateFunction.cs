@@ -39,7 +39,7 @@ public partial class Tools
                 _ = await cmd.ExecuteNonQueryAsync();
                 
                 _logger.LogInformation("Successfully created function");
-                return new DbOperationResult(success: true, message: "Function created successfully");
+               return new DbOperationResult(success: true);
             }
         }
         catch (Exception ex)
