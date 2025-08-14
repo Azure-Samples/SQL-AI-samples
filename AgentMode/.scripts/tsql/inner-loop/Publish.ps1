@@ -7,7 +7,7 @@ param (
 )
 
 # Get the target connection string by running `get-sql-connection-string.ps1`
-$targetConnectionString = & ./.github/tsql/install/get-sql-connection-string.ps1
+$targetConnectionString = & ./.scripts/tsql/install/get-sql-connection-string.ps1
 
 # Ensure the connection string is wrapped in double quotes for SqlPackage.exe
 $quotedConnectionString = '"' + $targetConnectionString + '"'

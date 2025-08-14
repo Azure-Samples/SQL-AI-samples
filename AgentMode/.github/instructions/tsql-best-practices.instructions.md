@@ -1,9 +1,12 @@
 
-# T/SQL Best Practices Guide
+---
+description: "T-SQL best practices and coding standards for production-grade stored procedures"
+applyTo: "**/*.sql"
+---
 
-This guide outlines good practices and standards for writing high-quality, maintainable, and performant T/SQL code, with a focus on production-grade stored procedures.
+# T-SQL Best Practices Guide
 
-NOTE: You (the AI Agent) **must not** edit this file.
+This guide outlines good practices and standards for writing high-quality, maintainable, and performant T-SQL code, with a focus on production-grade stored procedures.
 
 ## Table of Contents
 

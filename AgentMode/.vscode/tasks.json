@@ -1,0 +1,182 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Check Container Runtime",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/is-container-runtime-running.ps1",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install SqlPackage",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/ensure-sqlpackage-installed.ps1",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install Build.Sql.Templates",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/ensure-build-sql-templates-installed.ps1",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install sqlcmd",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/ensure-sqlcmd-installed.ps1",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create SQL Server Instance",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/create-mssql-instance-using-sqlcmd.ps1",
+            "args": [
+                "-ProjectName",
+                "${input:projectName}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Install tSQLt",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/ensure-tsqlt-installed.ps1",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build SQL Project",
+            "type": "shell",
+            "command": "./.scripts/tsql/inner-loop/Build.ps1",
+            "args": [
+                "-ProjectName",
+                "${input:projectName}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Publish SQL Project",
+            "type": "shell",
+            "command": "./.scripts/tsql/inner-loop/Publish.ps1",
+            "args": [
+                "-ProjectName",
+                "${input:projectName}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run SQL Tests",
+            "type": "shell",
+            "command": "./.scripts/tsql/inner-loop/Test.ps1",
+            "args": [
+                "-ProjectName",
+                "${input:projectName}"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Copy tSQLt dacpac",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/copy-tSQLt.dacpac-file.ps1",
+            "args": [
+                "-ProjectPath",
+                "${input:projectPath}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Get SQL Connection String",
+            "type": "shell",
+            "command": "./.scripts/tsql/install/get-sql-connection-string.ps1",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "projectName",
+            "description": "SQL Database Project Name",
+            "default": "",
+            "type": "promptString"
+        },
+        {
+            "id": "projectPath",
+            "description": "SQL Database Project Path",
+            "default": "",
+            "type": "promptString"
+        }
+    ]
+}
