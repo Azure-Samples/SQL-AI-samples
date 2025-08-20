@@ -38,6 +38,7 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
   const username = process.env.SQL_USERNAME;
   const password = process.env.SQL_PASSWORD;
   
+  
   if (username && password) {
     // Use SQL Server authentication with username/password
     return {
