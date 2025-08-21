@@ -39,7 +39,7 @@ public partial class Tools
             WHERE t.name = @TableName and (s.name = @TableSchema or @TableSchema IS NULL) ";
 
         // Query for columns
-        const string ColumnsQuery = @"SELECT c.name, ty.name AS type, c.max_length AS length, c.precision, c.is_nullable AS nullable, p.value AS description
+        const string ColumnsQuery = @"SELECT c.name, ty.name AS type, c.max_length AS length, c.precision, c.scale, c.is_nullable AS nullable, p.value AS description
             FROM sys.columns c
             INNER JOIN sys.types ty ON c.user_type_id = ty.user_type_id
             LEFT JOIN sys.extended_properties p ON p.major_id = c.object_id AND p.minor_id = c.column_id AND p.name = 'MS_Description'
@@ -133,6 +133,7 @@ GROUP BY
                             type = reader["type"],
                             length = reader["length"],
                             precision = reader["precision"],
+                            scale = reader["scale"],
                             nullable = (bool)reader["nullable"],
                             description = reader["description"] is DBNull ? null : reader["description"]
                         });
