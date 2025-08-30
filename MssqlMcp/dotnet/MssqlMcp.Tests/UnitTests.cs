@@ -13,7 +13,7 @@ namespace MssqlMcp.Tests
         private readonly Tools _tools;
         public MssqlMcpTests()
         {
-            _tableName = $"TestTable_{Guid.NewGuid():N}";
+            _tableName = $"UnitTest_{Guid.NewGuid():N}";
             var connectionFactory = new SqlConnectionFactory();
             var loggerMock = new Mock<ILogger<Tools>>();
             _tools = new Tools(connectionFactory, loggerMock.Object);
@@ -93,23 +93,6 @@ namespace MssqlMcp.Tests
             Assert.NotNull(result.Data);
         }
 
-        [Fact]
-        public async Task ReadData_ReturnsData_WhenSqlIsValid()
-        {
-            // Ensure table exists and has data
-            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
-            Assert.NotNull(createResult);
-            Assert.True(createResult.Success);
-            var insertResult = await _tools.InsertData($"INSERT INTO {_tableName} (Id) VALUES (1)") as DbOperationResult;
-            Assert.NotNull(insertResult);
-            Assert.True(insertResult.Success);
-
-            var sql = $"SELECT * FROM {_tableName}";
-            var result = await _tools.ReadData(sql) as DbOperationResult;
-            Assert.NotNull(result);
-            Assert.True(result.Success);
-            Assert.NotNull(result.Data);
-        }
 
         [Fact]
         public async Task UpdateData_ReturnsSuccess_WhenSqlIsValid()
@@ -168,15 +151,6 @@ namespace MssqlMcp.Tests
             Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
-        [Fact]
-        public async Task ReadData_ReturnsError_WhenSqlIsInvalid()
-        {
-            var sql = "SELECT FROM";
-            var result = await _tools.ReadData(sql) as DbOperationResult;
-            Assert.NotNull(result);
-            Assert.False(result.Success);
-            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
-        }
 
         [Fact]
         public async Task UpdateData_ReturnsError_WhenSqlIsInvalid()

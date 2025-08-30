@@ -10,16 +10,13 @@ using ModelContextProtocol.Server;
 namespace Mssql.McpServer;
 public partial class Tools
 {
-    // List of dangerous SQL keywords that should not be allowed
-    private static readonly string[] DangerousKeywords = 
-    [
-        "DELETE", "DROP", "UPDATE", "INSERT", "ALTER", "CREATE",
-        "TRUNCATE", "EXEC", "EXECUTE", "MERGE", "REPLACE",
-        "GRANT", "REVOKE", "COMMIT", "ROLLBACK", "TRANSACTION",
-        "BEGIN", "DECLARE", "SET", "USE", "BACKUP",
-        "RESTORE", "KILL", "SHUTDOWN", "WAITFOR", "OPENROWSET",
-        "OPENDATASOURCE", "OPENQUERY", "OPENXML", "BULK"
-    ];
+    // Pre-compiled regex for dangerous keywords - much faster than creating regex objects on each call
+    // Using word boundaries to avoid false positives (e.g., "UPDATED_AT" shouldn't match "UPDATE")
+    private static readonly Regex DangerousKeywordsRegex = new(
+        @"\b(DELETE|DROP|UPDATE|INSERT|ALTER|CREATE|TRUNCATE|EXEC|EXECUTE|MERGE|REPLACE|" +
+        @"GRANT|REVOKE|COMMIT|ROLLBACK|TRANSACTION|BEGIN|DECLARE|SET|USE|BACKUP|" +
+        @"RESTORE|KILL|SHUTDOWN|WAITFOR|OPENROWSET|OPENDATASOURCE|OPENQUERY|OPENXML|BULK)\b",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
     // Regex patterns to detect common SQL injection techniques
     private static readonly Regex[] DangerousPatterns = 
@@ -97,15 +94,11 @@ public partial class Tools
             return (false, "Query must start with SELECT for security reasons");
         }
 
-        // Check for dangerous keywords in the cleaned query using word boundaries
-        foreach (var keyword in DangerousKeywords)
+        // Check for dangerous keywords using our pre-compiled regex
+        var match = DangerousKeywordsRegex.Match(cleanQuery);
+        if (match.Success)
         {
-            // Use word boundary regex to match only complete keywords, not parts of words
-            var keywordRegex = new Regex($@"(^|\s|[^A-Za-z0-9_]){keyword}($|\s|[^A-Za-z0-9_])", RegexOptions.IgnoreCase);
-            if (keywordRegex.IsMatch(upperQuery))
-            {
-                return (false, $"Dangerous keyword '{keyword}' detected in query. Only SELECT operations are allowed.");
-            }
+            return (false, $"Dangerous keyword '{match.Value.ToUpper()}' detected in query. Only SELECT operations are allowed.");
         }
 
         // Check for dangerous patterns using regex
@@ -154,6 +147,12 @@ public partial class Tools
             data = data.Take(maxRecords).ToList();
         }
 
+        // Early check: if no data or no suspicious characters in any column names, return as-is
+        if (data.Count == 0 || !data[0].Keys.Any(key => Regex.IsMatch(key, @"[^\w\s\-_.]")))
+        {
+            return data;
+        }
+
         return data.Select(record =>
         {
             var sanitized = new Dictionary<string, object?>();
@@ -184,7 +183,7 @@ public partial class Tools
         var (isValid, error) = ValidateQuery(sql);
         if (!isValid)
         {
-            _logger.LogWarning("Security validation failed for query: {QueryStart}...", sql.Length > 100 ? sql[..100] : sql);
+            _logger.LogWarning("Security validation failed for query: {QueryStart}...", sql?.Length > 100 ? sql[..100] : sql ?? "NULL");
             return new DbOperationResult(success: false, error: $"Security validation failed: {error}");
         }
 

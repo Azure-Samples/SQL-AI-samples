@@ -122,6 +122,45 @@ Add a new MCP Server with the following settings:
 
 Save the file, start a new Chat, you'll see the "Tools" icon, it should list 7 MSSQL MCP tools.
 
+# Running Tests
+
+## Prerequisites for Tests
+
+- Access to a SQL Server instance with a database for testing
+- Connection credentials (SQL Server or Windows authentication)
+
+## Test Configuration
+
+The unit tests require a `CONNECTION_STRING` environment variable. For VS Code testing, create a test configuration:
+
+**1. Add to `.vscode/settings.json`:**
+
+```json
+{
+    "dotnet.unitTests.runSettingsPath": "${workspaceFolder}/.vscode/test.runsettings"
+}
+```
+
+**2. Create `.vscode/test.runsettings`:**
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <CONNECTION_STRING>Server=your-server;Database=your-test-db;User Id=your-user;Password=your-password;TrustServerCertificate=True</CONNECTION_STRING>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>
+```
+
+## Running Tests
+
+**In VS Code:**
+1. Open the Testing panel (test beaker icon)  
+2. Run individual tests or test suites
+
+
 # Troubleshooting
 
 1. If you get a "Task canceled" error using "Active Directory Default", try "Active Directory Interactive".
