@@ -7,6 +7,7 @@ using Mssql.McpServer;
 
 namespace MssqlMcp.Tests
 {
+    [Collection("Database Tests")]
     public sealed class MssqlMcpReadDataToolTests : IDisposable
     {
         private readonly string _tableName;
