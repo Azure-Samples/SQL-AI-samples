@@ -13,12 +13,12 @@ public partial class Tools
     private const string ListTablesQuery = @"SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' ORDER BY TABLE_SCHEMA, TABLE_NAME";
 
     [McpServerTool(
-        Title = "List Tables",
+        Title = "List Workspace DB Tables",
         ReadOnly = true,
         Idempotent = true,
         Destructive = false),
         Description("Lists all tables in the SQL Database.")]
-    public async Task<DbOperationResult> ListTables()
+    public async Task<DbOperationResult> ListWorkspaceDBTables()
     {
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try

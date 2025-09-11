@@ -10,12 +10,12 @@ namespace Mssql.McpServer;
 public partial class Tools
 {
     [McpServerTool(
-        Title = "Read Data",
+        Title = "Read Workspace DBData",
         ReadOnly = true,
         Idempotent = true,
         Destructive = false),
         Description("Executes SQL queries against SQL Database to read data")]
-    public async Task<DbOperationResult> ReadData(
+    public async Task<DbOperationResult> ReadWorkspaceDBData(
         [Description("SQL query to execute")] string sql)
     {
         var conn = await _connectionFactory.GetOpenConnectionAsync();

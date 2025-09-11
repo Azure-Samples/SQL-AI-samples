@@ -9,7 +9,7 @@ public class SqlConnectionFactory : ISqlConnectionFactory
 {
     public async Task<SqlConnection> GetOpenConnectionAsync()
     {
-        var connectionString = "Server=esus01906458w01.sql-y005.r1.kcura.com\\esus01906458w01;Database=edds1037020;User Id=eddsdbo;Password=PcPA4RvZAbrtCrPO3RiHlEkFHSkrj!;TrustServerCertificate=true;";
+        var connectionString = "Server=esus01906458w01.sql-y005.r1.kcura.com\\esus01906458w01;Database=edds1037020;User Id=eddsdbo;Password=PcPA4RvZAbrtCrPO3RiHlEkFHSkrj!;TrustServerCertificate=true;MultiSubNetFailover=true;";
 
         // Let ADO.Net handle connection pooling
         var conn = new SqlConnection(connectionString);

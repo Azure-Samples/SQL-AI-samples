@@ -11,12 +11,12 @@ namespace Mssql.McpServer;
 public partial class Tools
 {
     [McpServerTool(
-        Title = "Describe Table",
+        Title = "Describe Workspace DB Table",
         ReadOnly = true,
         Idempotent = true,
         Destructive = false),
         Description("Returns table schema")]
-    public async Task<DbOperationResult> DescribeTable(
+    public async Task<DbOperationResult> DescribeWorkspaceDBTable(
         [Description("Name of table")] string name)
     {
         string? schema = null;
