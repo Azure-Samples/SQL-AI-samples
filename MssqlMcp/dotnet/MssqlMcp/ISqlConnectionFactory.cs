@@ -10,5 +10,5 @@ namespace Mssql.McpServer;
 /// </summary>
 public interface ISqlConnectionFactory
 {
-    Task<SqlConnection> GetOpenConnectionAsync();
+    Task<SqlConnection> GetOpenConnectionAsync(string connectionStringName);
 }

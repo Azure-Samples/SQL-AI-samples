@@ -19,6 +19,22 @@ public partial class Tools
     public async Task<DbOperationResult> DescribeWorkspaceDBTable(
         [Description("Name of table")] string name)
     {
+        return await DescribeDBTable(name, "WORKSPACE_CONNECTION_STRING");
+    }
+    
+    [McpServerTool(
+        Title = "Describe EDDS DB Table",
+        ReadOnly = true,
+        Idempotent = true,
+        Destructive = false),
+        Description("Returns table schema")]
+    public async Task<DbOperationResult> DescribeEddsDBTable(
+        [Description("Name of table")] string name)
+    {
+        return await DescribeDBTable(name, "EDDS_CONNECTION_STRING");
+    }
+    private async Task<DbOperationResult> DescribeDBTable(string name, string connectionStringName)
+    {
         string? schema = null;
         if (name.Contains('.'))
         {
@@ -89,7 +105,7 @@ JOIN
 GROUP BY
     fk.name, tp.schema_id, tp.name, tr.schema_id, tr.name;
 ";
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
+        var conn = await _connectionFactory.GetOpenConnectionAsync(connectionStringName);
         try
         {
             using (conn)

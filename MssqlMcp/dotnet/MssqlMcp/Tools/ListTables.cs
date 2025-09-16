@@ -20,7 +20,22 @@ public partial class Tools
         Description("Lists all tables in the SQL Database.")]
     public async Task<DbOperationResult> ListWorkspaceDBTables()
     {
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
+        return await ListDBTables("WORKSPACE_CONNECTION_STRING");
+    }
+
+    [McpServerTool(
+        Title = "List EDDS DB Tables",
+        ReadOnly = true,
+        Idempotent = true,
+        Destructive = false),
+        Description("Lists all tables in the SQL Database.")]
+    public async Task<DbOperationResult> ListEddsDBTables()
+    {
+        return await ListDBTables("EDDS_CONNECTION_STRING");
+    }
+    public async Task<DbOperationResult> ListDBTables(string connectionStringName)
+    {
+        var conn = await _connectionFactory.GetOpenConnectionAsync(connectionStringName);
         try
         {
             using (conn)

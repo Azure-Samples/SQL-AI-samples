@@ -18,7 +18,26 @@ public partial class Tools
     public async Task<DbOperationResult> ReadWorkspaceDBData(
         [Description("SQL query to execute")] string sql)
     {
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
+        return await ReadDBData(sql, "WORKSPACE_CONNECTION_STRING");
+    }
+
+    [McpServerTool(
+        Title = "Read EDDS DBData",
+        ReadOnly = true,
+        Idempotent = true,
+        Destructive = false),
+        Description("Executes SQL queries against SQL Database to read data")]
+    public async Task<DbOperationResult> ReadEddsDBData(
+        [Description("SQL query to execute")] string sql)
+    {
+        return await ReadDBData(sql, "EDDS_CONNECTION_STRING");
+    }
+    
+    
+    
+    public async Task<DbOperationResult> ReadDBData(string sql, string connectionStringName)
+    {
+        var conn = await _connectionFactory.GetOpenConnectionAsync(connectionStringName);
         try
         {
             using (conn)
