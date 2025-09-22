@@ -1,0 +1,27 @@
+{
+  "servers": {
+    "weather-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "ts-node",
+        "D:/Journey/projects/mcp-server/weather-mcp/build/index.js"
+      ]
+    },
+    "MSSQL MCP": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "D:/Tech/Research and Developments/MCP/SQL-AI-samples/MssqlMcp/Node/dist/index.js"
+      ],
+      "env": {
+        "SERVER_NAME": "190.92.216.9",
+        "DATABASE_NAME": "TeaSolution_QA_DB_CHECK",
+        "SQL_USER": "sa",
+        "SQL_PASSWORD": "tsdb@123QA#",
+        "READONLY": "false",
+        "TRUST_SERVER_CERTIFICATE": "true"
+      }
+    }
+  }
+}
