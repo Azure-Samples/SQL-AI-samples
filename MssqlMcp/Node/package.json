@@ -16,13 +16,13 @@
   ],
   "devDependencies": {
     "@types/mssql": "^9.1.7",
-    "@types/node": "^16.7.13",
+    "@types/node": "^16.18.126",
     "shx": "^0.3.4",
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@azure/identity": "^4.8.0",
-    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@azure/identity": "^4.12.0",
+    "@modelcontextprotocol/sdk": "^1.18.1",
     "dotenv": "^10.0.0",
     "mssql": "^11.0.1"
   },

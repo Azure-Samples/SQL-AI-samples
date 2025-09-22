@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 // External imports
-import * as dotenv from "dotenv";
 import sql from "mssql";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -18,7 +17,10 @@ import { CreateTableTool } from "./tools/CreateTableTool.js";
 import { CreateIndexTool } from "./tools/CreateIndexTool.js";
 import { ListTableTool } from "./tools/ListTableTool.js";
 import { DropTableTool } from "./tools/DropTableTool.js";
-import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/identity";
+import {
+  DefaultAzureCredential,
+  InteractiveBrowserCredential,
+} from "@azure/identity";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 
 // MSSQL Database connection configuration
@@ -30,35 +32,71 @@ let globalAccessToken: string | null = null;
 let globalTokenExpiresOn: Date | null = null;
 
 // Function to create SQL config with fresh access token, returns token and expiry
-export async function createSqlConfig(): Promise<{ config: sql.config, token: string, expiresOn: Date }> {
-  const credential = new InteractiveBrowserCredential({
-    redirectUri: 'http://localhost'
-    // disableAutomaticAuthentication : true
-  });
-  const accessToken = await credential.getToken('https://database.windows.net/.default');
+export async function createSqlConfig(): Promise<{
+  config: sql.config;
+  token: string;
+  expiresOn: Date;
+}> {
+  const trustServerCertificate =
+    process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === "true";
+  const encrypt = process.env.ENCRYPT?.toLowerCase() !== "false"; // Default to true unless explicitly set to false
+  const connectionTimeout = process.env.CONNECTION_TIMEOUT
+    ? parseInt(process.env.CONNECTION_TIMEOUT, 10)
+    : 30;
 
-  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
-  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+  // Check if SQL_USER and SQL_PASSWORD are provided for SQL Server authentication
+  const username = process.env.SQL_USER;
+  const password = process.env.SQL_PASSWORD;
 
-  return {
-    config: {
-      server: process.env.SERVER_NAME!,
-      database: process.env.DATABASE_NAME!,
-      options: {
-        encrypt: true,
-        trustServerCertificate
-      },
-      authentication: {
-        type: 'azure-active-directory-access-token',
+  if (username && password) {
+    // Use SQL Server authentication
+    return {
+      config: {
+        server: process.env.SERVER_NAME!,
+        database: process.env.DATABASE_NAME!,
+        user: username,
+        password: password,
         options: {
-          token: accessToken?.token!,
+          encrypt,
+          trustServerCertificate,
         },
+        connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
       },
-      connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
-    },
-    token: accessToken?.token!,
-    expiresOn: accessToken?.expiresOnTimestamp ? new Date(accessToken.expiresOnTimestamp) : new Date(Date.now() + 30 * 60 * 1000)
-  };
+      token: "sql-auth", // placeholder token for SQL auth
+      expiresOn: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
+    };
+  } else {
+    // Use Azure AD authentication
+    const credential = new InteractiveBrowserCredential({
+      redirectUri: "http://localhost",
+      // disableAutomaticAuthentication : true
+    });
+    const accessToken = await credential.getToken(
+      "https://database.windows.net/.default"
+    );
+
+    return {
+      config: {
+        server: process.env.SERVER_NAME!,
+        database: process.env.DATABASE_NAME!,
+        options: {
+          encrypt,
+          trustServerCertificate,
+        },
+        authentication: {
+          type: "azure-active-directory-access-token",
+          options: {
+            token: accessToken?.token!,
+          },
+        },
+        connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
+      },
+      token: accessToken?.token!,
+      expiresOn: accessToken?.expiresOnTimestamp
+        ? new Date(accessToken.expiresOnTimestamp)
+        : new Date(Date.now() + 30 * 60 * 1000),
+    };
+  }
 }
 
 const updateDataTool = new UpdateDataTool();
@@ -79,7 +117,7 @@ const server = new Server(
     capabilities: {
       tools: {},
     },
-  },
+  }
 );
 
 // Read READONLY env variable
@@ -90,7 +128,16 @@ const isReadOnly = process.env.READONLY === "true";
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
     ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool], // add all new tools here
+    : [
+        insertDataTool,
+        readDataTool,
+        describeTableTool,
+        updateDataTool,
+        createTableTool,
+        createIndexTool,
+        dropTableTool,
+        listTableTool,
+      ], // add all new tools here
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -122,7 +169,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case describeTableTool.name:
         if (!args || typeof args.tableName !== "string") {
           return {
-            content: [{ type: "text", text: `Missing or invalid 'tableName' argument for describe_table tool.` }],
+            content: [
+              {
+                type: "text",
+                text: `Missing or invalid 'tableName' argument for describe_table tool.`,
+              },
+            ],
             isError: true,
           };
         }
@@ -197,4 +249,13 @@ function wrapToolRun(tool: { run: (...args: any[]) => Promise<any> }) {
   };
 }
 
-[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool].forEach(wrapToolRun);
+[
+  insertDataTool,
+  readDataTool,
+  updateDataTool,
+  createTableTool,
+  createIndexTool,
+  dropTableTool,
+  listTableTool,
+  describeTableTool,
+].forEach(wrapToolRun);
