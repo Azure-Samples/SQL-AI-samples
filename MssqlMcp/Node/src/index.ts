@@ -30,15 +30,30 @@ let globalAccessToken: string | null = null;
 let globalTokenExpiresOn: Date | null = null;
 
 // Function to create SQL config with fresh access token, returns token and expiry
-export async function createSqlConfig(): Promise<{ config: sql.config, token: string, expiresOn: Date }> {
+export async function createSqlConfig(): Promise<{ config: sql.config, token: string | null, expiresOn: Date | null }> {
+  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
+  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+
+  if (process.env.DB_USER && process.env.DB_PASSWORD) {
+    const config: sql.config = {
+      server: process.env.SERVER_NAME!,
+      database: process.env.DATABASE_NAME!,
+      user: process.env.DB_USER!,
+      password: process.env.DB_PASSWORD!,
+      options: {
+        encrypt: true,
+        trustServerCertificate
+      },
+      connectionTimeout: connectionTimeout * 1000,
+    };
+    return { config, token: null, expiresOn: null };
+  }
+
   const credential = new InteractiveBrowserCredential({
     redirectUri: 'http://localhost'
     // disableAutomaticAuthentication : true
   });
   const accessToken = await credential.getToken('https://database.windows.net/.default');
-
-  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
-  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
 
   return {
     config: {
