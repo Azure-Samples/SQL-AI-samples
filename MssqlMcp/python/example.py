@@ -15,8 +15,8 @@ import logging
 # Add the src directory to the Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from mssql_mcp.sql_connection_factory import SqlConnectionFactory
-from mssql_mcp.tools import (
+from src.mssql_mcp.sql_connection_factory import SqlConnectionFactory
+from src.mssql_mcp.tools import (
     ListTablesTool,
     DescribeTableTool,
     CreateTableTool,
