@@ -135,7 +135,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
      }
    }
    }
-   ```
+   }
 
 3. **Restart Claude Desktop**
    - Close and reopen Claude Desktop for the changes to take effect
