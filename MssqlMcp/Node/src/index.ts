@@ -98,7 +98,7 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token?: s
       };
 
     default:
-      throw new Error(`Unsupported authentication method: ${authMethod}. Supported methods: azure-ad, windows, sql`);
+      throw new Error(`Unsupported authentication method: ${authMethod}. Supported methods: azure-ad/azuread, windows/ntlm, sql/sqlserver`);
   }
 }
 
