@@ -100,7 +100,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
     }
   }
   }
-  ```
+  }
 
 4. **Restart VS Code**
    - Close and reopen VS Code for the changes to take effect
