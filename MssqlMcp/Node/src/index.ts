@@ -95,6 +95,19 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token?: s
           user: process.env.SQL_USERNAME!,
           password: process.env.SQL_PASSWORD!,
         }
+      // SQL Server authentication
+      if (!process.env.SQL_USERNAME) {
+        throw new Error("Environment variable SQL_USERNAME is required for SQL Server authentication.");
+      }
+      if (!process.env.SQL_PASSWORD) {
+        throw new Error("Environment variable SQL_PASSWORD is required for SQL Server authentication.");
+      }
+      return {
+        config: {
+          ...baseConfig,
+          user: process.env.SQL_USERNAME,
+          password: process.env.SQL_PASSWORD,
+        }
       };
 
     default:
