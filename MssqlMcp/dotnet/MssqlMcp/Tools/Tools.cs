@@ -14,6 +14,9 @@ public partial class Tools(ISqlConnectionFactory connectionFactory, ILogger<Tool
     private readonly ISqlConnectionFactory _connectionFactory = connectionFactory;
     private readonly ILogger<Tools> _logger = logger;
 
+    // Check if READONLY mode is enabled
+    private static bool IsReadOnlyMode => Environment.GetEnvironmentVariable("READONLY")?.Equals("true", StringComparison.OrdinalIgnoreCase) ?? false;
+
     // Helper to convert DataTable to a serializable list
     private static List<Dictionary<string, object>> DataTableToList(DataTable table)
     {

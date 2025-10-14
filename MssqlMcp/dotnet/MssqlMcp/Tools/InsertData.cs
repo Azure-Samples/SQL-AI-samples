@@ -17,6 +17,11 @@ public partial class Tools
     public async Task<DbOperationResult> InsertData(
         [Description("INSERT SQL statement")] string sql)
     {
+        if (IsReadOnlyMode)
+        {
+            return new DbOperationResult(success: false, error: "INSERT operation is not allowed in READONLY mode");
+        }
+
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {
