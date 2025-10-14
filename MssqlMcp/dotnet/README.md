@@ -1,3 +1,4 @@
+> ⚠️ **EXPERIMENTAL USE ONLY** - This MCP Server is provided as an example for educational and experimental purposes only. It is NOT intended for production use. Please use appropriate security measures and thoroughly test before considering any kind of deployment.
 
 # Mssql SQL MCP Server (.NET 8)
 

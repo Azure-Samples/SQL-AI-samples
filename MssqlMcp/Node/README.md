@@ -4,6 +4,8 @@
   <img src="./src/img/logo.png" alt="MSSQL Database MCP server logo" width="400"/>
 </div>
 
+> ⚠️ **EXPERIMENTAL USE ONLY** - This MCP Server is provided as an example for educational and experimental purposes only. It is NOT intended for production use. Please use appropriate security measures and thoroughly test before considering any kind of deployment.
+
 ## What is this? 🤔
 
 This is a server that lets your LLMs (like Claude) talk directly to your MSSQL Database data! Think of it as a friendly translator that sits between your AI assistant and your database, making sure they can chat securely and efficiently.
@@ -164,6 +166,6 @@ Once configured, you can interact with your database using natural language:
 
 - The server requires a WHERE clause for read operations to prevent accidental full table scans
 - Update operations require explicit WHERE clauses for security
-- Set `READONLY: "true"` in production environments if you only need read access
+- Set `READONLY: "true"` in environments if you only need read access
 
 You should now have successfully configured the MCP server for MSSQL Database with your preferred AI assistant. This setup allows you to seamlessly interact with MSSQL Database through natural language queries!
