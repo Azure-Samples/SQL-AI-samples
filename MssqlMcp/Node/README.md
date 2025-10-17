@@ -1,4 +1,4 @@
-# MSSQL Database MCP  Server
+# MSSQL Database MCP Server
 
 <div align="center">
   <img src="./src/img/logo.png" alt="MSSQL Database MCP server logo" width="400"/>
@@ -9,6 +9,7 @@
 This is a server that lets your LLMs (like Claude) talk directly to your MSSQL Database data! Think of it as a friendly translator that sits between your AI assistant and your database, making sure they can chat securely and efficiently.
 
 ### Quick Example
+
 ```text
 You: "Show me all customers from New York"
 Claude: *queries your MSSQL Database database and gives you the answer in plain English*
@@ -29,19 +30,21 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 ## Quick Start 🚀
 
 ### Prerequisites
+
 - Node.js 14 or higher
 - Claude Desktop or VS Code with Agent extension
 
 ### Set up project
 
 1. **Install Dependencies**  
-   Run the following command in the root folder to install all necessary dependencies:  
+   Run the following command in the root folder to install all necessary dependencies:
+
    ```bash
    npm install
    ```
 
 2. **Build the Project**  
-   Compile the project by running:  
+   Compile the project by running:
    ```bash
    npm run build
    ```
@@ -51,11 +54,13 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 ### Option 1: VS Code Agent Setup
 
 1. **Install VS Code Agent Extension**
+
    - Open VS Code
    - Go to Extensions (Ctrl+Shift+X)
    - Search for "Agent" and install the official Agent extension
 
 2. **Create MCP Configuration File**
+
    - Create a `.vscode/mcp.json` file in your workspace
    - Add the following configuration:
 
@@ -63,16 +68,19 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
    {
      "servers": {
        "mssql-nodejs": {
-          "type": "stdio",
-          "command": "node",
-          "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\Node\\dist\\index.js"],
-          "env": {
-            "SERVER_NAME": "your-server-name.database.windows.net",
-            "DATABASE_NAME": "your-database-name",
-            "READONLY": "false"
-          }
-        }
-      }
+         "type": "stdio",
+         "command": "node",
+         "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\Node\\dist\\index.js"],
+         "env": {
+           "HOST": "localhost",
+           "PORT": "1433",
+           "USER": "sa",
+           "PASSWORD": "your-password",
+           "DATABASE_NAME": "your-database-name",
+           "READONLY": "false"
+         }
+       }
+     }
    }
    ```
 
@@ -82,25 +90,29 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
    - Click "Edit in settings.json"
    - Add the following configuration:
 
-  ```json
-   {
-    "mcp": {
-        "servers": {
-            "mssql": {
-                "command": "node",
-                "args": ["C:/path/to/your/Node/dist/index.js"],
-                "env": {
-                "SERVER_NAME": "your-server-name.database.windows.net",
-                "DATABASE_NAME": "your-database-name",
-                "READONLY": "false"
-                }
-            }
+```json
+{
+  "mcp": {
+    "servers": {
+      "mssql": {
+        "command": "node",
+        "args": ["C:/path/to/your/Node/dist/index.js"],
+        "env": {
+          "HOST": "localhost",
+          "PORT": "1433",
+          "USER": "sa",
+          "PASSWORD": "your-password",
+          "DATABASE_NAME": "your-database-name",
+          "READONLY": "false"
         }
+      }
     }
   }
-  ```
+}
+```
 
 4. **Restart VS Code**
+
    - Close and reopen VS Code for the changes to take effect
 
 5. **Verify MCP Server**
@@ -111,6 +123,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 ### Option 2: Claude Desktop Setup
 
 1. **Open Claude Desktop Settings**
+
    - Navigate to File → Settings → Developer → Edit Config
    - Open the `claude_desktop_config` file
 
@@ -124,7 +137,10 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
          "command": "node",
          "args": ["C:/path/to/your/Node/dist/index.js"],
          "env": {
-           "SERVER_NAME": "your-server-name.database.windows.net",
+           "HOST": "localhost",
+           "PORT": "1433",
+           "USER": "sa",
+           "PASSWORD": "your-password",
            "DATABASE_NAME": "your-database-name",
            "READONLY": "false"
          }
@@ -138,16 +154,21 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 
 ### Configuration Parameters
 
-- **SERVER_NAME**: Your MSSQL Database server name (e.g., `my-server.database.windows.net`)
+- **HOST**: Your MSSQL server address (e.g., `localhost`, `192.168.1.1`, or `my-server.database.windows.net`)
+- **PORT**: (Optional) Port number for the MSSQL server. Defaults to `1433` if not set.
+- **USER**: Username for SQL authentication (e.g., `sa`)
+- **PASSWORD**: Password for SQL authentication
 - **DATABASE_NAME**: Your database name
 - **READONLY**: Set to `"true"` to restrict to read-only operations, `"false"` for full access
 - **Path**: Update the path in `args` to point to your actual project location.
 - **CONNECTION_TIMEOUT**: (Optional) Connection timeout in seconds. Defaults to `30` if not set.
-- **TRUST_SERVER_CERTIFICATE**: (Optional) Set to `"true"` to trust self-signed server certificates (useful for development or when connecting to servers with self-signed certs). Defaults to `"false"`.
+
+**Note**: The server automatically uses encrypted connections with `trustServerCertificate: true` enabled for self-signed certificates.
 
 ## Sample Configurations
 
 You can find sample configuration files in the `src/samples/` folder:
+
 - `claude_desktop_config.json` - For Claude Desktop
 - `vscode_agent_config.json` - For VS Code Agent
 

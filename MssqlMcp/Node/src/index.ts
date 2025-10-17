@@ -18,46 +18,45 @@ import { CreateTableTool } from "./tools/CreateTableTool.js";
 import { CreateIndexTool } from "./tools/CreateIndexTool.js";
 import { ListTableTool } from "./tools/ListTableTool.js";
 import { DropTableTool } from "./tools/DropTableTool.js";
-import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/identity";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 
 // MSSQL Database connection configuration
-// const credential = new DefaultAzureCredential();
-
-// Globals for connection and token reuse
+// Globals for connection reuse
 let globalSqlPool: sql.ConnectionPool | null = null;
-let globalAccessToken: string | null = null;
-let globalTokenExpiresOn: Date | null = null;
 
-// Function to create SQL config with fresh access token, returns token and expiry
-export async function createSqlConfig(): Promise<{ config: sql.config, token: string, expiresOn: Date }> {
-  const credential = new InteractiveBrowserCredential({
-    redirectUri: 'http://localhost'
-    // disableAutomaticAuthentication : true
-  });
-  const accessToken = await credential.getToken('https://database.windows.net/.default');
-
-  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
+// Function to create SQL config with SQL authentication
+export function createSqlConfig(): sql.config {
+  const host = process.env.HOST;
+  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 1433;
+  const user = process.env.USER;
+  const password = process.env.PASSWORD;
+  const database = process.env.DATABASE_NAME;
   const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
 
+  if (!host) {
+    throw new Error('HOST environment variable is required');
+  }
+  if (!user) {
+    throw new Error('USER environment variable is required');
+  }
+  if (!password) {
+    throw new Error('PASSWORD environment variable is required');
+  }
+  if (!database) {
+    throw new Error('DATABASE_NAME environment variable is required');
+  }
+
   return {
-    config: {
-      server: process.env.SERVER_NAME!,
-      database: process.env.DATABASE_NAME!,
-      options: {
-        encrypt: true,
-        trustServerCertificate
-      },
-      authentication: {
-        type: 'azure-active-directory-access-token',
-        options: {
-          token: accessToken?.token!,
-        },
-      },
-      connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
+    server: host,
+    port: port,
+    user: user,
+    password: password,
+    database: database,
+    options: {
+      encrypt: true,
+      trustServerCertificate: true
     },
-    token: accessToken?.token!,
-    expiresOn: accessToken?.expiresOnTimestamp ? new Date(accessToken.expiresOnTimestamp) : new Date(Date.now() + 30 * 60 * 1000)
+    connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
   };
 }
 
@@ -164,21 +163,13 @@ runServer().catch((error) => {
 // Connect to SQL only when handling a request
 
 async function ensureSqlConnection() {
-  // If we have a pool and it's connected, and the token is still valid, reuse it
-  if (
-    globalSqlPool &&
-    globalSqlPool.connected &&
-    globalAccessToken &&
-    globalTokenExpiresOn &&
-    globalTokenExpiresOn > new Date(Date.now() + 2 * 60 * 1000) // 2 min buffer
-  ) {
+  // If we have a pool and it's connected, reuse it
+  if (globalSqlPool && globalSqlPool.connected) {
     return;
   }
 
-  // Otherwise, get a new token and reconnect
-  const { config, token, expiresOn } = await createSqlConfig();
-  globalAccessToken = token;
-  globalTokenExpiresOn = expiresOn;
+  // Otherwise, create a new connection
+  const config = createSqlConfig();
 
   // Close old pool if exists
   if (globalSqlPool && globalSqlPool.connected) {

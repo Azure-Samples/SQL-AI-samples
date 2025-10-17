@@ -6,7 +6,10 @@
                 "command": "node",
                 "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\Node\\dist\\index.js"],
                 "env": {
-                  "SERVER_NAME": "your-server-name.database.windows.net",
+                  "HOST": "localhost",
+                  "PORT": "1433",
+                  "USER": "sa",
+                  "PASSWORD": "your-password",
                   "DATABASE_NAME": "your-database-name",
                   "READONLY": "false"
                 }
