@@ -24,11 +24,14 @@ export class ReadDataTool implements Tool {
     'GRANT', 'REVOKE', 'COMMIT', 'ROLLBACK', 'TRANSACTION',
     'BEGIN', 'DECLARE', 'SET', 'USE', 'BACKUP',
     'RESTORE', 'KILL', 'SHUTDOWN', 'WAITFOR', 'OPENROWSET',
-    'OPENDATASOURCE', 'OPENQUERY', 'OPENXML', 'BULK'
+    'OPENDATASOURCE', 'OPENQUERY', 'OPENXML', 'BULK', 'INTO'
   ];
 
   // Regex patterns to detect common SQL injection techniques
   private static readonly DANGEROUS_PATTERNS = [
+
+    // SELECT INTO operations that create new tables
+    /SELECT\s+.*?\s+INTO\s+/i,
     // Semicolon followed by dangerous keywords
     /;\s*(DELETE|DROP|UPDATE|INSERT|ALTER|CREATE|TRUNCATE|EXEC|EXECUTE|MERGE|REPLACE|GRANT|REVOKE)/i,
     
