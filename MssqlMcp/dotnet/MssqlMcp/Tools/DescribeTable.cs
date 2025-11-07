@@ -64,31 +64,36 @@ public partial class Tools
 
 
         const string ForeignKeyInformation = @"SELECT
-    fk.name AS name,
-    SCHEMA_NAME(tp.schema_id) AS [schema],
-    tp.name AS table_name,
-    STRING_AGG(cp.name, ', ') WITHIN GROUP (ORDER BY fkc.constraint_column_id) AS column_names,
-    SCHEMA_NAME(tr.schema_id) AS referenced_schema,
-    tr.name AS referenced_table,
-    STRING_AGG(cr.name, ', ') WITHIN GROUP (ORDER BY fkc.constraint_column_id) AS referenced_column_names
-FROM
-    sys.foreign_keys AS fk
-JOIN
-    sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id
-JOIN
-    sys.tables AS tp ON fkc.parent_object_id = tp.object_id
-JOIN
-    sys.columns AS cp ON fkc.parent_object_id = cp.object_id AND fkc.parent_column_id = cp.column_id
-JOIN
-    sys.tables AS tr ON fkc.referenced_object_id = tr.object_id
-JOIN
-    sys.columns AS cr ON fkc.referenced_object_id = cr.object_id AND fkc.referenced_column_id = cr.column_id
- WHERE
-            ( SCHEMA_NAME(tp.schema_id) = @TableSchema OR @TableSchema IS NULL )
-            AND tp.name = @TableName
-GROUP BY
-    fk.name, tp.schema_id, tp.name, tr.schema_id, tr.name;
-";
+    fk.name,
+    SCHEMA_NAME(pt.schema_id) AS [schema],
+    pt.name AS table_name,
+    STUFF( (
+        SELECT N', ' + cp.name
+        FROM sys.foreign_key_columns AS fkc
+        JOIN sys.columns AS cp
+            ON cp.object_id = fkc.parent_object_id
+            AND cp.column_id = fkc.parent_column_id
+        WHERE fkc.constraint_object_id = fk.object_id
+        ORDER BY fkc.constraint_column_id
+        FOR XML PATH(''), TYPE
+    ).value('.', 'nvarchar(max)'), 1, 2, '') AS column_names,
+    SCHEMA_NAME(rt.schema_id) AS referenced_schema,
+    rt.name AS referenced_table,
+    STUFF( (
+        SELECT N', ' + cp.name
+        FROM sys.foreign_key_columns AS fkc
+        JOIN sys.columns AS cp
+            ON cp.object_id = fkc.referenced_object_id
+            AND cp.column_id = fkc.referenced_column_id
+        WHERE fkc.constraint_object_id = fk.object_id
+        ORDER BY fkc.constraint_column_id
+        FOR XML PATH(''), TYPE
+    ).value('.', 'nvarchar(max)'), 1, 2, '') AS referenced_column_names
+FROM sys.foreign_keys AS fk
+JOIN sys.tables AS pt ON pt.object_id = fk.parent_object_id
+JOIN sys.tables AS rt ON rt.object_id = fk.referenced_object_id
+WHERE ( SCHEMA_NAME(pt.schema_id) = @TableSchema OR @TableSchema IS NULL ) AND pt.name = @TableName";
+
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {
