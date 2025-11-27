@@ -22,6 +22,8 @@ import { ListTableTool } from "./tools/ListTableTool.js";
 import { DropTableTool } from "./tools/DropTableTool.js";
 import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/identity";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
+import { SearchSchemaTool } from "./tools/SearchSchemaTool.js";
+import { ProfileTableTool } from "./tools/ProfileTableTool.js";
 
 // MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
@@ -143,6 +145,8 @@ const createIndexTool = new CreateIndexTool();
 const listTableTool = new ListTableTool();
 const dropTableTool = new DropTableTool();
 const describeTableTool = new DescribeTableTool();
+const searchSchemaTool = new SearchSchemaTool();
+const profileTableTool = new ProfileTableTool();
 
 const server = new Server(
   {
@@ -163,8 +167,8 @@ const isReadOnly = process.env.READONLY === "true";
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
-    ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool], // add all new tools here
+    ? [listTableTool, readDataTool, describeTableTool, searchSchemaTool, profileTableTool]
+    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, searchSchemaTool, profileTableTool],
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -201,6 +205,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           };
         }
         result = await describeTableTool.run(args as { tableName: string });
+        break;
+      case searchSchemaTool.name:
+        result = await searchSchemaTool.run(args ?? {});
+        break;
+      case profileTableTool.name:
+        if (!args || typeof args.tableName !== "string") {
+          return {
+            content: [{ type: "text", text: `Missing or invalid 'tableName' argument for profile_table tool.` }],
+            isError: true,
+          };
+        }
+        result = await profileTableTool.run(args as any);
         break;
       default:
         return {
@@ -269,4 +285,4 @@ function wrapToolRun(tool: { run: (...args: any[]) => Promise<any> }) {
   };
 }
 
-[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool].forEach(wrapToolRun);
+[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool, searchSchemaTool, profileTableTool].forEach(wrapToolRun);
