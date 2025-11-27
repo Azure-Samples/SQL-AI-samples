@@ -24,6 +24,7 @@ import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/ide
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 import { SearchSchemaTool } from "./tools/SearchSchemaTool.js";
 import { ProfileTableTool } from "./tools/ProfileTableTool.js";
+import { RelationshipInspectorTool } from "./tools/RelationshipInspectorTool.js";
 
 // MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
@@ -147,6 +148,7 @@ const dropTableTool = new DropTableTool();
 const describeTableTool = new DescribeTableTool();
 const searchSchemaTool = new SearchSchemaTool();
 const profileTableTool = new ProfileTableTool();
+const relationshipInspectorTool = new RelationshipInspectorTool();
 
 const server = new Server(
   {
@@ -167,8 +169,8 @@ const isReadOnly = process.env.READONLY === "true";
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
-    ? [listTableTool, readDataTool, describeTableTool, searchSchemaTool, profileTableTool]
-    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, searchSchemaTool, profileTableTool],
+    ? [listTableTool, readDataTool, describeTableTool, searchSchemaTool, profileTableTool, relationshipInspectorTool]
+    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, searchSchemaTool, profileTableTool, relationshipInspectorTool],
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -217,6 +219,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           };
         }
         result = await profileTableTool.run(args as any);
+        break;
+      case relationshipInspectorTool.name:
+        if (!args || typeof args.tableName !== "string") {
+          return {
+            content: [{ type: "text", text: `Missing or invalid 'tableName' argument for inspect_relationships tool.` }],
+            isError: true,
+          };
+        }
+        result = await relationshipInspectorTool.run(args as any);
         break;
       default:
         return {
@@ -285,4 +296,4 @@ function wrapToolRun(tool: { run: (...args: any[]) => Promise<any> }) {
   };
 }
 
-[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool, searchSchemaTool, profileTableTool].forEach(wrapToolRun);
+[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool, searchSchemaTool, profileTableTool, relationshipInspectorTool].forEach(wrapToolRun);
