@@ -1,6 +1,20 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
 
+const clampEnvInt = (value: string | undefined, fallback: number, min: number, max: number) => {
+  if (!value) {
+    return fallback;
+  }
+  const parsed = parseInt(value, 10);
+  if (Number.isNaN(parsed)) {
+    return fallback;
+  }
+  return Math.min(Math.max(parsed, min), max);
+};
+
+const DEFAULT_SAMPLE_SIZE = clampEnvInt(process.env.PROFILE_SAMPLE_SIZE_DEFAULT, 50, 1, 1000);
+const SAMPLE_RETURN_LIMIT = clampEnvInt(process.env.PROFILE_SAMPLE_RETURN_LIMIT, 10, 1, 100);
+
 type ProfileParams = {
   tableName: string;
   schemaName?: string;
@@ -8,12 +22,15 @@ type ProfileParams = {
   includeDistributions?: boolean;
   topValuesLimit?: number;
   columnsToProfile?: string[];
+  includeSamples?: boolean;
 };
 
 type NumericStats = {
   min: number;
   max: number;
   avg: number;
+  median?: number;
+  p90?: number;
 };
 
 type StringStats = {
@@ -58,6 +75,7 @@ type ProfileResult = {
   columnCount?: number;
   sampleSize?: number;
   columns?: ColumnProfile[];
+  samples?: Record<string, unknown>[];
 };
 
 export class ProfileTableTool implements Tool {
@@ -80,6 +98,10 @@ export class ProfileTableTool implements Tool {
       sampleSize: {
         type: "number",
         description: "Number of sample rows (default 100, max 1000)",
+      },
+      includeSamples: {
+        type: "boolean",
+        description: "Return sampled rows used for profiling (default false)",
       },
       includeDistributions: {
         type: "boolean",
@@ -203,8 +225,9 @@ export class ProfileTableTool implements Tool {
       }
 
       const schemaName = params.schemaName?.trim() || "dbo";
-      const sampleSize = this.normalizeLimit(params.sampleSize, 100, 1000);
+      const sampleSize = this.normalizeLimit(params.sampleSize, DEFAULT_SAMPLE_SIZE, 1000);
       const includeDistributions = params.includeDistributions !== false;
+      const includeSamples = params.includeSamples === true;
       const topValuesLimit = this.normalizeLimit(params.topValuesLimit, 10, 50);
       const columnsToProfile = params.columnsToProfile?.map((c) => c.trim()).filter(Boolean);
 
@@ -254,6 +277,8 @@ export class ProfileTableTool implements Tool {
       const countResult = await countRequest.query(`SELECT COUNT(*) AS cnt FROM ${fqTable}`);
       const rowCount = countResult.recordset[0]?.cnt ?? 0;
 
+      let sampleRows: Record<string, unknown>[] | undefined;
+
       if (rowCount === 0) {
         return {
           success: true,
@@ -272,6 +297,17 @@ export class ProfileTableTool implements Tool {
             cardinality: "low" as const,
           })),
         };
+      }
+
+      if (includeSamples) {
+        const sampleRequest = new sql.Request();
+        const sampleQuery = `
+          SELECT TOP (${sampleSize}) *
+          FROM ${fqTable}
+          ORDER BY NEWID()
+        `;
+        const sampleResult = await sampleRequest.query(sampleQuery);
+        sampleRows = (sampleResult.recordset ?? []).slice(0, SAMPLE_RETURN_LIMIT);
       }
 
       // 3. Profile each column
@@ -322,6 +358,24 @@ export class ProfileTableTool implements Tool {
               max: numRow.maxVal,
               avg: Number(Number(numRow.avgVal).toFixed(4)),
             };
+
+            const percentileRequest = new sql.Request();
+            const percentileResult = await percentileRequest.query(`
+              SELECT TOP 1
+                PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY ${colName}) OVER () AS medianVal,
+                PERCENTILE_CONT(0.9) WITHIN GROUP (ORDER BY ${colName}) OVER () AS p90Val
+              FROM ${fqTable}
+              WHERE ${colName} IS NOT NULL
+            `);
+            const percentileRow = percentileResult.recordset[0];
+            if (percentileRow) {
+              if (percentileRow.medianVal !== null && percentileRow.medianVal !== undefined) {
+                profile.numericStats.median = Number(Number(percentileRow.medianVal).toFixed(4));
+              }
+              if (percentileRow.p90Val !== null && percentileRow.p90Val !== undefined) {
+                profile.numericStats.p90 = Number(Number(percentileRow.p90Val).toFixed(4));
+              }
+            }
           }
         } else if (this.isStringType(col.dataType)) {
           const strRequest = new sql.Request();
@@ -396,8 +450,9 @@ export class ProfileTableTool implements Tool {
         schemaName,
         rowCount,
         columnCount: columnProfiles.length,
-        sampleSize,
+        sampleSize: includeSamples ? sampleRows?.length ?? 0 : sampleSize,
         columns: columnProfiles,
+        samples: includeSamples ? sampleRows : undefined,
       };
     } catch (error) {
       return {

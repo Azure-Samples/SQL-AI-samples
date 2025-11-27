@@ -1,6 +1,19 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
 
+const clampEnvLimit = (value: string | undefined, fallback: number, max: number) => {
+  if (!value) {
+    return fallback;
+  }
+  const parsed = parseInt(value, 10);
+  if (Number.isNaN(parsed) || parsed <= 0) {
+    return fallback;
+  }
+  return Math.min(parsed, max);
+};
+
+const SEARCH_DEFAULT_LIMIT = clampEnvLimit(process.env.SEARCH_SCHEMA_DEFAULT_LIMIT, 50, 200);
+
 type SearchParams = {
   tablePattern?: string;
   columnPattern?: string;
@@ -167,9 +180,9 @@ export class SearchSchemaTool implements Tool {
       const rawTableSearch = this.stripWildcards(params.tablePattern);
       const tablePattern = this.normalizePattern(params.tablePattern);
       const columnPattern = this.normalizePattern(params.columnPattern);
-      const baseLimit = this.normalizeLimit(params.limit);
-      const tableLimit = this.normalizeLimit(params.tableLimit, baseLimit);
-      const columnLimit = this.normalizeLimit(params.columnLimit, baseLimit);
+      const limit = typeof params.limit === "number" && params.limit > 0 ? Math.min(params.limit, 200) : SEARCH_DEFAULT_LIMIT;
+      const tableLimit = this.normalizeLimit(params.tableLimit, limit);
+      const columnLimit = this.normalizeLimit(params.columnLimit, limit);
       const tableOffset = this.normalizeOffset(params.tableOffset);
       const columnOffset = this.normalizeOffset(params.columnOffset);
 

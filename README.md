@@ -78,6 +78,9 @@ Configure your MCP client to point at `MssqlMcp/Node/dist/index.js` with your co
 | `TRUST_SERVER_CERTIFICATE` | | Set to `true` for self-signed certificates or dev environments |
 | `CONNECTION_TIMEOUT` | | Connection timeout in seconds (default: `30`) |
 | `READONLY` | | Set to `true` to restrict to read-only tools (no INSERT, UPDATE, DROP) |
+| `PROFILE_SAMPLE_SIZE_DEFAULT` | | Default sample size for `profile_table` (defaults to `50`, max `1000`) |
+| `PROFILE_SAMPLE_RETURN_LIMIT` | | Max number of sample rows returned in responses (defaults to `10`, max `100`) |
+| `SEARCH_SCHEMA_DEFAULT_LIMIT` | | Default row limit per section for `search_schema` pagination (defaults to `50`, max `200`) |
 
 ### Authentication modes
 
@@ -160,6 +163,11 @@ This MCP server exposes powerful CRUD operations including `drop_table`, `create
 5. **Monitor and audit.** Enable SQL Server auditing or application-level logging to track executed queries.
 
 The discovery tools (`search_schema`, `profile_table`, `inspect_relationships`) are designed to help you understand unfamiliar databases safely. Use them to build context before issuing any mutations.
+
+### Tool tuning
+
+- **Schema discovery pagination** – Use `SEARCH_SCHEMA_DEFAULT_LIMIT` to tune how many rows `search_schema` returns per page (default 50, max 200). Combine with `tableOffset`/`columnOffset` params for manual paging.
+- **Profiling samples** – Use `PROFILE_SAMPLE_SIZE_DEFAULT` to control how many rows are sampled internally (default 50). Control how many rows are actually returned with `PROFILE_SAMPLE_RETURN_LIMIT` (default 10). Both respect per-request overrides via `sampleSize` and `includeSamples` args.
 
 ---
 
