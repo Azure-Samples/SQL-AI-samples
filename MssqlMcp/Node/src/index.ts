@@ -10,6 +10,8 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 
+dotenv.config();
+
 // Internal imports
 import { UpdateDataTool } from "./tools/UpdateDataTool.js";
 import { InsertDataTool } from "./tools/InsertDataTool.js";
@@ -30,20 +32,92 @@ let globalAccessToken: string | null = null;
 let globalTokenExpiresOn: Date | null = null;
 
 // Function to create SQL config with fresh access token, returns token and expiry
-export async function createSqlConfig(): Promise<{ config: sql.config, token: string, expiresOn: Date }> {
+export async function createSqlConfig(): Promise<{ config: sql.config, token: string | null, expiresOn: Date | null }> {
+  const server = process.env.SERVER_NAME;
+  const database = process.env.DATABASE_NAME;
+  if (!server || !database) {
+    throw new Error("SERVER_NAME and DATABASE_NAME environment variables are required.");
+  }
+
+  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
+  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+  const sqlPort = process.env.SQL_PORT ? parseInt(process.env.SQL_PORT, 10) : undefined;
+  const authMode = (process.env.SQL_AUTH_MODE ?? 'aad').toLowerCase();
+
+  if (authMode === 'sql') {
+    const sqlUsername = process.env.SQL_USERNAME;
+    const sqlPassword = process.env.SQL_PASSWORD;
+
+    if (!sqlUsername || !sqlPassword) {
+      throw new Error("SQL_AUTH_MODE=sql requires SQL_USERNAME and SQL_PASSWORD to be set.");
+    }
+
+    return {
+      config: {
+        server,
+        database,
+        port: sqlPort,
+        user: sqlUsername,
+        password: sqlPassword,
+        options: {
+          encrypt: false,
+          trustServerCertificate,
+        },
+        connectionTimeout: connectionTimeout * 1000,
+      },
+      token: null,
+      expiresOn: null,
+    };
+  }
+
+  if (authMode === 'windows') {
+    const sqlUsername = process.env.SQL_USERNAME;
+    const sqlPassword = process.env.SQL_PASSWORD;
+    const sqlDomain = process.env.SQL_DOMAIN ?? "";
+
+    if (!sqlUsername || !sqlPassword) {
+      throw new Error("SQL_AUTH_MODE=windows requires SQL_USERNAME and SQL_PASSWORD to be set.");
+    }
+
+    return {
+      config: {
+        server,
+        database,
+        port: sqlPort,
+        options: {
+          encrypt: false,
+          trustServerCertificate,
+        },
+        authentication: {
+          type: 'ntlm',
+          options: {
+            userName: sqlUsername,
+            password: sqlPassword,
+            domain: sqlDomain,
+          },
+        },
+        connectionTimeout: connectionTimeout * 1000,
+      },
+      token: null,
+      expiresOn: null,
+    };
+  }
+
   const credential = new InteractiveBrowserCredential({
     redirectUri: 'http://localhost'
     // disableAutomaticAuthentication : true
   });
   const accessToken = await credential.getToken('https://database.windows.net/.default');
 
-  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
-  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+  if (!accessToken?.token) {
+    throw new Error("Failed to acquire Azure AD access token for SQL connection.");
+  }
 
   return {
     config: {
-      server: process.env.SERVER_NAME!,
-      database: process.env.DATABASE_NAME!,
+      server,
+      database,
+      port: sqlPort,
       options: {
         encrypt: true,
         trustServerCertificate
@@ -51,12 +125,12 @@ export async function createSqlConfig(): Promise<{ config: sql.config, token: st
       authentication: {
         type: 'azure-active-directory-access-token',
         options: {
-          token: accessToken?.token!,
+          token: accessToken.token,
         },
       },
       connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
     },
-    token: accessToken?.token!,
+    token: accessToken.token,
     expiresOn: accessToken?.expiresOnTimestamp ? new Date(accessToken.expiresOnTimestamp) : new Date(Date.now() + 30 * 60 * 1000)
   };
 }
@@ -168,9 +242,7 @@ async function ensureSqlConnection() {
   if (
     globalSqlPool &&
     globalSqlPool.connected &&
-    globalAccessToken &&
-    globalTokenExpiresOn &&
-    globalTokenExpiresOn > new Date(Date.now() + 2 * 60 * 1000) // 2 min buffer
+    (!globalTokenExpiresOn || globalTokenExpiresOn > new Date(Date.now() + 2 * 60 * 1000)) // 2 min buffer
   ) {
     return;
   }
