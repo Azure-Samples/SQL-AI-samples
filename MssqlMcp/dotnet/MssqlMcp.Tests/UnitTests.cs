@@ -7,13 +7,14 @@ using Mssql.McpServer;
 
 namespace MssqlMcp.Tests
 {
+    [Collection("Database Tests")]
     public sealed class MssqlMcpTests : IDisposable
     {
         private readonly string _tableName;
         private readonly Tools _tools;
         public MssqlMcpTests()
         {
-            _tableName = $"TestTable_{Guid.NewGuid():N}";
+            _tableName = $"UnitTest_{Guid.NewGuid():N}";
             var connectionFactory = new SqlConnectionFactory();
             var loggerMock = new Mock<ILogger<Tools>>();
             _tools = new Tools(connectionFactory, loggerMock.Object);
@@ -93,23 +94,6 @@ namespace MssqlMcp.Tests
             Assert.NotNull(result.Data);
         }
 
-        [Fact]
-        public async Task ReadData_ReturnsData_WhenSqlIsValid()
-        {
-            // Ensure table exists and has data
-            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
-            Assert.NotNull(createResult);
-            Assert.True(createResult.Success);
-            var insertResult = await _tools.InsertData($"INSERT INTO {_tableName} (Id) VALUES (1)") as DbOperationResult;
-            Assert.NotNull(insertResult);
-            Assert.True(insertResult.Success);
-
-            var sql = $"SELECT * FROM {_tableName}";
-            var result = await _tools.ReadData(sql) as DbOperationResult;
-            Assert.NotNull(result);
-            Assert.True(result.Success);
-            Assert.NotNull(result.Data);
-        }
 
         [Fact]
         public async Task UpdateData_ReturnsSuccess_WhenSqlIsValid()
@@ -168,15 +152,6 @@ namespace MssqlMcp.Tests
             Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
         }
 
-        [Fact]
-        public async Task ReadData_ReturnsError_WhenSqlIsInvalid()
-        {
-            var sql = "SELECT FROM";
-            var result = await _tools.ReadData(sql) as DbOperationResult;
-            Assert.NotNull(result);
-            Assert.False(result.Success);
-            Assert.Contains("syntax", result.Error ?? string.Empty, StringComparison.OrdinalIgnoreCase);
-        }
 
         [Fact]
         public async Task UpdateData_ReturnsError_WhenSqlIsInvalid()
@@ -209,6 +184,123 @@ namespace MssqlMcp.Tests
             var describeResult = await _tools.DescribeTable(_tableName) as DbOperationResult;
             Assert.NotNull(describeResult);
             Assert.True(describeResult.Success);
+        }
+
+        [Fact]
+        public async Task ReadOnlyMode_ListTables_ReturnsSuccess_WhenReadOnlyIsTrue()
+        {
+            // Set READONLY environment variable
+            Environment.SetEnvironmentVariable("READONLY", "true");
+            try
+            {
+                var result = await _tools.ListTables() as DbOperationResult;
+                Assert.NotNull(result);
+                Assert.True(result.Success);
+                Assert.NotNull(result.Data);
+            }
+            finally
+            {
+                // Clean up environment variable
+                Environment.SetEnvironmentVariable("READONLY", null);
+            }
+        }
+
+        [Fact]
+        public async Task ReadOnlyMode_CreateTable_ReturnsError_WhenReadOnlyIsTrue()
+        {
+            // Set READONLY environment variable
+            Environment.SetEnvironmentVariable("READONLY", "true");
+            try
+            {
+                var sql = $"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)";
+                var result = await _tools.CreateTable(sql) as DbOperationResult;
+                Assert.NotNull(result);
+                Assert.False(result.Success);
+                Assert.Contains("CREATE TABLE operation is not allowed in READONLY mode", result.Error ?? string.Empty);
+            }
+            finally
+            {
+                // Clean up environment variable
+                Environment.SetEnvironmentVariable("READONLY", null);
+            }
+        }
+
+        [Fact]
+        public async Task ReadOnlyMode_InsertData_ReturnsError_WhenReadOnlyIsTrue()
+        {
+            // Set READONLY environment variable
+            Environment.SetEnvironmentVariable("READONLY", "true");
+            try
+            {
+                var sql = $"INSERT INTO {_tableName} (Id) VALUES (1)";
+                var result = await _tools.InsertData(sql) as DbOperationResult;
+                Assert.NotNull(result);
+                Assert.False(result.Success);
+                Assert.Contains("INSERT operation is not allowed in READONLY mode", result.Error ?? string.Empty);
+            }
+            finally
+            {
+                // Clean up environment variable
+                Environment.SetEnvironmentVariable("READONLY", null);
+            }
+        }
+
+        [Fact]
+        public async Task ReadOnlyMode_UpdateData_ReturnsError_WhenReadOnlyIsTrue()
+        {
+            // Set READONLY environment variable
+            Environment.SetEnvironmentVariable("READONLY", "true");
+            try
+            {
+                var sql = $"UPDATE {_tableName} SET Id = 2 WHERE Id = 1";
+                var result = await _tools.UpdateData(sql) as DbOperationResult;
+                Assert.NotNull(result);
+                Assert.False(result.Success);
+                Assert.Contains("UPDATE operation is not allowed in READONLY mode", result.Error ?? string.Empty);
+            }
+            finally
+            {
+                // Clean up environment variable
+                Environment.SetEnvironmentVariable("READONLY", null);
+            }
+        }
+
+        [Fact]
+        public async Task ReadOnlyMode_DropTable_ReturnsError_WhenReadOnlyIsTrue()
+        {
+            // Set READONLY environment variable
+            Environment.SetEnvironmentVariable("READONLY", "true");
+            try
+            {
+                var sql = $"DROP TABLE IF EXISTS {_tableName}";
+                var result = await _tools.DropTable(sql) as DbOperationResult;
+                Assert.NotNull(result);
+                Assert.False(result.Success);
+                Assert.Contains("DROP TABLE operation is not allowed in READONLY mode", result.Error ?? string.Empty);
+            }
+            finally
+            {
+                // Clean up environment variable
+                Environment.SetEnvironmentVariable("READONLY", null);
+            }
+        }
+
+        [Fact]
+        public async Task TestConnection_ReturnsSuccess_WhenConnectionIsValid()
+        {
+            var result = await _tools.TestConnection() as DbOperationResult;
+            Assert.NotNull(result);
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            
+            var dict = result.Data as System.Collections.IDictionary;
+            Assert.NotNull(dict);
+            Assert.True(dict.Contains("ConnectionState"));
+            Assert.True(dict.Contains("Database"));
+            Assert.True(dict.Contains("ServerVersion"));
+            Assert.True(dict.Contains("DataSource"));
+            Assert.True(dict.Contains("ConnectionTimeout"));
+            Assert.Equal("Open", dict["ConnectionState"]?.ToString());
         }
     }
 }

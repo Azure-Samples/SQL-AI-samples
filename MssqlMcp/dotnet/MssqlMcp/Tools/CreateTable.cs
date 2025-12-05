@@ -17,6 +17,11 @@ public partial class Tools
     public async Task<DbOperationResult> CreateTable(
         [Description("CREATE TABLE SQL statement")] string sql)
     {
+        if (IsReadOnlyMode)
+        {
+            return new DbOperationResult(success: false, error: "CREATE TABLE operation is not allowed in READONLY mode");
+        }
+
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {

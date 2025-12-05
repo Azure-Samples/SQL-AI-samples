@@ -4,6 +4,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
 
@@ -30,11 +31,31 @@ internal class Program
         _ = builder.Services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>();
         _ = builder.Services.AddSingleton<Tools>();
 
-        // Register MCP server and tools (instance-based)
-        _ = builder.Services
+        // Check if READONLY mode is enabled
+        bool isReadOnlyMode = Environment.GetEnvironmentVariable("READONLY")?.Equals("true", StringComparison.OrdinalIgnoreCase) ?? false;
+
+        // Register MCP server and tools
+        var mcpServerBuilder = builder.Services
             .AddMcpServer()
-            .WithStdioServerTransport()
-            .WithToolsFromAssembly();
+            .WithStdioServerTransport();
+
+        if (isReadOnlyMode)
+        {
+            // Load only ReadOnly tools when in ReadOnly mode
+            var readOnlyTools = new List<McpServerTool>
+            {
+                McpServerTool.Create(typeof(Tools).GetMethod("TestConnection")!, typeof(Tools), new() { Services = null }),
+                McpServerTool.Create(typeof(Tools).GetMethod("DescribeTable")!, typeof(Tools), new() { Services = null }),
+                McpServerTool.Create(typeof(Tools).GetMethod("ListTables")!, typeof(Tools), new() { Services = null }),
+                McpServerTool.Create(typeof(Tools).GetMethod("ReadData")!, typeof(Tools), new() { Services = null })
+            };
+            mcpServerBuilder.WithTools(readOnlyTools);
+        }
+        else
+        {
+            // Load all tools from assembly when not in ReadOnly mode
+            mcpServerBuilder.WithToolsFromAssembly(typeof(Tools).Assembly);
+        }
 
         // Build the host
         var host = builder.Build();

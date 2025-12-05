@@ -17,6 +17,11 @@ public partial class Tools
     public async Task<DbOperationResult> UpdateData(
         [Description("UPDATE SQL statement")] string sql)
     {
+        if (IsReadOnlyMode)
+        {
+            return new DbOperationResult(success: false, error: "UPDATE operation is not allowed in READONLY mode");
+        }
+
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {

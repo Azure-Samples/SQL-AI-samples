@@ -17,6 +17,11 @@ public partial class Tools
     public async Task<DbOperationResult> DropTable(
         [Description("DROP TABLE SQL statement")] string sql)
     {
+        if (IsReadOnlyMode)
+        {
+            return new DbOperationResult(success: false, error: "DROP TABLE operation is not allowed in READONLY mode");
+        }
+
         var conn = await _connectionFactory.GetOpenConnectionAsync();
         try
         {
