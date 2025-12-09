@@ -204,8 +204,8 @@ export class ReadDataTool implements Tool {
    * @returns Query execution result
    */
   async run(params: any) {
+    const { query } = params;  // Extract query before try/catch for error handler access
     try {
-      const { query } = params;
       
       // Validate the query for security issues
       const validation = this.validateQuery(query);
@@ -241,19 +241,9 @@ export class ReadDataTool implements Tool {
       };
       
     } catch (error) {
-      console.error("Error executing query:", error);
-      
-      // Don't expose internal error details to prevent information leakage
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      const safeErrorMessage = errorMessage.includes('Invalid object name') 
-        ? errorMessage 
-        : 'Database query execution failed';
-      
-      return {
-        success: false,
-        message: `Failed to execute query: ${safeErrorMessage}`,
-        error: 'QUERY_EXECUTION_FAILED'
-      };
+      // Use enhanced error handler with configurable verbosity
+      const { formatSqlError } = await import('../utils/errorHandler.js');
+      return formatSqlError(error, query);
     }
   }
 }

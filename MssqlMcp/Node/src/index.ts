@@ -138,8 +138,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
     };
   } catch (error) {
+    // Enhanced error handling with configurable verbosity
+    const { formatError } = await import("./utils/errorHandler.js");
+    const errorDetails = formatError(error, `call tool '${name}'`, 'TOOL_EXECUTION_FAILED');
     return {
-      content: [{ type: "text", text: `Error occurred: ${error}` }],
+      content: [{ type: "text", text: JSON.stringify(errorDetails, null, 2) }],
       isError: true,
     };
   }
