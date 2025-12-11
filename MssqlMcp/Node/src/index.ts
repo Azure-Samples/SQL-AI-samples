@@ -24,21 +24,61 @@ import { DescribeTableTool } from "./tools/DescribeTableTool.js";
 // MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
 
+// Authentication types
+type AuthenticationType = 'sql' | 'entra';
+
 // Globals for connection and token reuse
 let globalSqlPool: sql.ConnectionPool | null = null;
 let globalAccessToken: string | null = null;
 let globalTokenExpiresOn: Date | null = null;
 
-// Function to create SQL config with fresh access token, returns token and expiry
-export async function createSqlConfig(): Promise<{ config: sql.config, token: string, expiresOn: Date }> {
+// Get authentication type from environment variable (defaults to 'entra' for backward compatibility)
+function getAuthenticationType(): AuthenticationType {
+  const authType = process.env.AUTHENTICATION_TYPE?.toLowerCase();
+  if (authType === 'sql') return 'sql';
+  if (authType === 'entra') return 'entra';
+  // Default to 'entra' for backward compatibility
+  return 'entra';
+}
+
+// Function to create SQL config - supports both SQL auth and Entra ID auth
+export async function createSqlConfig(): Promise<{ config: sql.config, token: string | null, expiresOn: Date | null }> {
+  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
+  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+  const authType = getAuthenticationType();
+
+  if (authType === 'sql') {
+    // Use SQL Server authentication (username/password)
+    const sqlUser = process.env.SQL_USER;
+    const sqlPassword = process.env.SQL_PASSWORD;
+
+    if (!sqlUser || !sqlPassword) {
+      throw new Error('SQL authentication requires SQL_USER and SQL_PASSWORD environment variables');
+    }
+
+    return {
+      config: {
+        server: process.env.SERVER_NAME!,
+        database: process.env.DATABASE_NAME!,
+        user: sqlUser,
+        password: sqlPassword,
+        options: {
+          encrypt: true,
+          trustServerCertificate
+        },
+        connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
+      },
+      token: null,
+      expiresOn: null
+    };
+  }
+
+  // Use Entra ID (Azure AD) authentication
   const credential = new InteractiveBrowserCredential({
     redirectUri: 'http://localhost'
     // disableAutomaticAuthentication : true
   });
   const accessToken = await credential.getToken('https://database.windows.net/.default');
-
-  const trustServerCertificate = process.env.TRUST_SERVER_CERTIFICATE?.toLowerCase() === 'true';
-  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
 
   return {
     config: {
@@ -164,8 +204,16 @@ runServer().catch((error) => {
 // Connect to SQL only when handling a request
 
 async function ensureSqlConnection() {
-  // If we have a pool and it's connected, and the token is still valid, reuse it
+  const authType = getAuthenticationType();
+
+  // If using SQL auth, just check if pool is connected (no token expiry to worry about)
+  if (authType === 'sql' && globalSqlPool && globalSqlPool.connected) {
+    return;
+  }
+
+  // If using Entra ID auth, check if pool is connected and token is still valid
   if (
+    authType === 'entra' &&
     globalSqlPool &&
     globalSqlPool.connected &&
     globalAccessToken &&
@@ -175,7 +223,7 @@ async function ensureSqlConnection() {
     return;
   }
 
-  // Otherwise, get a new token and reconnect
+  // Otherwise, get config (and new token if using Entra ID) and reconnect
   const { config, token, expiresOn } = await createSqlConfig();
   globalAccessToken = token;
   globalTokenExpiresOn = expiresOn;

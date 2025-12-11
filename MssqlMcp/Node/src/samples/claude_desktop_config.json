@@ -6,6 +6,7 @@
         "env": {
           "SERVER_NAME": "your-server-name.database.windows.net",
           "DATABASE_NAME": "your-database-name",
+          "AUTHENTICATION_TYPE": "entra",
           "READONLY": "false"
         }
       }
