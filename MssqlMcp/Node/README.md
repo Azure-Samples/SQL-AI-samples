@@ -142,10 +142,37 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 
 - **SERVER_NAME**: Your MSSQL Database server name (e.g., `my-server.database.windows.net`)
 - **DATABASE_NAME**: Your database name
+- **AUTHENTICATION_TYPE**: Authentication method to use. Options:
+  - `"entra"` - Use Microsoft Entra ID (Azure AD) authentication with interactive browser login (default)
+  - `"sql"` - Use SQL Server authentication with username/password
+- **SQL_USER**: (Required when `AUTHENTICATION_TYPE` is `"sql"`) SQL Server username
+- **SQL_PASSWORD**: (Required when `AUTHENTICATION_TYPE` is `"sql"`) SQL Server password
 - **READONLY**: Set to `"true"` to restrict to read-only operations, `"false"` for full access
 - **Path**: Update the path in `args` to point to your actual project location.
 - **CONNECTION_TIMEOUT**: (Optional) Connection timeout in seconds. Defaults to `30` if not set.
 - **TRUST_SERVER_CERTIFICATE**: (Optional) Set to `"true"` to trust self-signed server certificates (useful for development or when connecting to servers with self-signed certs). Defaults to `"false"`.
+
+### Example: SQL Server Authentication
+
+```json
+{
+  "mcpServers": {
+    "mssql": {
+      "command": "node",
+      "args": ["C:/path/to/your/Node/dist/index.js"],
+      "env": {
+        "SERVER_NAME": "your-server-name",
+        "DATABASE_NAME": "your-database-name",
+        "AUTHENTICATION_TYPE": "sql",
+        "SQL_USER": "your_username",
+        "SQL_PASSWORD": "your_password",
+        "TRUST_SERVER_CERTIFICATE": "true",
+        "READONLY": "true"
+      }
+    }
+  }
+}
+```
 
 ## Sample Configurations
 
