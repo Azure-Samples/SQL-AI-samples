@@ -11,19 +11,22 @@ import json
 def get_customer_details(inputs: dict, conn: CustomConnection):
     # this is a bug in promptflow where they treat this input type differently
     if type(inputs) == str:
-       inputs_dict = eval(inputs)
+       inputs_dict = json.loads(inputs)
     else:
        inputs_dict = inputs
+    first_name = inputs_dict['FirstName']
+    last_name = inputs_dict['LastName']
     if inputs_dict['MiddleName'] == "":
-      sqlQuery = f"""select * from [SalesLT].[Customer] WHERE FirstName='{inputs_dict['FirstName']}' and MiddleName is NULL and LastName='{inputs_dict['LastName']}'"""
+      middle_name = "NULL"
     else: 
-      sqlQuery = f"""select * from [SalesLT].[Customer] WHERE FirstName='{inputs_dict['FirstName']}' and MiddleName='{inputs_dict['MiddleName']}' and LastName='{inputs_dict['LastName']}'"""
+      middle_name = inputs_dict['MiddleName']
+    sqlQuery = f"""select * from [SalesLT].[Customer] WHERE FirstName=? and MiddleName=? and LastName=?"""
     connectionString = conn['connectionString']
     sqlConn = pyodbc.connect(connectionString) 
     cursor = sqlConn.cursor()
     queryResult = pd.DataFrame()
     try:
-      cursor.execute(sqlQuery)
+      cursor.execute(sqlQuery, (first_name, middle_name, last_name))
       records = cursor.fetchall()
       queryResult = pd.DataFrame.from_records(records, columns=[col[0] for col in cursor.description])
     except Exception as e:
