@@ -210,5 +210,43 @@ namespace MssqlMcp.Tests
             Assert.NotNull(describeResult);
             Assert.True(describeResult.Success);
         }
+
+        [Fact]
+        public async Task GetTableStats_ReturnsStats_ForAllTables()
+        {
+            var result = await _tools.GetTableStats() as DbOperationResult;
+            Assert.NotNull(result);
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            var stats = result.Data as List<object>;
+            Assert.NotNull(stats);
+        }
+
+        [Fact]
+        public async Task GetTableStats_ReturnsStats_ForSpecificTable()
+        {
+            var createResult = await _tools.CreateTable($"CREATE TABLE {_tableName} (Id INT PRIMARY KEY)") as DbOperationResult;
+            Assert.NotNull(createResult);
+            Assert.True(createResult.Success);
+
+            var result = await _tools.GetTableStats(_tableName) as DbOperationResult;
+            Assert.NotNull(result);
+            Assert.True(result.Success);
+            Assert.NotNull(result.Data);
+            var stats = result.Data as List<object>;
+            Assert.NotNull(stats);
+            Assert.Single(stats);
+        }
+
+        [Fact]
+        public async Task GetTableStats_ReturnsEmpty_ForNonExistentTable()
+        {
+            var result = await _tools.GetTableStats("NonExistentTable_xyz") as DbOperationResult;
+            Assert.NotNull(result);
+            Assert.True(result.Success);
+            var stats = result.Data as List<object>;
+            Assert.NotNull(stats);
+            Assert.Empty(stats);
+        }
     }
 }

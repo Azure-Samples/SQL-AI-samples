@@ -24,6 +24,7 @@ This server leverages the Model Context Protocol (MCP), a versatile framework th
 
 - Run MSSQL Database queries by just asking questions in plain English
 - Create, read, update, and delete data
+- Get table statistics including row counts and space usage
 - Manage database schema (tables, indexes)
 - Secure connection handling
 - Real-time data interaction

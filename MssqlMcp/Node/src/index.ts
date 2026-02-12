@@ -20,6 +20,7 @@ import { ListTableTool } from "./tools/ListTableTool.js";
 import { DropTableTool } from "./tools/DropTableTool.js";
 import { DefaultAzureCredential, InteractiveBrowserCredential } from "@azure/identity";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
+import { GetTableStatsTool } from "./tools/GetTableStatsTool.js";
 
 // MSSQL Database connection configuration
 // const credential = new DefaultAzureCredential();
@@ -69,6 +70,7 @@ const createIndexTool = new CreateIndexTool();
 const listTableTool = new ListTableTool();
 const dropTableTool = new DropTableTool();
 const describeTableTool = new DescribeTableTool();
+const getTableStatsTool = new GetTableStatsTool();
 
 const server = new Server(
   {
@@ -89,8 +91,8 @@ const isReadOnly = process.env.READONLY === "true";
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: isReadOnly
-    ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool], // add all new tools here
+    ? [listTableTool, readDataTool, describeTableTool, getTableStatsTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
+    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, getTableStatsTool], // add all new tools here
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -127,6 +129,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           };
         }
         result = await describeTableTool.run(args as { tableName: string });
+        break;
+      case getTableStatsTool.name:
+        result = await getTableStatsTool.run(args || {});
         break;
       default:
         return {
@@ -197,4 +202,4 @@ function wrapToolRun(tool: { run: (...args: any[]) => Promise<any> }) {
   };
 }
 
-[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool].forEach(wrapToolRun);
+[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool, getTableStatsTool].forEach(wrapToolRun);

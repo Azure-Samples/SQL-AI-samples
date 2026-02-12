@@ -10,6 +10,7 @@ This project is a .NET 8 console application implementing a Model Context Protoc
 - **MCP Tools Implemented**:
   - ListTables: List all tables in the database.
   - DescribeTable: Get schema/details for a table.
+  - GetTableStats: Get row counts and space usage statistics for tables.
   - CreateTable: Create new tables.
   - DropTable: Drop existing tables.
   - InsertData: Insert data into tables.
