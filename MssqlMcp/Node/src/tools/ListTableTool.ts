@@ -36,7 +36,14 @@ export class ListTableTool implements Tool {
       const { parameters } = params;
       const pool = await this.manager.resolveConnection(params.database);
       const request = pool.request();
-      const schemaFilter = parameters && parameters.length > 0 ? `AND TABLE_SCHEMA IN (${parameters.map((p: string) => `'${p}'`).join(", ")})` : "";
+      let schemaFilter = "";
+      if (parameters && parameters.length > 0) {
+        parameters.forEach((p: string, i: number) => {
+          request.input(`schema${i}`, sql.NVarChar, p);
+        });
+        const placeholders = parameters.map((_: string, i: number) => `@schema${i}`).join(", ");
+        schemaFilter = `AND TABLE_SCHEMA IN (${placeholders})`;
+      }
       const query = `SELECT TABLE_SCHEMA + '.' + TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' ${schemaFilter} ORDER BY TABLE_SCHEMA, TABLE_NAME`;
       const result = await request.query(query);
       return {

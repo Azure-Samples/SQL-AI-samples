@@ -44,6 +44,7 @@ export class CreateIndexTool implements Tool {
   async run(params: any) {
     try {
       const { schemaName, tableName, indexName, columns, isUnique = false, isClustered = false } = params;
+      const schema = schemaName || "dbo";
 
       let indexType = isClustered ? "CLUSTERED" : "NONCLUSTERED";
       if (isUnique) {
@@ -53,14 +54,14 @@ export class CreateIndexTool implements Tool {
 
       const pool = await this.manager.resolveConnection(params.database);
       const request = pool.request();
-      const query = `CREATE ${indexType} INDEX ${indexName} ON ${schemaName}.${tableName} (${columnNames})`;
+      const query = `CREATE ${indexType} INDEX ${indexName} ON ${schema}.${tableName} (${columnNames})`;
       await request.query(query);
       
       return {
         success: true,
-        message: `Index [${indexName}] created successfully on table [${schemaName}.${tableName}]`,
+        message: `Index [${indexName}] created successfully on table [${schema}.${tableName}]`,
         details: {
-          schemaName,
+          schemaName: schema,
           tableName,
           indexName,
           columnNames,

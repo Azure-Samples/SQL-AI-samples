@@ -57,7 +57,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
-  const tool = allTools.find(t => t.name === name);
+  const availableTools = config.readonly ? readOnlyTools : allTools;
+  const tool = availableTools.find(t => t.name === name);
   if (!tool) {
     return {
       content: [{ type: "text", text: `Unknown tool: ${name}` }],
