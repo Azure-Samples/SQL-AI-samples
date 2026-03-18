@@ -1,19 +1,14 @@
 {
-    "mcp": {
-        "servers": {
-            "mssql-nodejs": {
-                "type": "stdio",
-                "command": "node",
-                "args": ["q:\\Repos\\SQL-AI-samples\\MssqlMcp\\Node\\dist\\index.js"],
-                "env": {
-                  "HOST": "localhost",
-                  "PORT": "1433",
-                  "USER": "sa",
-                  "PASSWORD": "your-password",
-                  "DATABASE_NAME": "your-database-name",
-                  "READONLY": "false"
-                }
-            }
+  "mcp": {
+    "servers": {
+      "mssql-nodejs": {
+        "type": "stdio",
+        "command": "node",
+        "args": ["path/to/MssqlMcp/Node/dist/index.js"],
+        "env": {
+          "MSSQL_MCP_CONFIG": "/path/to/.mssql-mcp/config.json"
         }
+      }
     }
+  }
 }
