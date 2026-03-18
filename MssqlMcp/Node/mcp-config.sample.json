@@ -1,0 +1,9 @@
+{
+  "readonly": false,
+  "connectionTimeout": 30,
+  "servers": [
+    { "name": "SQL2019", "host": "localhost", "port": 50075, "user": "sa", "password": "your-password" },
+    { "name": "SQL2017", "host": "localhost", "port": 49990, "user": "sa", "password": "your-password" },
+    { "name": "SQLPROD", "host": "prodserver", "instance": "SQLEXPRESS", "user": "sa", "password": "your-password" }
+  ]
+}
