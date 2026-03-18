@@ -89,6 +89,14 @@ export function loadConfig(configPath?: string): McpConfig {
 
   const servers = obj.servers.map((s: unknown, i: number) => validateServer(s, i));
 
+  const names = new Set<string>();
+  for (const s of servers) {
+    if (names.has(s.name)) {
+      throw new Error(`Duplicate server name: "${s.name}"`);
+    }
+    names.add(s.name);
+  }
+
   return {
     readonly: typeof obj.readonly === "boolean" ? obj.readonly : false,
     connectionTimeout:

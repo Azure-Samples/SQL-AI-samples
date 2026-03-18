@@ -99,6 +99,16 @@ describe("loadConfig", () => {
     expect(config.servers[1].instance).toBe("SQLEXPRESS");
   });
 
+  it("throws when server names are duplicated", () => {
+    const configPath = writeTempConfig(tmpDir, {
+      servers: [
+        { name: "DUP", host: "host1", port: 1433, user: "sa", password: "pass1" },
+        { name: "DUP", host: "host2", port: 1434, user: "sa", password: "pass2" },
+      ],
+    });
+    expect(() => loadConfig(configPath)).toThrow('Duplicate server name: "DUP"');
+  });
+
   // --- Validation: servers array ---
 
   it("throws when servers is missing", () => {
