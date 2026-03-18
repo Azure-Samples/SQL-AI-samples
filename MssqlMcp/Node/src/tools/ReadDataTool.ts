@@ -1,17 +1,27 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
 
 export class ReadDataTool implements Tool {
   [key: string]: any;
   name = "read_data";
   description = "Executes a SELECT query on an MSSQL Database table. The query must start with SELECT and cannot contain any destructive SQL operations for security reasons.";
   
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
+
   inputSchema = {
     type: "object",
     properties: {
       query: { 
         type: "string", 
         description: "SQL SELECT query to execute (must start with SELECT and cannot contain destructive operations). Example: SELECT * FROM movies WHERE genre = 'comedy'" 
+      },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
       },
     },
     required: ["query"],
@@ -221,8 +231,8 @@ export class ReadDataTool implements Tool {
       // Log the query for audit purposes (in production, consider more secure logging)
       console.log(`Executing validated SELECT query: ${query.substring(0, 200)}${query.length > 200 ? '...' : ''}`);
 
-      // Execute the query
-      const request = new sql.Request();
+      const pool = await this.manager.resolveConnection(params.database);
+      const request = pool.request();
       const result = await request.query(query);
       
       // Sanitize the result

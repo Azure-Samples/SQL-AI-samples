@@ -1,10 +1,17 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
 
 export class CreateTableTool implements Tool {
   [key: string]: any;
   name = "create_table";
   description = "Creates a new table in the MSSQL Database with the specified columns.";
+
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
+
   inputSchema = {
     type: "object",
     properties: {
@@ -20,7 +27,11 @@ export class CreateTableTool implements Tool {
           },
           required: ["name", "type"]
         }
-      }
+      },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
+      },
     },
     required: ["tableName", "columns"],
   } as any;
@@ -33,7 +44,8 @@ export class CreateTableTool implements Tool {
       }
       const columnDefs = columns.map((col: any) => `[${col.name}] ${col.type}`).join(", ");
       const query = `CREATE TABLE [${tableName}] (${columnDefs})`;
-      await new sql.Request().query(query);
+      const pool = await this.manager.resolveConnection(params.database);
+      await pool.request().query(query);
       return {
         success: true,
         message: `Table '${tableName}' created successfully.`

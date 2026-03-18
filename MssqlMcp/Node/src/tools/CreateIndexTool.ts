@@ -1,10 +1,17 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
 
 export class CreateIndexTool implements Tool {
   [key: string]: any;
   name = "create_index";
   description = "Creates an index on a specified column or columns in an MSSQL Database table";
+
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
+
   inputSchema = {
     type: "object",
     properties: {
@@ -26,6 +33,10 @@ export class CreateIndexTool implements Tool {
         description: "Whether the index should be clustered (default: false)",
         default: false
       },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
+      },
     },
     required: ["tableName", "indexName", "columns"],
   } as any;
@@ -33,6 +44,7 @@ export class CreateIndexTool implements Tool {
   async run(params: any) {
     try {
       const { schemaName, tableName, indexName, columns, isUnique = false, isClustered = false } = params;
+      const schema = schemaName || "dbo";
 
       let indexType = isClustered ? "CLUSTERED" : "NONCLUSTERED";
       if (isUnique) {
@@ -40,15 +52,16 @@ export class CreateIndexTool implements Tool {
       }
       const columnNames = columns.join(", ");
 
-      const request = new sql.Request();
-      const query = `CREATE ${indexType} INDEX ${indexName} ON ${schemaName}.${tableName} (${columnNames})`;
+      const pool = await this.manager.resolveConnection(params.database);
+      const request = pool.request();
+      const query = `CREATE ${indexType} INDEX ${indexName} ON ${schema}.${tableName} (${columnNames})`;
       await request.query(query);
       
       return {
         success: true,
-        message: `Index [${indexName}] created successfully on table [${schemaName}.${tableName}]`,
+        message: `Index [${indexName}] created successfully on table [${schema}.${tableName}]`,
         details: {
-          schemaName,
+          schemaName: schema,
           tableName,
           indexName,
           columnNames,
