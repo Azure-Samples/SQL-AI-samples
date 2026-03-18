@@ -1,10 +1,17 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
 
 export class UpdateDataTool implements Tool {
   [key: string]: any;
   name = "update_data";
   description = "Updates data in an MSSQL Database table using a WHERE clause. The WHERE clause must be provided for security.";
+
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
+
   inputSchema = {
     type: "object",
     properties: {
@@ -20,6 +27,10 @@ export class UpdateDataTool implements Tool {
         type: "string", 
         description: "WHERE clause to identify which records to update. Example: \"genre = 'comedy' AND created_date <= '2025-07-05'\"" 
       },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
+      },
     },
     required: ["tableName", "updates", "whereClause"],
   } as any;
@@ -34,7 +45,8 @@ export class UpdateDataTool implements Tool {
         throw new Error("WHERE clause is required for security reasons");
       }
 
-      const request = new sql.Request();
+      const pool = await this.manager.resolveConnection(params.database);
+      const request = pool.request();
       
       // Build SET clause with parameterized queries for security
       const setClause = Object.keys(updates)

@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// External imports
-import * as dotenv from "dotenv";
-import sql from "mssql";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -10,7 +7,8 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 
-// Internal imports
+import { loadConfig } from "./config.js";
+import { ConnectionManager } from "./ConnectionManager.js";
 import { UpdateDataTool } from "./tools/UpdateDataTool.js";
 import { InsertDataTool } from "./tools/InsertDataTool.js";
 import { ReadDataTool } from "./tools/ReadDataTool.js";
@@ -19,132 +17,66 @@ import { CreateIndexTool } from "./tools/CreateIndexTool.js";
 import { ListTableTool } from "./tools/ListTableTool.js";
 import { DropTableTool } from "./tools/DropTableTool.js";
 import { DescribeTableTool } from "./tools/DescribeTableTool.js";
+import { ListDatabasesTool } from "./tools/ListDatabasesTool.js";
 
-// MSSQL Database connection configuration
-// Globals for connection reuse
-let globalSqlPool: sql.ConnectionPool | null = null;
+const config = loadConfig();
+const connectionManager = new ConnectionManager(config);
 
-// Function to create SQL config with SQL authentication
-export function createSqlConfig(): sql.config {
-  const host = process.env.HOST;
-  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 1433;
-  const user = process.env.USER;
-  const password = process.env.PASSWORD;
-  const database = process.env.DATABASE_NAME;
-  const connectionTimeout = process.env.CONNECTION_TIMEOUT ? parseInt(process.env.CONNECTION_TIMEOUT, 10) : 30;
+const listDatabasesTool = new ListDatabasesTool(connectionManager);
+const updateDataTool = new UpdateDataTool(connectionManager);
+const insertDataTool = new InsertDataTool(connectionManager);
+const readDataTool = new ReadDataTool(connectionManager);
+const createTableTool = new CreateTableTool(connectionManager);
+const createIndexTool = new CreateIndexTool(connectionManager);
+const listTableTool = new ListTableTool(connectionManager);
+const dropTableTool = new DropTableTool(connectionManager);
+const describeTableTool = new DescribeTableTool(connectionManager);
 
-  if (!host) {
-    throw new Error('HOST environment variable is required');
-  }
-  if (!user) {
-    throw new Error('USER environment variable is required');
-  }
-  if (!password) {
-    throw new Error('PASSWORD environment variable is required');
-  }
-  if (!database) {
-    throw new Error('DATABASE_NAME environment variable is required');
-  }
+const allTools = [
+  listDatabasesTool,
+  insertDataTool,
+  readDataTool,
+  describeTableTool,
+  updateDataTool,
+  createTableTool,
+  createIndexTool,
+  dropTableTool,
+  listTableTool,
+];
 
-  return {
-    server: host,
-    port: port,
-    user: user,
-    password: password,
-    database: database,
-    options: {
-      encrypt: true,
-      trustServerCertificate: true
-    },
-    connectionTimeout: connectionTimeout * 1000, // convert seconds to milliseconds
-  };
-}
-
-const updateDataTool = new UpdateDataTool();
-const insertDataTool = new InsertDataTool();
-const readDataTool = new ReadDataTool();
-const createTableTool = new CreateTableTool();
-const createIndexTool = new CreateIndexTool();
-const listTableTool = new ListTableTool();
-const dropTableTool = new DropTableTool();
-const describeTableTool = new DescribeTableTool();
+const readOnlyTools = [listDatabasesTool, listTableTool, readDataTool, describeTableTool];
 
 const server = new Server(
-  {
-    name: "mssql-mcp-server",
-    version: "0.1.0",
-  },
-  {
-    capabilities: {
-      tools: {},
-    },
-  },
+  { name: "mssql-mcp-server", version: "0.2.0" },
+  { capabilities: { tools: {} } },
 );
 
-// Read READONLY env variable
-const isReadOnly = process.env.READONLY === "true";
-
-// Request handlers
-
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
-  tools: isReadOnly
-    ? [listTableTool, readDataTool, describeTableTool] // todo: add searchDataTool to the list of tools available in readonly mode once implemented
-    : [insertDataTool, readDataTool, describeTableTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool], // add all new tools here
+  tools: config.readonly ? readOnlyTools : allTools,
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
+  const tool = allTools.find(t => t.name === name);
+  if (!tool) {
+    return {
+      content: [{ type: "text", text: `Unknown tool: ${name}` }],
+      isError: true,
+    };
+  }
   try {
-    let result;
-    switch (name) {
-      case insertDataTool.name:
-        result = await insertDataTool.run(args);
-        break;
-      case readDataTool.name:
-        result = await readDataTool.run(args);
-        break;
-      case updateDataTool.name:
-        result = await updateDataTool.run(args);
-        break;
-      case createTableTool.name:
-        result = await createTableTool.run(args);
-        break;
-      case createIndexTool.name:
-        result = await createIndexTool.run(args);
-        break;
-      case listTableTool.name:
-        result = await listTableTool.run(args);
-        break;
-      case dropTableTool.name:
-        result = await dropTableTool.run(args);
-        break;
-      case describeTableTool.name:
-        if (!args || typeof args.tableName !== "string") {
-          return {
-            content: [{ type: "text", text: `Missing or invalid 'tableName' argument for describe_table tool.` }],
-            isError: true,
-          };
-        }
-        result = await describeTableTool.run(args as { tableName: string });
-        break;
-      default:
-        return {
-          content: [{ type: "text", text: `Unknown tool: ${name}` }],
-          isError: true,
-        };
-    }
+    const result = await tool.run(args);
     return {
       content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
     };
   } catch (error) {
     return {
-      content: [{ type: "text", text: `Error occurred: ${error}` }],
+      content: [{ type: "text", text: `Error: ${error}` }],
       isError: true,
     };
   }
 });
 
-// Server startup
 async function runServer() {
   try {
     const transport = new StdioServerTransport();
@@ -159,33 +91,3 @@ runServer().catch((error) => {
   console.error("Fatal error running server:", error);
   process.exit(1);
 });
-
-// Connect to SQL only when handling a request
-
-async function ensureSqlConnection() {
-  // If we have a pool and it's connected, reuse it
-  if (globalSqlPool && globalSqlPool.connected) {
-    return;
-  }
-
-  // Otherwise, create a new connection
-  const config = createSqlConfig();
-
-  // Close old pool if exists
-  if (globalSqlPool && globalSqlPool.connected) {
-    await globalSqlPool.close();
-  }
-
-  globalSqlPool = await sql.connect(config);
-}
-
-// Patch all tool handlers to ensure SQL connection before running
-function wrapToolRun(tool: { run: (...args: any[]) => Promise<any> }) {
-  const originalRun = tool.run.bind(tool);
-  tool.run = async function (...args: any[]) {
-    await ensureSqlConnection();
-    return originalRun(...args);
-  };
-}
-
-[insertDataTool, readDataTool, updateDataTool, createTableTool, createIndexTool, dropTableTool, listTableTool, describeTableTool].forEach(wrapToolRun);

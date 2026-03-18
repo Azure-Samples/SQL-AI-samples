@@ -1,10 +1,17 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
 
 export class CreateIndexTool implements Tool {
   [key: string]: any;
   name = "create_index";
   description = "Creates an index on a specified column or columns in an MSSQL Database table";
+
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
+
   inputSchema = {
     type: "object",
     properties: {
@@ -26,6 +33,10 @@ export class CreateIndexTool implements Tool {
         description: "Whether the index should be clustered (default: false)",
         default: false
       },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
+      },
     },
     required: ["tableName", "indexName", "columns"],
   } as any;
@@ -40,7 +51,8 @@ export class CreateIndexTool implements Tool {
       }
       const columnNames = columns.join(", ");
 
-      const request = new sql.Request();
+      const pool = await this.manager.resolveConnection(params.database);
+      const request = pool.request();
       const query = `CREATE ${indexType} INDEX ${indexName} ON ${schemaName}.${tableName} (${columnNames})`;
       await request.query(query);
       

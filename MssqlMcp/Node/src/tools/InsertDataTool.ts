@@ -1,8 +1,15 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
+
 export class InsertDataTool implements Tool {
   [key: string]: any;
   name = "insert_data";
+
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
   description = `Inserts data into an MSSQL Database table. Supports both single record insertion and multiple record insertion using standard SQL INSERT with VALUES clause.
 FORMAT EXAMPLES:
 Single Record Insert:
@@ -53,6 +60,10 @@ IMPORTANT RULES:
         type: "string", 
         description: "Name of the table to insert data into" 
       },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
+      },
       data: { 
         oneOf: [
           { 
@@ -93,7 +104,8 @@ IMPORTANT RULES:
         }
       }
       const columns = firstRecordColumns.join(", ");
-      const request = new sql.Request();
+      const pool = await this.manager.resolveConnection(params.database);
+      const request = pool.request();
       if (isMultipleRecords) {
         // Multiple records insert using VALUES clause - works for 1 or more records
         const valueClauses: string[] = [];

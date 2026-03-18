@@ -1,10 +1,17 @@
 import sql from "mssql";
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import type { ConnectionManager } from "../ConnectionManager.js";
 
 export class ListTableTool implements Tool {
   [key: string]: any;
   name = "list_table";
   description = "Lists tables in an MSSQL Database, or list tables in specific schemas";
+
+  private manager: ConnectionManager;
+  constructor(manager: ConnectionManager) {
+    this.manager = manager;
+  }
+
   inputSchema = {
     type: "object",
     properties: {
@@ -16,6 +23,10 @@ export class ListTableTool implements Tool {
         },
         minItems: 0
       },
+      database: {
+        type: "string",
+        description: "Target database name. If omitted, uses the last selected database. Use list_databases to discover available databases.",
+      },
     },
     required: [],
   } as any;
@@ -23,7 +34,8 @@ export class ListTableTool implements Tool {
   async run(params: any) {
     try {
       const { parameters } = params;
-      const request = new sql.Request();
+      const pool = await this.manager.resolveConnection(params.database);
+      const request = pool.request();
       const schemaFilter = parameters && parameters.length > 0 ? `AND TABLE_SCHEMA IN (${parameters.map((p: string) => `'${p}'`).join(", ")})` : "";
       const query = `SELECT TABLE_SCHEMA + '.' + TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' ${schemaFilter} ORDER BY TABLE_SCHEMA, TABLE_NAME`;
       const result = await request.query(query);
