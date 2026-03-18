@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
-    "dotenv": "^10.0.0",
     "mssql": "^11.0.1"
   },
   "type": "module"
