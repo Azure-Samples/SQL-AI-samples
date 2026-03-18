@@ -154,6 +154,13 @@ describe("loadConfig", () => {
     expect(config.servers[0].port).toBeUndefined();
   });
 
+  it("throws when port is a string instead of number", () => {
+    const configPath = writeTempConfig(tmpDir, {
+      servers: [{ name: "S1", host: "localhost", port: "1433", user: "sa", password: "pass" }],
+    });
+    expect(() => loadConfig(configPath)).toThrow("Server 'S1': 'port' must be a number");
+  });
+
   // --- Validation: invalid JSON ---
 
   it("throws on invalid JSON", () => {

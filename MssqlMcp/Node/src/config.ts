@@ -38,6 +38,10 @@ function validateServer(server: unknown, index: number): ServerConfig {
     }
   }
 
+  if (s.port != null && typeof s.port !== "number") {
+    throw new Error(`Server '${s.name}': 'port' must be a number`);
+  }
+
   if (s.port == null && (!s.instance || typeof s.instance !== "string")) {
     throw new Error(
       `Server "${s.name}" (index ${index}): must have either port or instance`
