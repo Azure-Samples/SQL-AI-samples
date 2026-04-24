@@ -17,9 +17,14 @@ export class DescribeTableTool implements Tool {
   async run(params: { tableName: string }) {
     try {
       const { tableName } = params;
+      // Split "dbo.Users" into ["dbo", "Users"]
+      const parts = tableName.split('.');
+      const name = parts.pop();
+      const schema = parts.pop() || 'dbo'; // Default to 'dbo' if no schema provided
       const request = new sql.Request();
-      const query = `SELECT COLUMN_NAME as name, DATA_TYPE as type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @tableName`;
-      request.input("tableName", sql.NVarChar, tableName);
+      const query = `SELECT COLUMN_NAME as name, DATA_TYPE as type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @tableName AND TABLE_SCHEMA = @tableSchema`;
+      request.input("tableName", sql.NVarChar, name);
+      request.input("tableSchema", sql.NVarChar, schema);
       const result = await request.query(query);
       return {
         success: true,
