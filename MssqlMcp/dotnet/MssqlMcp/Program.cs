@@ -26,7 +26,9 @@ internal class Program
             consoleLogOptions.LogToStandardErrorThreshold = LogLevel.Trace;
         });
 
-        // Register ISqlConnectionFactory and Tools for DI
+        // Register ISqlConnectionFactory, options, transaction store, and Tools for DI
+        _ = builder.Services.AddSingleton(McpServerOptions.FromEnvironment());
+        _ = builder.Services.AddSingleton<TransactionStore>();
         _ = builder.Services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>();
         _ = builder.Services.AddSingleton<Tools>();
 

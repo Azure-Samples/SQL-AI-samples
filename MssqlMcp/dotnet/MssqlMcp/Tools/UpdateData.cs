@@ -2,7 +2,6 @@
 // Licensed under the MIT license.
 
 using System.ComponentModel;
-using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
@@ -13,25 +12,19 @@ public partial class Tools
         Title = "Update Data",
         ReadOnly = false,
         Destructive = true),
-        Description("Updates data in a table in the SQL Database. Expects a valid UPDATE SQL statement as input.")]
-    public async Task<DbOperationResult> UpdateData(
-        [Description("UPDATE SQL statement")] string sql)
+        Description("Updates data in a table. Expects a valid UPDATE statement; supports parameterized values via @name placeholders.")]
+    public Task<DbOperationResult> UpdateData(
+        [Description("UPDATE SQL statement. Use @paramName for parameters.")] string sql,
+        [Description("Optional named parameters bound to @paramName placeholders")] Dictionary<string, object?>? parameters = null,
+        [Description("Optional database name to override the connection's default catalog")] string? database = null,
+        CancellationToken cancellationToken = default)
     {
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
-        try
+        return ExecuteAsync(async (conn, ct) =>
         {
-            using (conn)
-            {
-                using var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, conn);
-                var rows = await cmd.ExecuteNonQueryAsync();
-                return new DbOperationResult(true, null, rows);
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "UpdateData failed: {Message}", ex.Message);
-            return new DbOperationResult(false, ex.Message);
-        }
+            using var cmd = CreateCommand(sql, conn);
+            SqlParameterBinding.Apply(cmd, parameters);
+            var rows = await cmd.ExecuteNonQueryAsync(ct);
+            return DbOperationResult.Ok(rowsAffected: rows);
+        }, database, cancellationToken, requiresWrite: true);
     }
 }
-

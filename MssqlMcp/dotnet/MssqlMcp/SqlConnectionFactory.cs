@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
 using Microsoft.Data.SqlClient;
@@ -7,13 +7,22 @@ namespace Mssql.McpServer;
 
 public class SqlConnectionFactory : ISqlConnectionFactory
 {
-    public async Task<SqlConnection> GetOpenConnectionAsync()
+    public async Task<SqlConnection> GetOpenConnectionAsync(string? database = null, CancellationToken cancellationToken = default)
     {
         var connectionString = GetConnectionString();
 
+        if (!string.IsNullOrWhiteSpace(database))
+        {
+            var builder = new SqlConnectionStringBuilder(connectionString)
+            {
+                InitialCatalog = database,
+            };
+            connectionString = builder.ConnectionString;
+        }
+
         // Let ADO.Net handle connection pooling
         var conn = new SqlConnection(connectionString);
-        await conn.OpenAsync();
+        await conn.OpenAsync(cancellationToken);
         return conn;
     }
 

@@ -2,7 +2,6 @@
 // Licensed under the MIT license.
 
 using System.ComponentModel;
-using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
@@ -14,23 +13,16 @@ public partial class Tools
         ReadOnly = false,
         Destructive = false),
         Description("Creates a new table in the SQL Database. Expects a valid CREATE TABLE SQL statement as input.")]
-    public async Task<DbOperationResult> CreateTable(
-        [Description("CREATE TABLE SQL statement")] string sql)
+    public Task<DbOperationResult> CreateTable(
+        [Description("CREATE TABLE SQL statement")] string sql,
+        [Description("Optional database name to override the connection's default catalog")] string? database = null,
+        CancellationToken cancellationToken = default)
     {
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
-        try
+        return ExecuteAsync(async (conn, ct) =>
         {
-            using (conn)
-            {
-                using var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, conn);
-                _ = await cmd.ExecuteNonQueryAsync();
-                return new DbOperationResult(success: true);
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "CreateTable failed: {Message}", ex.Message);
-            return new DbOperationResult(success: false, error: ex.Message);
-        }
+            using var cmd = CreateCommand(sql, conn);
+            _ = await cmd.ExecuteNonQueryAsync(ct);
+            return DbOperationResult.Ok();
+        }, database, cancellationToken, requiresWrite: true);
     }
 }

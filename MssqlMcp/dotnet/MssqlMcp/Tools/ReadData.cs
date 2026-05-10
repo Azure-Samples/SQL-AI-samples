@@ -2,11 +2,10 @@
 // Licensed under the MIT license.
 
 using System.ComponentModel;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
+
 public partial class Tools
 {
     [McpServerTool(
@@ -14,34 +13,42 @@ public partial class Tools
         ReadOnly = true,
         Idempotent = true,
         Destructive = false),
-        Description("Executes SQL queries against SQL Database to read data")]
-    public async Task<DbOperationResult> ReadData(
-        [Description("SQL query to execute")] string sql)
+        Description("Executes SQL queries against SQL Database to read data. Supports parameterized queries via @name placeholders.")]
+    public Task<DbOperationResult> ReadData(
+        [Description("SQL query to execute. Use @paramName for parameters.")] string sql,
+        [Description("Optional named parameters bound to @paramName placeholders (keys without '@' are accepted)")] Dictionary<string, object?>? parameters = null,
+        [Description("Optional per-call cap on returned rows. Capped to the server-wide MAX_ROWS limit.")] int? maxRows = null,
+        [Description("Optional database name to override the connection's default catalog")] string? database = null,
+        CancellationToken cancellationToken = default)
     {
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
-        try
+        return ExecuteAsync(async (conn, ct) =>
         {
-            using (conn)
+            using var cmd = CreateCommand(sql, conn);
+            SqlParameterBinding.Apply(cmd, parameters);
+
+            using var reader = await cmd.ExecuteReaderAsync(ct);
+            var effectiveCap = Math.Min(maxRows ?? _options.MaxRows, _options.MaxRows);
+            var results = new List<Dictionary<string, object?>>();
+            var truncated = false;
+
+            while (await reader.ReadAsync(ct))
             {
-                using var cmd = new SqlCommand(sql, conn);
-                using var reader = await cmd.ExecuteReaderAsync();
-                var results = new List<Dictionary<string, object?>>();
-                while (await reader.ReadAsync())
+                if (results.Count >= effectiveCap)
                 {
-                    var row = new Dictionary<string, object?>();
-                    for (var i = 0; i < reader.FieldCount; i++)
-                    {
-                        row[reader.GetName(i)] = reader.IsDBNull(i) ? null : reader.GetValue(i);
-                    }
-                    results.Add(row);
+                    truncated = true;
+                    break;
                 }
-                return new DbOperationResult(success: true, data: results);
+                var row = new Dictionary<string, object?>(reader.FieldCount);
+                for (var i = 0; i < reader.FieldCount; i++)
+                {
+                    row[reader.GetName(i)] = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                }
+                results.Add(row);
             }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "ReadData failed: {Message}", ex.Message);
-            return new DbOperationResult(success: false, error: ex.Message);
-        }
+
+            return truncated
+                ? DbOperationResult.Ok(new { rows = results, truncated = true, maxRows = effectiveCap })
+                : DbOperationResult.Ok(results);
+        }, database, cancellationToken);
     }
 }

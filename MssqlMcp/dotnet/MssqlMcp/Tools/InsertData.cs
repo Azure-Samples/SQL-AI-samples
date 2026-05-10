@@ -2,7 +2,6 @@
 // Licensed under the MIT license.
 
 using System.ComponentModel;
-using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 
 namespace Mssql.McpServer;
@@ -13,24 +12,19 @@ public partial class Tools
         Title = "Insert Data",
         ReadOnly = false,
         Destructive = false),
-        Description("Updates data in a table in the SQL Database. Expects a valid INSERT SQL statement as input. ")]
-    public async Task<DbOperationResult> InsertData(
-        [Description("INSERT SQL statement")] string sql)
+        Description("Inserts data into a table. Expects a valid INSERT statement; supports parameterized values via @name placeholders.")]
+    public Task<DbOperationResult> InsertData(
+        [Description("INSERT SQL statement. Use @paramName for parameters.")] string sql,
+        [Description("Optional named parameters bound to @paramName placeholders")] Dictionary<string, object?>? parameters = null,
+        [Description("Optional database name to override the connection's default catalog")] string? database = null,
+        CancellationToken cancellationToken = default)
     {
-        var conn = await _connectionFactory.GetOpenConnectionAsync();
-        try
+        return ExecuteAsync(async (conn, ct) =>
         {
-            using (conn)
-            {
-                using var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, conn);
-                var rows = await cmd.ExecuteNonQueryAsync();
-                return new DbOperationResult(success: true, rowsAffected: rows);
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "InsertData failed: {Message}", ex.Message);
-            return new DbOperationResult(success: false, error: ex.Message);
-        }
+            using var cmd = CreateCommand(sql, conn);
+            SqlParameterBinding.Apply(cmd, parameters);
+            var rows = await cmd.ExecuteNonQueryAsync(ct);
+            return DbOperationResult.Ok(rowsAffected: rows);
+        }, database, cancellationToken, requiresWrite: true);
     }
 }
