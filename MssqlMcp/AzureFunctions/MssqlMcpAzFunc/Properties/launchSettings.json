@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "MssqlMcpAzFunc": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7277",
+      "launchBrowser": false
+    }
+  }
+}
